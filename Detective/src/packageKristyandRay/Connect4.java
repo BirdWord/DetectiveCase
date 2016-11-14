@@ -37,7 +37,7 @@ public class Connect4 {
 				}
 				if(row > -1){
 					arr[row][input] = "o";
-				}//l;l;f
+				}//l;l;fg
 			}
 		}
 	}

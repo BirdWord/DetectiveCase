@@ -1,8 +1,8 @@
 package packageKristyandRay;
 
-public class Ray {
+public class RayGUInWIN {
 
-	public Ray() {
+	public RayGUInWIN() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -22,7 +22,7 @@ public class RayGUInWIN {
 	public static void printBoard(String[][] arr){
 		//First, print out the columns in case someone is dumbfounded
 		for(int num = 0; num < arr[0].length; num++){
-			System.out.print(" ["+(num+1)+"]");
+			System.out.print(" ["+num+"]");
 		}
 		System.out.println();
 		//After that, make the top line of the board

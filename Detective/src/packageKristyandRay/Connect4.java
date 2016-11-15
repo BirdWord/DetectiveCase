@@ -19,11 +19,7 @@ public class Connect4 {
 			}
 		}
 		while(true){
-			for(int i = 0; i<arr[0].length; i++){
-				System.out.print(i);
-			}
-			System.out.println();
-			printPic(arr);
+			RayGUInWIN.printBoard(arr);
 			System.out.println("Which column?");
 			int input = Integer.parseInt(in.nextLine());
 			if(input <= arr[0].length-1 && input > -1){
@@ -41,14 +37,4 @@ public class Connect4 {
 			}
 		}
 	}
-	public static void printPic(String[][] arr){
-		for(int i = 0; i<arr.length; i++){
-			for(int j = 0; j<arr[i].length; j++){
-				System.out.print(arr[i][j]);
-			}
-			System.out.println();
-		}
-	}
-	
-
 }

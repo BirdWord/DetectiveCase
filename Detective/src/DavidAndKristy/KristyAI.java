@@ -33,7 +33,7 @@ public class KristyAI {
 		for(int row = 0; row < dots.length; row++){
 			for(int col = 0; col < dots[0].length; col++){
 				if(dots[row][col] == "---" || dots[row][col] == "==="){
-					count++;
+					count++; 
 					//if(dots[row +1 ][col])
 				}
 			}

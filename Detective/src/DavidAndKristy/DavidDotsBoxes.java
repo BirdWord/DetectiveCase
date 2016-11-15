@@ -22,7 +22,7 @@ public class DavidDotsBoxes {
 				System.out.print("o--");
 			}
 			System.out.println("");
-		}
+		}//
 	}
 
 }

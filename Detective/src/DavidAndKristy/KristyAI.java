@@ -12,7 +12,7 @@ public class KristyAI {
 	public static void main(String[] args){
 		setGrid(3,3);
 		//printGrid();
-		checkBoxes();
+		//checkBoxes();
 		computerTurn();
 	}
 	

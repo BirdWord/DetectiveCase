@@ -88,5 +88,10 @@ public class DavidDotsBoxes {
 		
 		printGrid();
 	}
+	public static void setHorizLn(int[] start, int[] end){
+		
+		
+		grid[][] = "o--";
+	}
 
 }

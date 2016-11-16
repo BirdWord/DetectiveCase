@@ -68,8 +68,15 @@ public class DavidDotsBoxes {
 		 * 
 		 * */
 		System.out.println("\n\n\n");
-		int[] min = (start[1] < end[1]) ? start : end;
-		int[] max = (min[1] == start[1]) ? end : start;
+		int[] max = (start[1] < end[1]) ? end : start; // get greater yCoord.
+		
+		/*
+		 *  We need to update the REAL coordinates of the points.
+		 *  But since we're only using the 
+		 * */
+		if(max[0] != 0) max[0] = max[0] + 1; // give actual coordinate
+		
+		
 		
 		if(getY(max) % 2 == 0) grid[getY(max) + 1][getX(max) * 3] = "|";
 		else grid[getY(max)][getX(max) * 3] = "|";

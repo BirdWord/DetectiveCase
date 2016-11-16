@@ -16,7 +16,8 @@ public class DavidDotsBoxes {
 		setGrid(row,col); // setter.
 		// test vertical line
 		printGrid(); // printer.
-		setVertLn(new int[] {1,3}, new int[] {1,2});
+		setVertLn(new int[] {5,2}, new int[] {5,3});
+		setVertLn(new int[] {5,3}, new int[] {5,4});
 	}
 	public static void setGrid(int row, int col){
 		// to connect two points, we'll use 'o--' instead of 'o', IF horizontal.
@@ -37,7 +38,7 @@ public class DavidDotsBoxes {
 			*  token -> if even: regular row with dot. if odd: special row that will be used to allocate space.
 			* */
 			if(y % 2 == 0) token = "o  "; // even row.
-			else token = ""; // odd row.
+			else token = "   "; // odd row.
 			for(int x = 0; x < grid[y].length; ++x){ // traverse through the column.
 				grid[y][x] = token; // set the value to the token based on the type of row.
 			}
@@ -82,14 +83,9 @@ public class DavidDotsBoxes {
 		 *  the greater y-coordinate, we'll only update the coordinates of that(max).
 		 * */
 		if(getY(max) != 0) setY(max,(getY(max) * 2)); // give actual y-coordinate.
-		if(getX(max) != 0) setX(max,(getX(max) * 3)); // give actual x-coordinate.
-		
+		//if(getX(max) != 0) setX(max,(getX(max) * 1)); // give actual x-coordinate.
 		grid[getY(max) - 1][getX(max)] = "|"; // set the line.
 		
-		
-		
-		/*if(getY(max) % 2 == 0) grid[getY(max) + 1][getX(max) * 3] = "|";
-		else grid[getY(max)][getX(max) * 3] = "|";*/
 		printGrid();
 	}
 

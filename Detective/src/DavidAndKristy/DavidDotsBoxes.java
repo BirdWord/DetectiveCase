@@ -14,8 +14,9 @@ public class DavidDotsBoxes {
 		System.out.println("Enter number of columns between 3 and 9.");
 		int col = in.nextInt();
 		setGrid(row,col); // setter.
+		// test vertical line
 		printGrid(); // printer.
-
+		setVertLn(new int[] {0,2}, new int[] {0,3});
 	}
 	public static void setGrid(int row, int col){
 		// to connect two points, we'll use 'o--' instead of 'o', IF horizontal.
@@ -51,9 +52,28 @@ public class DavidDotsBoxes {
 			System.out.println(""); // every row needs a new line.
 		}
 	}
-	public static void setVertLn(int x1, int y1, int x2, int y2){
+	public static int getY(int[] coord){
+		return coord[1];
+	}
+	public static int getX(int[] coord){
+		return coord[0];
+	}
+	public static void setVertLn(int[] start, int[] end){
 
+		/*
+		 *  Procedure to print a vertical line.
+		 *  Parameters -> coordinates for first point and second point.
+		 *  
+		 *  parameter -> [xCoord,yCoord];
+		 * 
+		 * */
+		System.out.println("\n\n\n");
+		int[] min = (start[1] < end[1]) ? start : end;
+		int[] max = (min[1] == start[1]) ? end : start;
 		
+		if(getY(max) % 2 == 0) grid[getY(max) + 1][getX(max) * 3] = "|";
+		else grid[getY(max)][getX(max) * 3] = "|";
+		printGrid();
 	}
 
 }

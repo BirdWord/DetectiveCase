@@ -2,26 +2,24 @@ package caveExplorer;
 
 public class GameStartEvent implements Event {
 
-	public static final String[] SEQ1 = {"A spikey-haired guy with orange pants flies up to you.",
-										"Have you arrived to save us from the treacherous Buu?",
-										"We need your help."
+	public static final String[] story1 = {"Hello, you must be the new detective working on this case.",
+										"We are currently at the scene of the crime.", 
+										"The victim was a small fun-sized girl named Kristy.",
+										"We could not find out how she was killed, so we would like for you to investigate."
 										};
-	public static final String[] SEQ2 = {"Great, I will be busy meditating on my super yellow version while you figure out Buu is.",
-										"Kaaaa, maaaaaay...",
-										"By the way, here's a map."
-										};
+	public static final String[] story2 = {};
 	public GameStartEvent() {
 		
 	}
 
 	@Override
 	public void play() {
-		readSequence(SEQ1);
+		readSequence(story1);
 		CaveExplorer.print("Will you help us?");
 		while(CaveExplorer.in.nextLine().indexOf("yes") < 0){
 			CaveExplorer.print("Please say yes. I beg you.");
 		}
-		readSequence(SEQ2);
+		readSequence(story2);
 		CaveExplorer.inventory.setHasMap(true);
 	}
 

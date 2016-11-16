@@ -16,7 +16,7 @@ public class DavidDotsBoxes {
 		setGrid(row,col); // setter.
 		// test vertical line
 		printGrid(); // printer.
-		setVertLn(new int[] {0,2}, new int[] {0,3});
+		setVertLn(new int[] {1,3}, new int[] {1,2});
 	}
 	public static void setGrid(int row, int col){
 		// to connect two points, we'll use 'o--' instead of 'o', IF horizontal.
@@ -58,6 +58,12 @@ public class DavidDotsBoxes {
 	public static int getX(int[] coord){
 		return coord[0];
 	}
+	public static void setX(int[] coord, int val){
+		coord[0] = val;
+	}
+	public static void setY(int[] coord, int val){
+		coord[1] = val;
+	}
 	public static void setVertLn(int[] start, int[] end){
 
 		/*
@@ -72,14 +78,18 @@ public class DavidDotsBoxes {
 		
 		/*
 		 *  We need to update the REAL coordinates of the points.
-		 *  But since we're only using the 
+		 *  But since we're only using the coordinates of the one with
+		 *  the greater y-coordinate, we'll only update the coordinates of that(max).
 		 * */
-		if(max[0] != 0) max[0] = max[0] + 1; // give actual coordinate
+		if(getY(max) != 0) setY(max,(getY(max) * 2)); // give actual y-coordinate.
+		if(getX(max) != 0) setX(max,(getX(max) * 3)); // give actual x-coordinate.
+		
+		grid[getY(max) - 1][getX(max)] = "|"; // set the line.
 		
 		
 		
-		if(getY(max) % 2 == 0) grid[getY(max) + 1][getX(max) * 3] = "|";
-		else grid[getY(max)][getX(max) * 3] = "|";
+		/*if(getY(max) % 2 == 0) grid[getY(max) + 1][getX(max) * 3] = "|";
+		else grid[getY(max)][getX(max) * 3] = "|";*/
 		printGrid();
 	}
 

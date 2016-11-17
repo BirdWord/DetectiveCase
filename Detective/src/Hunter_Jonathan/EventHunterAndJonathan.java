@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class EventHunterAndJonathan {
 
 	//radars are odd
-		//ships are even
+	//ships are even
 	public static int[][] board1;
 	public static int[][] board2;
 	public static int[][] AIboard1;

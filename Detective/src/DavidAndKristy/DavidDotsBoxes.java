@@ -58,15 +58,19 @@ public class DavidDotsBoxes {
 		}
 	}
 	public static int getY(int[] coord){
+		// getter for Y Coordinate.
 		return coord[1];
 	}
 	public static int getX(int[] coord){
+		// getter for X Coordinate.
 		return coord[0];
 	}
 	public static void setX(int[] coord, int val){
+		// setter for X Coordinate.
 		coord[0] = val;
 	}
 	public static void setY(int[] coord, int val){
+		// setter for Y Coordinate.
 		coord[1] = val;
 	}
 	public static void setVertLn(int[] start, int[] end){
@@ -86,7 +90,6 @@ public class DavidDotsBoxes {
 		 *  the greater y-coordinate, we'll only update the coordinates of that(max).
 		 * */
 		if(getY(max) != 0) setY(max,(getY(max) * 2)); // give actual y-coordinate.
-		//if(getX(max) != 0) setX(max,(getX(max) * 1)); // give actual x-coordinate.
 		grid[getY(max) - 1][getX(max)] = "|"; // set the line.
 	}
 	public static void setHorizLn(int[] start, int[] end){
@@ -96,21 +99,52 @@ public class DavidDotsBoxes {
 		if(getY(min) != 0) setY(min,(getY(min) * 2)); // give actual y-coordinate.
 		grid[getY(min)][getX(min)] = "o--";
 	}
+	public static boolean isValidX(int xCoord){
+		return(xCoord > 0 && xCoord < grid[0].length);
+	}
+	public static boolean isValidY(int yCoord){
+		return (yCoord > 0 && yCoord < grid.length);
+	}
+	public static void getCoordinateInput(int[] point){
+		System.out.println("What is the X coordinate?");
+		setX(point, in.nextInt());
+		while(!isValidX(getX(point))){
+			System.out.println("Invalid X Coordinate. Please input a new X Coordinate.");
+			setX(point,in.nextInt());
+		}
+		
+		System.out.println("What is the Y coordinate?");
+		setY(point,in.nextInt());
+		while(!isValidY(getY(point))){
+			System.out.println("Invalid Y Coordinate. Please input a new Y Coordinate.");
+			setY(point,in.nextInt());
+		}
+	}
+	public static boolean arePointsEq(int[] start, int[] end){
+		/*
+		 *  Function that will check if the points are in different positions.
+		 * */
+		if(getX(start) != getX(end)) return false; // check if X Coordinates are different.
+		else if(getY(start) != getY(end)) return false; // check if Y Coordinates are different.
+		return true; // default -> coordinates are equal(bad case).
+	}
+	public static boolean isLnForm(int[] start, int[] end){
+		/*
+		 *  Function that will check if the points can actually form a valid line.
+		 *  A valid line -> can either be vertical or horizontal, not diagonal.
+		 *  
+		 * */
+		
+		
+	}
 	public static void getLnInput(){
 		System.out.println("Coordinates of the first dot:");
-		System.out.println("What is the X coordinate?");
-		setX(point1, in.nextInt());
-		while(getX(point1) < 0 || )
-		System.out.println("What is the Y coordinate?");
-		setY(point1,in.nextInt());
+		getCoordinateInput(point1);
 
 		System.out.println("Coordinates of the second dot:");
-		System.out.println("What is the X Coordinate?");
-		setX(point2,in.nextInt());
-		System.out.println("What is the Y Coordinate?");
-		setY(point2, in.nextInt());
+		getCoordinateInput(point2);
 	}
-	public static setLn(int[] start, int[] end){
+	public static void setLn(int[] start, int[] end){
 		/*
 		*  Procedure to set and print a line.
 		*  Parameters will be coordinates of two points.

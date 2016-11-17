@@ -72,7 +72,7 @@ public class KristyAI {
 					} 
 					if(grid[row][col - 1] == "|"){
 						count++;
-					}
+					} 
 				}
 				if(count == 3){
 					//needs to check for vertical or horizontal

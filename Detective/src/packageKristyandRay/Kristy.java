@@ -52,6 +52,7 @@ public class Kristy {
 //			
 //			arr[row][roll] = "x";
 //		}
+			//ji
 	}
 
 }

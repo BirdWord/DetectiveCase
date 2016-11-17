@@ -18,17 +18,42 @@ public class KristyAI {
 	
 	public static void computerTurn(){
 		boolean inLoop = true;
-		while(true){
-			x = (int) (Math.random() * 3);
-			y = (int) (Math.random() * 3);
-			if(grid[x][y] == "o  "){
-				grid[x][y] = "o--";
-				printGrid();
-				inLoop = false;
+		
+		while(inLoop){
+			x = (int) (Math.random() * 4); // is not random; need to fix while loop
+			y = (int) (Math.random() * 4);
+			int vh = (int) (Math.random()* 2); //0 is vertical; 1 is horizontal
+			if(vh == 0){
+				if(grid[x][y].equals("")){
+					grid[x][y] = "|  ";
+					printGrid();
+					inLoop = false;
+				}
 			}
-			else{
+			else if(vh == 1){
+				if(grid[x][y] == "o  "){
+					grid[x][y] = "o--";
+					printGrid();
+					inLoop = false;
+				}
+			}
+			if(inLoop == false){
 				inLoop = true;
 			}
+			
+//			if(grid[x][y] == "o  " || grid[x][y] == ""){ //change to .equals
+//				if(x!= 2 && grid[x][y] == "o  "){
+//					grid[x][y] = "o--";
+//				}
+//				else if(grid[x][y] == ""){
+//					grid[x][y] = "|";
+//				}
+//				printGrid();
+//				inLoop = false;
+//			}
+//			else{
+//				inLoop = true;
+//			}
 		}
 	}
 	
@@ -44,12 +69,13 @@ public class KristyAI {
 					}
 					if(grid[row][col + 1] == "|"){
 						count++;
-					}
+					} 
 					if(grid[row][col - 1] == "|"){
 						count++;
-					}
+					} 
 				}
 				if(count == 3){
+					//needs to check for vertical or horizontal
 					grid[row][col] = "o--";
 					count = 0;
 					break;

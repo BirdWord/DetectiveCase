@@ -8,7 +8,6 @@ public class HunterAI {
 
 	private void generateShips() {
 		
-		
 	}
 
 }

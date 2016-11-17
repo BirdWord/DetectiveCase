@@ -136,7 +136,7 @@ public class DavidDotsBoxes {
 		 *  Function that will check if the points can actually form a valid line.
 		 *  A valid line -> can either be vertical or horizontal, not diagonal.
 		 *  
-		 * */
+		 * *////
 		
 		//Check if horizontal line can be formed -> Y Coordinates must be the same.
 		if(isCoordEq(getY(start), getY(end)) && (getX(start) == (getX(end) - 1) || (getX(start)) == )

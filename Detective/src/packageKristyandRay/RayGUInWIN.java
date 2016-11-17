@@ -1,7 +1,6 @@
 package packageKristyandRay;
 
 public class RayGUInWIN {
-
 	public RayGUInWIN() {
 		
 	}
@@ -51,4 +50,70 @@ public class RayGUInWIN {
 			System.out.print("|\n");
 		}
 	}
+	//CHECKING WINNER; THIS FUNCTION WILL RETURN THE WINNER (X or O)
+	//IF THERE IS NO WINNER, THIS WILL RETURN NULL
+	//This method will take as parameter of the board array and the
+	//row+column of the piece last placed 
+	public String determineWinner(String[][] arr, int row, int col){
+		String check;
+		int nextToCheck;
+		//VERTICAL FIRST; SKIP LAST 3 OF ARRAY SINCE YOU CANT CHECK 4 WITH THEM
+		for(int r = 0; r <= arr.length-4; r++){
+			check = arr[r][col];
+			for(nextToCheck = r+1; nextToCheck <= r+3; nextToCheck++){
+				if(arr[nextToCheck][col] != check)
+					break;
+				else if(nextToCheck == r+3)
+					return check;
+			}
+		}
+		//HORIZONTAL; SAME IDEA
+		for(int c = 0; c < arr[0].length-4; c++){
+			check = arr[row][c];
+			for(nextToCheck = c+1; nextToCheck <= c+3; nextToCheck++){
+				if(arr[row][nextToCheck] != check)
+					break;
+				else if(nextToCheck == c+3)
+					return check;
+			}
+		}
+		//DIAGONAL WITH NEGATIVE SLOPE
+		int c = col; int r = row;
+		//trying to get the spot touching the edge of the top left side of the board to have 
+		//the starting point
+		while(c > 0 || r > 0){
+			c--; r--;
+		}
+		//find out when to end
+		
+		return null;
+	}
 }
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

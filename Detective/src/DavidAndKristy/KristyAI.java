@@ -69,7 +69,7 @@ public class KristyAI {
 					}
 					if(grid[row][col + 1] == "|"){
 						count++;
-					}
+					} 
 					if(grid[row][col - 1] == "|"){
 						count++;
 					}

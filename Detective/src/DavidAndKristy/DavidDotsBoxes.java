@@ -120,13 +120,16 @@ public class DavidDotsBoxes {
 			setY(point,in.nextInt());
 		}
 	}
+	public static boolean isCoordEq(int coord1, int coord2){
+		return coord1 == coord2;
+	}
 	public static boolean arePointsEq(int[] start, int[] end){
 		/*
 		 *  Function that will check if the points are in different positions.
 		 * */
-		if(getX(start) != getX(end)) return false; // check if X Coordinates are different.
-		else if(getY(start) != getY(end)) return false; // check if Y Coordinates are different.
-		return true; // default -> coordinates are equal(bad case).
+		
+		// see if X Coordinates are NOT equal OR Y Coordinates are NOT equal.
+		return (!isCoordEq(getX(start),getX(end)) || !isCoordEq(getY(start), getY(end)));
 	}
 	public static boolean isLnForm(int[] start, int[] end){
 		/*
@@ -135,6 +138,8 @@ public class DavidDotsBoxes {
 		 *  
 		 * */
 		
+		//Check if horizontal line can be formed.
+		if()
 		
 	}
 	public static void getLnInput(){

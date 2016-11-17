@@ -1,12 +1,14 @@
 package packageKristyandRay;
 
+import java.util.Arrays;
+
 public class RayGUInWIN {
 	public RayGUInWIN() {
 		
 	}
 	public static void main(String[] args){
-		String[][] testArr = new String[5][8];
-		for(int i = 0; i<testArr.length; i++){
+		String[][] testArr = new String[6][7];
+		/*for(int i = 0; i<testArr.length; i++){
 			for(int j = 0; j<testArr[i].length; j++){
 				if(j%2==0){
 					testArr[i][j] = "o";
@@ -14,8 +16,17 @@ public class RayGUInWIN {
 				else
 					testArr[i][j] = "x";
 			}
+		}*/
+		/*for(int i = 0; i<testArr.length; i++){
+			for(int j = 0; j<testArr[0].length; j++){
+				testArr[i][j] = " ";
+			}
 		}
-		printBoard(testArr);
+		printBoard(testArr);*/
+		int[][] winsArr = getWinRows(testArr);
+		for(int[] arr: winsArr){
+			Arrays.toString(arr);
+		}
 	}
 	//DISPLAYING THE BOARD METHOD
 	public static void printBoard(String[][] arr){
@@ -50,43 +61,32 @@ public class RayGUInWIN {
 			System.out.print("|\n");
 		}
 	}
-	//CHECKING WINNER; THIS FUNCTION WILL RETURN THE WINNER (X or O)
-	//IF THERE IS NO WINNER, THIS WILL RETURN NULL
-	//This method will take as parameter of the board array and the
-	//row+column of the piece last placed 
-	public String determineWinner(String[][] arr, int row, int col){
-		String check;
-		int nextToCheck;
-		//VERTICAL FIRST; SKIP LAST 3 OF ARRAY SINCE YOU CANT CHECK 4 WITH THEM
-		for(int r = 0; r <= arr.length-4; r++){
-			check = arr[r][col];
-			for(nextToCheck = r+1; nextToCheck <= r+3; nextToCheck++){
-				if(arr[nextToCheck][col] != check)
-					break;
-				else if(nextToCheck == r+3)
-					return check;
+	//CHECKING WINNER; THIS FUNCTION WILL check if there is a winner
+	//IF THERE IS NO WINNER, THIS WILL RETURN FALSE
+	//This method will take as parameter of the board array
+	public static boolean determineWinner(String[][] arr){
+		return false;
+	}
+	//WITH A PARAMETER OF THE ACTUAL GAME BOARD
+	//THIS FUNCTION WILL GRAB ALL OF THE POSSIBLE WAYS
+	//TO WIN IN THE SPECIFIC CONNECT 4 BOARD
+	//THEN IT WILL STORE THEM IN A 2D ARRAY
+	//return looks like [[1,2][2,3]] kind of
+	//row, col
+	private static int[][] getWinRows(String[][] arr){
+		int[][] winRows = new int[18][2];
+		int[] coords = new int[2];
+		int nextIndex = 0;
+		//HORIZONTALS
+		for(int row = 0; row < arr.length; row++){
+			for(int col = 0; col < arr[0].length-3; col++){
+				coords[0] = row;
+				coords[1] = col;
 			}
+			winRows[nextIndex] = coords;
+			nextIndex++;
 		}
-		//HORIZONTAL; SAME IDEA
-		for(int c = 0; c < arr[0].length-4; c++){
-			check = arr[row][c];
-			for(nextToCheck = c+1; nextToCheck <= c+3; nextToCheck++){
-				if(arr[row][nextToCheck] != check)
-					break;
-				else if(nextToCheck == c+3)
-					return check;
-			}
-		}
-		//DIAGONAL WITH NEGATIVE SLOPE
-		int c = col; int r = row;
-		//trying to get the spot touching the edge of the top left side of the board to have 
-		//the starting point
-		while(c > 0 || r > 0){
-			c--; r--;
-		}
-		//find out when to end
-		
-		return null;
+		return winRows;
 	}
 }
 

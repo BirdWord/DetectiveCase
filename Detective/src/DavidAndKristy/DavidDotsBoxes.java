@@ -138,8 +138,8 @@ public class DavidDotsBoxes {
 		 *  
 		 * */
 		
-		//Check if horizontal line can be formed.
-		if()
+		//Check if horizontal line can be formed -> Y Coordinates must be the same.
+		if(isCoordEq(getY(start), getY(end)) && (getX(start) == (getX(end) - 1) || (getX(start)) == )
 		
 	}
 	public static void getLnInput(){

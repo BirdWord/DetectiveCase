@@ -11,13 +11,12 @@ public class KristyAI {
 	
 	public static void main(String[] args){
 		setGrid(3,3);
-		//checkBoxes(); 
 		grid[0][0] = "o--";	
 		grid[1][0] = "|  ";
 		grid[1][1] = "|  ";
-		checkBoxes();
 		printGrid();
-		//computerTurn();
+		checkBoxes();
+		computerTurn();
 		
 	}
 	
@@ -26,8 +25,8 @@ public class KristyAI {
 		
 		while(inLoop){
 			checkBoxes();
-			x = (int) (Math.random() * 7); // is not random; need to fix while loop
-			y = (int) (Math.random() * 4);
+			x = (int) (Math.random() * 7); 
+			y = (int) (Math.random() * 4); 
 			System.out.println("x = " + x);
 			System.out.println("y = " + y);
 			if(x % 2 == 0 && grid[x][y] != "o--" && y != 3){
@@ -46,13 +45,14 @@ public class KristyAI {
 	public static void checkBoxes(){
 		for(int row = 0; row < grid.length; row++){
 			for(int col = 0; col < grid[0].length; col++){
-				if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|") && grid[row + 2][col].equals("o--")){
+				if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 2][col].equals("o--")){
 					grid[row + 1][col + 1] = "|  ";
 					System.out.println("y");
 				}
-				else if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|") && grid[row + 1][col + 1].equals("|")){
-					grid[row + 2][col] = "o---";
+				else if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 1][col + 1].equals("|  ")){
+					grid[row + 2][col] = "o--";
 					System.out.println("n");
+					break;
 				}
 			}
 		}

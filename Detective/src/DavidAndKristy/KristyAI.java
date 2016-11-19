@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class KristyAI {
 	static int x;
 	static int y;
+	public static int computerBox;
 	public static Scanner in = new Scanner(System.in);
 	public static String[][] grid;
 	
@@ -12,11 +13,12 @@ public class KristyAI {
 	public static void main(String[] args){
 		setGrid(3,3);
 		grid[0][0] = "o--";	
-		grid[1][0] = "|  ";
 		grid[1][1] = "|  ";
+		grid[2][0] = "o--";
 		printGrid();
 		checkBoxes();
-		computerTurn();
+		printGrid();
+	//	computerTurn();
 		
 	}
 	
@@ -45,16 +47,29 @@ public class KristyAI {
 	public static void checkBoxes(){
 		for(int row = 0; row < grid.length; row++){
 			for(int col = 0; col < grid[0].length; col++){
-				if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 2][col].equals("o--")){
+				if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 1][col + 1].equals("   ")){
 					grid[row + 1][col + 1] = "|  ";
-					System.out.println("y");
+					computerBox++;
+					System.out.println("a");
 				}
 				else if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 1][col + 1].equals("|  ")){
 					grid[row + 2][col] = "o--";
-					System.out.println("n");
-					break;
+					computerBox++;
+					System.out.println("b");
 				}
+				else if(grid[row][col].equals("|  ") && grid[row + 1][col].equals("o--") && grid[row][col + 1].equals("|  ") && grid[row-1][col].equals("o  ")){
+					grid[row - 1][col] = "o--";
+					computerBox++;
+					System.out.println("c");
+				}
+				else if(grid[row][col].equals("o--") && grid[row + 1][col + 1].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 1][col].equals("   ")){
+					grid[row + 1][col] = "|  ";
+					computerBox++;
+					System.out.println("d");
+				}
+				System.out.println(computerBox);
 			}
+			
 		}
 	}
 	

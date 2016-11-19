@@ -11,7 +11,7 @@ public class KristyAI {
 	
 	public static void main(String[] args){
 		setGrid(3,3);
-		//checkBoxes();
+		//checkBoxes(); 
 		grid[0][0] = "o--";	
 		grid[1][0] = "|  ";
 		grid[1][1] = "|  ";

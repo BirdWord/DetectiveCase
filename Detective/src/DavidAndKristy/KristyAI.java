@@ -50,11 +50,9 @@ public class KristyAI {
 	}
 	
 	public static void checkBoxes(){
-		int count = 0;
-		String[] box = new String[3];
 		moreBoxes = true;
 		while(moreBoxes){
-			for(int row = 0; row < grid.length -1; row++){
+			for(int row = 0; row < grid.length -1; row++){ // it wont check the last row of the grid because there is no more rows under it
 				for(int col = 0; col < grid[0].length; col++){
 					if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 1][col + 1].equals(" ")){
 						grid[row + 1][col + 1] = "|  ";

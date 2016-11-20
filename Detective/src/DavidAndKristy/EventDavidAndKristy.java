@@ -7,6 +7,8 @@ public class EventDavidAndKristy {
 	public static String[][] grid;
 	public static int[] point1 = {0,0};
 	public static int[] point2 = {0,0};
+	public static int playerBoxes;
+	public static int computerBoxes;
 	
 	public static void main(String args[]){
 		System.out.println("You've reached the library. Welcome to Dots and Boxes!");
@@ -20,11 +22,17 @@ public class EventDavidAndKristy {
 		
 		System.out.println("Player gets to go first.");
 		
+		playerBoxes = 0;
+		computerBoxes = 0;
+		
 		boolean gameStart = true;
 		boolean playerTurn = true; 
+		
 		while(gameStart){
-			
+
 		}
+		//need to system.print out at the end of player and computer turn the scores
+		
 	}
 	
 	public static void setGrid(int row, int col){

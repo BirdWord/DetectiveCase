@@ -6,14 +6,16 @@ public class KristyAI {
 	static int x;
 	static int y;
 	public static int computerBox;
+	public static boolean doubleCrossed;
+	public static boolean sideChain;
 	public static boolean moreBoxes;
 	public static Scanner in = new Scanner(System.in);
 	public static String[][] grid;
 	
 	public static void main(String[] args){ //wont make a box if it need a vertical line in the last column 
 		setGrid(3,3);
-		grid[0][0] = "o--";	
-		grid[1][1] = "|  ";
+//		grid[0][0] = "o--";	
+//		grid[1][1] = "|  ";
 //		grid[2][0] = "o--";
 //		grid[4][2] = "o--";
 //		grid[3][3] = "|  ";
@@ -21,31 +23,61 @@ public class KristyAI {
 //		grid[4][1] = "o--";
 //		grid[5][1] = "|  ";
 //		grid[5][2] = "|  ";
-		EventDavidAndKristy.printGrid();
-	//	computerTurn();
+		
+		grid[1][0] = "|  ";
+		grid[0][0] = "o--";
+		grid[1][1] = "|  ";
+		grid[3][0] = "|  ";
+		grid[3][1] = "|  ";
+		grid[4][0] = "o--";
+		
+		
+		printGrid();
+		computerTurn();
 	}
 	
 	public static void computerTurn(){
 		boolean inLoop = true;
 		
 		while(inLoop){
-			checkBoxes();
-			if(!moreBoxes){
+			doubleCross();
+			if(doubleCrossed){ //dont checkBoxes 
 				x = (int) (Math.random() * 7);  //change it to user input for number of rows and 
 				y = (int) (Math.random() * 4);  //change it to user input for number of columns
 				System.out.println("x = " + x);
 				System.out.println("y = " + y);
 				if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
 					grid[x][y] = "o--";
-					EventDavidAndKristy.printGrid();
+					printGrid();
 					//printGrid();
 					inLoop = false;
 				}
 				else if(x % 2 == 1 && !grid[x][y].equals("|  ")){
 					grid[x][y] = "|  ";
-					EventDavidAndKristy.printGrid();
+					printGrid();
 					//printGrid();
 					inLoop = false;
+				}
+			}
+			else{
+				checkBoxes();
+				if(!moreBoxes){
+					x = (int) (Math.random() * 7);  //change it to user input for number of rows and 
+					y = (int) (Math.random() * 4);  //change it to user input for number of columns
+					System.out.println("x = " + x);
+					System.out.println("y = " + y);
+					if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
+						grid[x][y] = "o--";
+						printGrid();
+						//printGrid();
+						inLoop = false;
+					}
+					else if(x % 2 == 1 && !grid[x][y].equals("|  ")){
+						grid[x][y] = "|  ";
+						printGrid();
+						//printGrid();
+						inLoop = false;
+					}
 				}
 			}
 		}
@@ -89,6 +121,37 @@ public class KristyAI {
 			}
 		}
 	}
+	
+	public static void doubleCross(){
+		boolean crossOnce = false;
+		for(int row = 0; row < grid.length - 1; row++){
+			for(int col = 0; col < grid[0].length; col++){
+				if(!crossOnce && grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 1][col + 1].equals("|  ") &&
+						grid[row + 3][col].equals("|  ") && grid[row + 3][col + 1].equals("|  ") && grid[row + 4][col].equals("o--") &&
+						grid[row + 2][col].equals("o  ")){
+					doubleCrossed = true;
+					crossOnce = true;
+						
+				}
+				else if(!crossOnce && grid[row][col].equals("o--") && grid[row][col + 1].equals("o--") && grid[row + 1][col + 1].equals("|  ") &&
+						grid[row + 1][col + 3].equals("|  ") && grid[row + 2][col].equals("0--") && grid[row + 2][col + 1].equals("o--") &&
+						grid[row + 1][col + 1].equals("   ")){
+					doubleCrossed = true;
+					crossOnce = true;
+				}
+			}
+		}
+	}
+	
+//	public static void sideChain(){ //breaks the side chain; if player makes vertical, computer make horizontal and vice versa
+//		for(int row = 0; row < grid.length - 1; row++){
+//			for(int col = 0; col < grid[0].length; col++){
+//				
+//					
+//				}
+//			}
+//	}
+	
 	
 	public static void setGrid(int row, int col){
 		// to connect two points, we'll use 'o--' instead of 'o', IF horizontal.

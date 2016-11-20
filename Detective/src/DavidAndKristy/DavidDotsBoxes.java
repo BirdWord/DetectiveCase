@@ -7,8 +7,8 @@ public class DavidDotsBoxes {
 	public static Scanner in = new Scanner(System.in);
 	public static int inputInt;
 	public static String[][] grid;
-	public static int[] point1;
-	public static int[] point2;
+	public static int[] point1 = {0,0};
+	public static int[] point2 = {0,0};
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Enter number of rows between 3 and 9.");
@@ -16,10 +16,10 @@ public class DavidDotsBoxes {
 		System.out.println("Enter number of columns between 3 and 9.");
 		int col = in.nextInt();
 		setGrid(row,col); // setter.
-		// test vertical line
 		printGrid(); // printer.
-		setVertLn(new int[] {5,2}, new int[] {5,3});
-		setHorizLn(new int[] {3,0}, new int[] {4,0});
+		for(int i = 0; i < 4; ++i){
+			getLnInput();
+		}
 	}
 	public static void setGrid(int row, int col){
 		// to connect two points, we'll use 'o--' instead of 'o', IF horizontal.
@@ -73,6 +73,10 @@ public class DavidDotsBoxes {
 		// setter for Y Coordinate.
 		coord[1] = val;
 	}
+	public static void setXY(int[] coord, int x, int y){
+		setX(coord,x);
+		setY(coord,y);
+	}
 	public static void setVertLn(int[] start, int[] end){
 
 		/*
@@ -82,7 +86,9 @@ public class DavidDotsBoxes {
 		 *  parameter -> [xCoord,yCoord];
 		 * 
 		 * */
-		int[] max = (getY(start) < getY(end)) ? end : start; // get greater yCoord.
+		int[] tmp = (getY(start) < getY(end)) ? end : start; // get greater yCoord.
+		int[] max = {0,0};
+		setXY(max,getX(tmp), getY(tmp));
 		
 		/*
 		 *  We need to update the REAL coordinates of the points.
@@ -90,20 +96,25 @@ public class DavidDotsBoxes {
 		 *  the greater y-coordinate, we'll only update the coordinates of that(max).
 		 * */
 		if(getY(max) != 0) setY(max,(getY(max) * 2)); // give actual y-coordinate.
-		grid[getY(max) - 1][getX(max)] = "|"; // set the line.
+
+		grid[getY(max) - 1][getX(max)] = "|  "; // set the line.
 	}
 	public static void setHorizLn(int[] start, int[] end){
 		
 		
-		int[] min = (getX(start) < getX(end)) ? start : end; // get left-most coordinate.
+		int[] tmp = (getX(start) < getX(end)) ? start : end; // get left-most coordinate.
+		int[] min = {0,0};
+		setXY(min,getX(tmp), getY(tmp));
 		if(getY(min) != 0) setY(min,(getY(min) * 2)); // give actual y-coordinate.
 		grid[getY(min)][getX(min)] = "o--";
 	}
 	public static boolean isValidX(int xCoord){
-		return(xCoord > 0 && xCoord < grid[0].length);
+		// check if it's in bound.
+		return(xCoord >= 0 && xCoord < grid[0].length);
 	}
 	public static boolean isValidY(int yCoord){
-		return (yCoord > 0 && yCoord < grid.length);
+		// check if it's in bound.
+		return (yCoord >= 0 && (yCoord <= grid.length/2));
 	}
 	public static void getCoordinateInput(int[] point){
 		System.out.println("What is the X coordinate?");
@@ -126,21 +137,89 @@ public class DavidDotsBoxes {
 	public static boolean arePointsEq(int[] start, int[] end){
 		/*
 		 *  Function that will check if the points are in different positions.
+		 *  This will make sure a line can be made, from one point to another(must have different values).
 		 * */
 		
-		// see if X Coordinates are NOT equal OR Y Coordinates are NOT equal.
-		return (!isCoordEq(getX(start),getX(end)) || !isCoordEq(getY(start), getY(end)));
+		// see if X Coordinates are equal AND Y Coordinates are equal.
+		return (isCoordEq(getX(start),getX(end)) && isCoordEq(getY(start), getY(end)));
 	}
-	public static boolean isLnForm(int[] start, int[] end){
+	public static boolean hasLn(int[] start, int[] end){
+		/*
+		*  Procedure to check if a line already exists.
+		*
+		*  Error check-> make sure a line doesn't exist already.
+		*
+		*  -- check what kind of line we need to form.
+		*  -- get the coordinate that we need to convert
+		*  -- set the line ('---' or '|  ') so we can later compare.
+		*  -- convert the coordinate to its correct values.
+		*  -- check if a line is there -> compare the two strings(token and grid[xCoord][yCoord])
+		*  -- return the value.
+		* */
+
+		// allocate memory for variables.
+		System.out.println(end[1]);
+		int[] copy;
+		int diff = 0;
+		String token;
+		int type = getLnType(start,end); // find out the type of line.
+
+		if(type == 1){
+			copy = (getX(start) < getX(end)) ? start : end; // get left-most coordinate.
+			token = "o--";
+		}
+		else{
+			copy = (getY(start) < getY(end)) ? end : start; // get greater yCoord
+			token = "|  ";
+			++diff;
+		}
+		int[] tmp = {0,0};
+		setXY(tmp, getX(copy), getY(copy));
+
+		if(getY(tmp) != 0) setY(tmp,(getY(tmp) * 2)); // give actual y-coordinate.
+
+		// check if lines exist.
+		return (grid[getY(tmp) - diff][getX(tmp)].equals(token));
+
+
+	}
+	public static int getLnType(int[] start, int[] end){
 		/*
 		 *  Function that will check if the points can actually form a valid line.
 		 *  A valid line -> can either be vertical or horizontal, not diagonal.
+		 *
+		 *  horizontal line ->
+		 *  -- y coordinates must be same
+		 *  -- x coordinates must be next to each other, either left or right side.
+		 *
+		 *  vertical line ->
+		 *  -- x coordinates must be the same
+		 *  -- y coordinates must be next to each other, either up or down.
+		 *
+		 *  0 - NO LINE
+		 *  1 - HORIZONTAL LINE
+		 *  2 - VERTICAL LINE
 		 *  
-		 * *////
+		 * */
 		
-		//Check if horizontal line can be formed -> Y Coordinates must be the same.
-		if(isCoordEq(getY(start), getY(end)) && (getX(start) == (getX(end) - 1) || (getX(start)) == )
+		//Check if horizontal line can be formed -> Y Coordinates must be the same, x Coordinates must be next to each other.
+		if(isCoordEq(getY(start), getY(end)) && (getX(start) == (getX(end) - 1) || (getX(start) == (getX(end) + 1)))) return 1;
+		// check if vertical line can be formed -> x Coordinates must be the same, y coordinates must be next to each other.
+		else if(isCoordEq(getX(start), getX(end)) && (getY(start) == (getY(end) - 1) || (getY(start) == (getY(end) + 1)))) return 2;
+		return 0; // default case -> line cannot be formed.
 		
+	}
+	public static void setLn(int type, int[] p1, int[] p2){
+		switch(type){
+			case 0: System.out.println("------A line could not be formed---------\nThe dots are not next to each other!");
+				break;
+			case 1: setHorizLn(p1,p2);
+				break;
+			case 2: setVertLn(p1,p2);
+				break;
+			default: System.out.println("ERROR OCCURED!!!!"); // this should never happen!
+				break;
+		}
 	}
 	public static void getLnInput(){
 		System.out.println("Coordinates of the first dot:");
@@ -148,21 +227,24 @@ public class DavidDotsBoxes {
 
 		System.out.println("Coordinates of the second dot:");
 		getCoordinateInput(point2);
-	}
-	public static void setLn(int[] start, int[] end){
+
 		/*
-		*  Procedure to set and print a line.
-		*  Parameters will be coordinates of two points.
-		*  Parameter -> [xCoord, yCoord]
+		*  AFTER receiving the coordinates of dots to be connected -> we need to ensure the coordinates are valid.
+		*  Error checking includes ->
+		*  -- Coordinates are not the same
+		*  -- A vertical or horizontal line can actually be formed.
+		*  -- A line doesnt already exist.
+		*
 		* */
 
-		// first check what kind of line it is.
-		if((getX(start) + 1) == getX(end) || (getX(start) - 1) == getX(end)) setHorizLn(start,end); // horizontal line.
-		else if((getY(start) + 1) == getY(end) || (getY(start) - 1) == getY(end)) setVertLn(start,end); // vertical line.
-		else System.out.println("Invalid input. Try again");
-
-		printGrid();
+		// are coordinates the same?
+		if(arePointsEq(point1,point2)) System.out.println("--------A line could not be formed---------\nThe coordinates of the dots MUST be different!");
+		// if test passed -> find out the type of line and set the grid to its new values.
+		else if(hasLn(point1,point2)) System.out.println("--------A line could not be formed---------\nA line already exists there!");
+		else setLn(getLnType(point1,point2),point1, point2);
+		printGrid(); // print the grid.
 	}
+
 
 
 }

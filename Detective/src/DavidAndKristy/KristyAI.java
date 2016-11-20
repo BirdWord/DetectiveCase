@@ -14,15 +14,15 @@ public class KristyAI {
 		setGrid(3,3);
 		grid[0][0] = "o--";	
 		grid[1][1] = "|  ";
-		grid[2][0] = "o--";
-		grid[4][2] = "o--";
-		grid[3][3] = "|  ";
-		grid[3][2] = "|  ";
-		grid[4][1] = "o--";
-		grid[5][1] = "|  ";
-		grid[5][2] = "|  ";
-		printGrid();
-		computerTurn();
+//		grid[2][0] = "o--";
+//		grid[4][2] = "o--";
+//		grid[3][3] = "|  ";
+//		grid[3][2] = "|  ";
+//		grid[4][1] = "o--";
+//		grid[5][1] = "|  ";
+//		grid[5][2] = "|  ";
+		DavidDotsBoxes.printGrid();
+	//	computerTurn();
 	}
 	
 	public static void computerTurn(){
@@ -37,12 +37,14 @@ public class KristyAI {
 				System.out.println("y = " + y);
 				if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
 					grid[x][y] = "o--";
-					printGrid();
+					DavidDotsBoxes.printGrid();
+					//printGrid();
 					inLoop = false;
 				}
 				else if(x % 2 == 1 && !grid[x][y].equals("|  ")){
 					grid[x][y] = "|  ";
-					printGrid();
+					DavidDotsBoxes.printGrid();
+					//printGrid();
 					inLoop = false;
 				}
 			}
@@ -57,32 +59,32 @@ public class KristyAI {
 					if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 1][col + 1].equals(" ")){
 						grid[row + 1][col + 1] = "|  ";
 						computerBox++;
-						System.out.println("a");
+	//					System.out.println("a");
 						moreBoxes = true;
 						break;
 					}
 					else if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 1][col + 1].equals("|  ") && grid[row + 2][col].equals("o  ")){
 						grid[row + 2][col] = "o--";
 						computerBox++;
-						System.out.println("b");
+	//					System.out.println("b");
 						moreBoxes = true;
 					}
 					else if(grid[row][col].equals("|  ") && grid[row + 1][col].equals("o--") && grid[row][col + 1].equals("|  ") && grid[row-1][col].equals("o  ")){
 						grid[row - 1][col] = "o--";
 						computerBox++;
-						System.out.println("c");
+	//					System.out.println("c");
 						moreBoxes = true;
 					}
 					else if(grid[row][col].equals("o--") && grid[row + 1][col + 1].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 1][col].equals("   ")){
 						grid[row + 1][col] = "|  ";
 						computerBox++;
-						System.out.println("d");
+	//					System.out.println("d");
 						moreBoxes = true;
 					}
 					else{
 						moreBoxes = false;
 					}
-					System.out.println(computerBox);
+	//				System.out.println(computerBox);
 				}
 				
 			}

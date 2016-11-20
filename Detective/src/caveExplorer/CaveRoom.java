@@ -102,8 +102,6 @@ public class CaveRoom {
 	}
 
 	
-
-	
 	public Door getDoor(int dir){
 		return doors[dir];
 	}
@@ -115,7 +113,7 @@ public class CaveRoom {
 
 	public void interpretInput(String input) {
 		while(!isValid(input)){
-			System.out.println("You can only enter 'w', 'a', 's', 'd'");
+			System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
 			input = CaveExplorer.in.nextLine();
 		}
 		String[] keys = {"w", "d", "s", "a"};
@@ -128,13 +126,21 @@ public class CaveRoom {
 		}
 		goToRoom(indexFound);
 	}
-	public void goToRoom(int direction){
-		if(direction != -1 && borderingRooms[direction] != null && doors[direction].isOpen()){
+	private void goToRoom(int direction){
+		if(borderingRooms[direction] != null && doors[direction].isOpen()){
 			CaveExplorer.currentRoom.leave();
 			CaveExplorer.currentRoom = borderingRooms[direction];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
 		}
+		else if(borderingRooms[direction] != null && doors[direction].isLocked() && !doors[direction].isOpen()){
+			CaveExplorer.print("Hmmm, this door appears to be locked.");
+		}
+		else if(borderingRooms[direction] == null){
+			CaveExplorer.print("Hey, stop hitting your head on the wall!");
+		}
+		
+		
 	}
 	private static boolean isValid(String input) {
 		String lower = input.toLowerCase();

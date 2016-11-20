@@ -8,8 +8,14 @@ public class Door {
 	public Door(){
 		locked = false;
 		open = true;
-		description = "passage";
+		description = "room";
 		details = "";
+	}
+	public Door(boolean locked, boolean open, String description, String details){
+		this.locked = locked;
+		this.open = open;
+		this.description = description;
+		this.details = details;
 	}
 	public void setLocked(boolean b){
 		locked = b;

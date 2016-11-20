@@ -2,36 +2,6 @@ package packageKristyandRay;
 
 public class RayGUInWIN {
 	private final static String PLAYER = "x";
-	public RayGUInWIN() {
-		
-	}
-	/*public static void main(String[] args){
-		String[][] testArr = new String[6][7];
-		for(int i = 0; i<testArr.length; i++){
-			for(int j = 0; j<testArr[i].length; j++){
-				if(j%2==0){
-					testArr[i][j] = "o";
-				}
-				else
-					testArr[i][j] = "x";
-			}
-		}
-		for(int i = 0; i<testArr.length; i++){
-			for(int j = 0; j<testArr[0].length; j++){
-				testArr[i][j] = " ";
-			}
-		}
-		testArr[3][4] = "x";
-		testArr[2][3] = "x";
-		testArr[4][5] = "o";
-		testArr[5][6] = "x";
-		printBoard(testArr);
-		System.out.println(determineIfWinner(testArr, 3, 4));
-		int[][] rows = getWinRows(testArr, 3, 4);
-		for(int[] arr: rows){
-			System.out.println(Arrays.toString(arr));
-		}
-	}*/
 	//DISPLAYING THE BOARD METHOD
 	public static void printBoard(String[][] arr){
 		//First, print out the columns in case someone is dumbfounded

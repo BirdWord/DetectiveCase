@@ -16,7 +16,7 @@ public class CaveExplorer {
 			}
 		}
 		inventory = new Inventory();
-		//caves[2][0] = new EventRoom("There is a nice police officer outside of a vast mansion.", new GameStartEvent());
+		//caves[2][0] = new EventRoom("There is a nice police officer outside of a vast, abandonned mansion.", new GameStartEvent());
 		int rand1 = generateNumber(1,4);
 		switch(rand1){
 		case 1: caves[0][1] = new EventRoom("   You picked up the red key from the ground.", new packageKristyandRay.FoundLivingRoomKey());break;
@@ -24,6 +24,7 @@ public class CaveExplorer {
 		case 3: caves[0][3] = new EventRoom("   You picked up the red key from the ground.", new packageKristyandRay.FoundLivingRoomKey());break;
 		case 4: caves[2][3] = new EventRoom("   You picked up the red key from the ground.", new packageKristyandRay.FoundLivingRoomKey());break;
 		}
+		
 		implementConnections();
 		currentRoom = caves[2][0];
 		currentRoom.enter();
@@ -33,6 +34,10 @@ public class CaveExplorer {
 	private static void startExploring() {
 		alive = true;
 		while(alive){
+			if(inventory.hasLivingRoomKey()){
+				caves[4][3] = new EventRoom("   You stuck the red key into the keyhole and opened the door.", new packageKristyandRay.Connect4());
+				implementConnections();
+			}
 			print(currentRoom.getDescription());
 			print(inventory.getDescription());
 			print("Which way would you like to go?");

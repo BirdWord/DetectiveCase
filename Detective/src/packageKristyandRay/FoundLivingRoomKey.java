@@ -17,6 +17,7 @@ public class FoundLivingRoomKey implements Event {
 		while(CaveExplorer.in.nextLine().indexOf("yes") < 0){
 			CaveExplorer.print("Just take the key; you probably need it -_-");
 		}
+		CaveExplorer.inventory.setLivingRoomKey(true);
 		GameStartEvent.readSequence(story2);
 	}
 

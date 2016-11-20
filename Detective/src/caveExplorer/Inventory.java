@@ -21,6 +21,15 @@ public class Inventory {
 	public void setBathroomKey(boolean b){
 		hasBathroomKey=true;
 	}
+	public boolean hasLivingRoomKey(){
+		return hasLivingRoomKey;
+	}
+	public boolean hasKitchenKey(){
+		return hasKitchenKey;
+	}
+	public boolean hasBathroomKey(){
+		return hasBathroomKey;
+	}
 	public boolean isHasMap() {
 		return hasMap;
 	}

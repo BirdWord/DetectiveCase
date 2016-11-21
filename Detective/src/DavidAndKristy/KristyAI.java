@@ -9,7 +9,7 @@ public class KristyAI {
 	public static boolean doubleCrossed;
 	public static boolean moreBoxes;
 	public static boolean inLoop;
- 
+  
 	public static void main(String[] args){ 
 		//fix the counter; and computer turn
 	}

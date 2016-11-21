@@ -28,8 +28,8 @@ public class CaveExplorer {
 		caves[1][5] = new EventRoom("   You picked up the blue key from the ground.", new DavidAndKristy.FoundKitchenKey());
 		int rand3 = generateNumber(1,2);
 		switch(rand3){
-		//insert events here when they're done
-		//case 1: caves[1][7] = new EventRoom("   You picked up the white key from the ground.",);break;
+		case 1: caves[1][7] = new EventRoom("   You picked up the white key from the ground.", new Hunter_Jonathan.FoundBathRoomKey());break;
+		case 2: caves[1][8] = new EventRoom("   You picked up the white key from the ground.", new Hunter_Jonathan.FoundBathRoomKey());break;
 		}
 		//when stuff is done hide more keys
 		implementConnections();
@@ -45,6 +45,18 @@ public class CaveExplorer {
 				caves[4][3] = new EventRoom("   You stuck the red key into the keyhole and opened the door.", new packageKristyandRay.Connect4());
 				caves[4][3].setConnection(CaveRoom.WEST, caves[4][2], new Door());
 				caves[4][3].setConnection(CaveRoom.EAST, caves[4][4], lockedDoors[0]);
+			}
+			if(inventory.hasKitchenKey()){
+				caves[0][6] = new EventRoom("   You stuck the blue key into the keyhole and opened the door.", new DavidAndKristy.EventDavidAndKristy());
+				caves[0][6].setConnection(CaveRoom.WEST, caves[0][5], new Door());
+				caves[0][6].setConnection(CaveRoom.SOUTH, caves[1][6], new Door());
+				caves[0][7].setConnection(CaveRoom.EAST, caves[4][4], lockedDoors[1]);
+			}
+			if(inventory.hasBathroomKey()){
+				caves[0][6] = new EventRoom("   You stuck the white key into the keyhole and opened the door.", new Hunter_Jonathan.EventHunterAndJonathan());
+				caves[0][6].setConnection(CaveRoom.WEST, caves[0][5], new Door());
+				caves[0][6].setConnection(CaveRoom.SOUTH, caves[1][6], new Door());
+				caves[0][7].setConnection(CaveRoom.EAST, caves[4][4], lockedDoors[1]);
 			}
 			print(currentRoom.getDescription());
 			print(inventory.getDescription());

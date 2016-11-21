@@ -86,7 +86,7 @@ public class KristyAI {
 						grid[row + 1][col + 1] = "|  ";
 						computerBox++;
 	//					System.out.println("a");
-						moreBoxes = true;
+						moreBoxes = true; 
 					}
 					else if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 1][col + 1].equals("|  ") && grid[row + 2][col].equals("o  ")){
 						grid[row + 2][col] = "o--";

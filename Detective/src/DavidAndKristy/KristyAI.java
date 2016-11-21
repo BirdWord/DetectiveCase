@@ -8,7 +8,6 @@ public class KristyAI {
 	public static int computerBox;
 	public static boolean doubleCrossed;
 	public static boolean moreBoxes;
-	public static Scanner in = new Scanner(System.in);
 	public static String[][] grid = EventDavidAndKristy.grid; // save reference from the main grid.
 	
 	public static void main(String[] args){ //wont make a box if it need a vertical line in the last column 
@@ -23,12 +22,12 @@ public class KristyAI {
 //		grid[5][1] = "|  ";
 //		grid[5][2] = "|  ";
 		
-		grid[1][0] = "|  ";
-	//	grid[0][0] = "o--";
-		grid[1][1] = "|  ";
-		grid[3][0] = "|  ";
-		grid[3][1] = "|  ";
-		grid[4][0] = "o--";
+//		grid[1][0] = "|  ";
+//		grid[0][0] = "o--";
+//		grid[1][1] = "|  ";
+//		grid[3][0] = "|  ";
+//		grid[3][1] = "|  ";
+//		grid[4][0] = "o--";
 		
 		
 		printGrid();

@@ -52,12 +52,12 @@ public class CaveExplorer {
 				caves[0][6].setConnection(CaveRoom.SOUTH, caves[1][6], new Door());
 				caves[0][7].setConnection(CaveRoom.EAST, caves[4][4], lockedDoors[1]);
 			}
-			if(inventory.hasBathroomKey()){
-				caves[0][6] = new EventRoom("   You stuck the white key into the keyhole and opened the door.", new Hunter_Jonathan.EventHunterAndJonathan());
-				caves[0][6].setConnection(CaveRoom.WEST, caves[0][5], new Door());
-				caves[0][6].setConnection(CaveRoom.SOUTH, caves[1][6], new Door());
-				caves[0][7].setConnection(CaveRoom.EAST, caves[4][4], lockedDoors[1]);
-			}
+//			if(inventory.hasBathroomKey()){
+//				caves[0][6] = new EventRoom("   You stuck the white key into the keyhole and opened the door.", new Hunter_Jonathan.EventHunterAndJonathan());
+//				caves[0][6].setConnection(CaveRoom.WEST, caves[0][5], new Door());
+//				caves[0][6].setConnection(CaveRoom.SOUTH, caves[1][6], new Door());
+//				caves[0][7].setConnection(CaveRoom.EAST, caves[4][4], lockedDoors[1]);
+//			}
 			print(currentRoom.getDescription());
 			print(inventory.getDescription());
 			print("Which way would you like to go?");

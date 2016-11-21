@@ -38,14 +38,11 @@ public class RayGUInWIN {
 	//CHECKING WINNER; THIS FUNCTION WILL check if there is a winner
 	//IF THERE IS NO WINNER, THIS WILL RETURN FALSE
 	//This method will take as parameter of the board array
-	public static void determineWinner(String[][] arr, int row, int col){
+	public static String determineWinner(String[][] arr, int row, int col){
 		if(determineIfWinner(arr, row, col)){
-			String winner = arr[row][col];
-			if(winner.equals(PLAYER))
-				System.out.println("The player has won.");
-			else
-				System.out.println("The computer has won.");
+			return arr[row][col];
 		}
+		return null;
 	}
 	//goes through the rows that can be wins and checks if any are winning rows
 	//breaks to go to next iteration of loop if one is not equal

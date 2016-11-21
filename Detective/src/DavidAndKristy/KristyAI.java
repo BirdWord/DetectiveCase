@@ -12,7 +12,7 @@ public class KristyAI {
 	public static void main(String[] args){ 
 		//fix the counter; one turn can make up to 2 boxes
 	}
-
+ 
 	public static void computerTurn(){
 		boolean inLoop = true;
 

@@ -83,7 +83,7 @@ public class KristyAI {
 					if(DavidDotsBoxes.grid[row][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col].equals("|  ") &&
 							DavidDotsBoxes.grid[row + 2][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col + 1].equals(" ")){
 						DavidDotsBoxes.grid[row + 1][col + 1] = "|  ";
-						computerBox++; 
+						computerBox++;  
 						moreBoxes = true;
 					}
 					else if(DavidDotsBoxes.grid[row][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col].equals("|  ") &&

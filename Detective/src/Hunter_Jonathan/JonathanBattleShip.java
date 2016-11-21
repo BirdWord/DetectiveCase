@@ -13,17 +13,27 @@ public class JonathanBattleShip {
 	}
 
 	public static void attack(int x2, int y2){
-		//EventHunterAndJonathan.AIboard1[x2][y2] = " X ";
-		//continue building
+		checkValid(x2, y2);
+		if(checkValid(x2,y2) == true){
+			EventHunterAndJonathan.AIboard1[x2][y2] = " X ";
+		}
 	}
 	
+	private static boolean checkValid(int x2, int y2) {
+//		if(){
+//			return true;
+//		}
+		return false;
+	}
+
 	public static boolean hit() {
 		for(int row = 0; row < EventHunterAndJonathan.AIboard1.length; row++){
 			for(int col = 0; col < EventHunterAndJonathan.AIboard1[0].length; col++){
-				//if(EventHunterAndJonathan.AIboard1[row][col] = true){
-					
+				if(EventHunterAndJonathan.AIboard1[row][col].equals(" O ")){
+					return true;
 				}
 			}
+		}
 		return false;
 	}
 }

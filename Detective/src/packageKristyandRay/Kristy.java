@@ -25,13 +25,13 @@ public class Kristy {
 			
 			if (input == 888)
 			{
-				CaveExplorer.print("you win!");
+				CaveExplorer.print("you have vanquished the evil entity!");
 				break;
 			}
 			else
 			if(input <= arr[0].length-1 && input > -1){
 				int row = arr.length-1;
-				while(arr[row][input].equals("¤")||arr[row][input].equals("†")){
+				while(arr[row][input].equals("D")||arr[row][input].equals("N")){
 					row--;
 					if(row < 0){
 						System.out.println("This column is full.");
@@ -39,7 +39,7 @@ public class Kristy {
 					}
 				}
 				if(row > -1){
-					arr[row][input] = "¤";
+					arr[row][input] = "D";
 					String[] lang= {"you never get here alive, MWAHAHAHAHA","you never win","you never find the murderer"};
 					double rand = Math.random();
 					int roll = (int)(lang.length*rand);
@@ -48,14 +48,14 @@ public class Kristy {
 					{
 						RayGUInWIN.printBoard(arr);
 						RayGUInWIN.determineWinner(arr,row,input);
-						if (RayGUInWIN.determineWinner(arr,row,input).equals("†"))
+						if (RayGUInWIN.determineWinner(arr,row,input).equals("N"))
 						{
-							CaveExplorer.print("computer wins");
-							CaveExplorer.print("You die!");
+							CaveExplorer.print("The evil entity has defeated you!");
+							CaveExplorer.print("You got ripped and sheaded into pieces and thrown out of the window!");
 							CaveExplorer.alive=false;
 						}
 						else
-							CaveExplorer.print("you win");
+							CaveExplorer.print("you have vanquished the evil entity!");
 						break;
 					}
 					
@@ -79,7 +79,7 @@ public class Kristy {
 		 //will not continue if an error above is thrown
 		 isInteger = true;//exits loop if entry is valid
 		 }catch(NumberFormatException e){
-		 System.out.println("Hurry up, put an integar or your sins will measure in hell.");
+		 System.out.println("Hurry up, put an integer or your sins will measure in hell.");
 		 integerString = CaveExplorer.in.nextLine();
 		 }
 		 }
@@ -95,18 +95,18 @@ public class Kristy {
 					
 					if (arr[i][roll].equals(" "))
 					{
-						arr[i][roll]="†";
+						arr[i][roll]="N";
 						if (RayGUInWIN.determineIfWinner(arr, i, roll))
 						{
 							RayGUInWIN.printBoard(arr);
-							if (RayGUInWIN.determineWinner(arr,i,roll).equals("†"))
+							if (RayGUInWIN.determineWinner(arr,i,roll).equals("N"))
 							{
-								CaveExplorer.print("computer wins");
-								CaveExplorer.print("You die! ");
+								CaveExplorer.print("The evil entity has defeated you!");
+								CaveExplorer.print("You got ripped and sheaded into pieces and thrown out of the window!");
 								CaveExplorer.alive=false;
 							}
 							else
-								CaveExplorer.print("you wins");
+								CaveExplorer.print("you have vanquished the evil entity!");
 							break;
 						}
 						i =-1;

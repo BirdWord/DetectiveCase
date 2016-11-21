@@ -205,7 +205,6 @@ public class DavidDotsBoxes {
 		if(getY(tmp) != 0) setY(tmp,(getY(tmp) * 2)); // give actual y-coordinate.
 
 		// check if lines exist.
-		System.out.println("typgergerge: " + type);
 		return (grid[getY(tmp) - diff][getX(tmp)].equals(token));
 
 
@@ -252,7 +251,6 @@ public class DavidDotsBoxes {
 		*  -- Else -> return false, no box could be formed.
 		* */
 		int type = getLnType(start, end); // line type.
-		System.out.println("goot type " + type);
 		int[] tmp;
 		int[] min = {0,0};
 		int[] max = {0,0};
@@ -316,7 +314,6 @@ public class DavidDotsBoxes {
 				//if(hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(max),getY(max) - 1)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - 1)));
 			}
 			else return false;
-			System.out.println("out ln function");
 			return (hasLn(formPoint(getX(min),getY(min) - diff), formPoint(getX(max),getY(max) - diff)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - diff)));
 
 
@@ -376,7 +373,6 @@ public class DavidDotsBoxes {
 				// since the player won, we dont need to change the turn counter.
 			}
 			else ++turn; // if box wasnt formed, its the computers turn.
-			System.out.println("turn after : "+ turn);
 		}
 
 		printGrid(); // print the DavidDotsBoxesgrid.

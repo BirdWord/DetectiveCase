@@ -59,7 +59,7 @@ public class Kristy {
 						break;
 					}
 					
-					aiTurn(arr);//hi
+					aiTurn(arr, row, input);//hi
 					
 					
 				}
@@ -85,11 +85,13 @@ public class Kristy {
 		 }
 		 return value;
 		 }
-	public static void aiTurn(String[][] arr)
+	public static void aiTurn(String[][] arr, int row, int col)
 	{
+			int[] roli = {col-1,col,col+1};
 			double rand = Math.random();
-			int roll = (int)(arr[0].length*rand);
-				System.out.println(roll);
+			int roll = (int)(roli.length*rand);
+			while(true)
+			{
 				for (int i = arr.length-1; i>-1;i--)
 				{
 					
@@ -114,6 +116,9 @@ public class Kristy {
 					}
 				
 				}
+				double rand2 = Math.random();
+				roll = (int)(arr[0].length*rand2);
+			}
 	}
 	
 

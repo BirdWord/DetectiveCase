@@ -2,8 +2,9 @@ package DavidAndKristy;
 
 import java.util.Scanner;
 
+import caveExplorer.CaveExplorer;
+
 public class EventDavidAndKristy implements caveExplorer.Event{
-	public static Scanner in = new Scanner(System.in);
 	public static String[][] DavidDotsBoxesgrid;
 	public static int[] point1 = {0,0};
 	public static int[] point2 = {0,0};
@@ -16,22 +17,22 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 		System.out.println("If you lose to the AI, you're life will end here.");
 		System.out.println("If you win, I'll let you out of this room \nand give you a hint. Good Luck! \n");
 		
-		System.out.println("How big do you want the DavidDotsBoxesgrid to be?");
+		System.out.println("How big do you want the grid to be?");
 
 		// get row number and do error checking.
 		System.out.println("How many rows? (between 3 and 9)");
-		row = in.nextInt();
+		row = CaveExplorer.in.nextInt();
 		while(row < 3 || row > 9){
 			System.out.println("The row needs to be between 3 and 9.\nPick a new row number.");
-			row = in.nextInt();
+			row = CaveExplorer.in.nextInt();
 		}
 
 		// get column number and do error checking.
 		System.out.println("How many columns? (between 3 and 9)");
-		col = in.nextInt();
+		col = CaveExplorer.in.nextInt();
 		while(col < 3 || col > 9){
 			System.out.println("The row needs to be between 3 and 9.\nPick a new row number.");
-			col = in.nextInt();
+			col = CaveExplorer.in.nextInt();
 		}
 
 		// set the max score the players can get( row * col).

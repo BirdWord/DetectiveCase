@@ -20,10 +20,7 @@ public class KristyAI {
 		inLoop = true;
 		while(inLoop){
 			doubleCross();
-			if(doubleCrossed){
-				basicMove();
-			}
-			else{
+			if(!doubleCrossed){
 				checkBoxes();
 				if(!moreBoxes){
 					basicMove();
@@ -81,7 +78,7 @@ public class KristyAI {
 					else{
 						// if it could form a box -> decrease the initial adder to the computer's score.
 						--DavidDotsBoxes.score[DavidDotsBoxes.whoseTurn()];
-						moreBoxes = false;
+						moreBoxes = false; //FIXXXX
 					}
 				}
 

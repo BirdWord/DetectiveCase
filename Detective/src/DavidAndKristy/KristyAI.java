@@ -159,7 +159,7 @@ public class KristyAI {
 //	public static void sideChain(){ //breaks the side chain; if player makes vertical, computer make horizontal and vice versa
 //		for(int row = 0; row < grid.length - 1; row++){
 //			for(int col = 0; col < grid[0].length; col++){
-//				
+//				 
 //					
 //				}
 //			}

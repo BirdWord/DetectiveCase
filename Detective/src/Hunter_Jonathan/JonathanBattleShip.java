@@ -33,6 +33,11 @@ public class JonathanBattleShip {
 				if(EventHunterAndJonathan.AIboard1[row][col].equals(" O ")){
 					return true;
 				}
+				if(EventHunterAndJonathan.board1[row][col].equals(" O ")){
+					EventHunterAndJonathan.board2[row][col] = " X ";
+					numberOfPlayerShips--;
+					return true;
+				}
 			}
 		}
 		return false;
@@ -40,7 +45,7 @@ public class JonathanBattleShip {
 
 	public static boolean AIwin() {
 		//make it so that it tells how many ships player has left
-		if(numberOfPlayerShips != 0){
+		if(numberOfPlayerShips == 0){
 			return true;
 		}
 		return false;

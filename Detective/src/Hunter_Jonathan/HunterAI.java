@@ -1,5 +1,7 @@
 package Hunter_Jonathan;
 
+import caveExplorer.CaveExplorer;
+
 public class HunterAI {
 
 	public HunterAI() {
@@ -18,46 +20,62 @@ public class HunterAI {
 
 	public static void aiTurn(){
 		boolean attacking = true;
-		while(attacking ){
+		while(attacking){
 			int attkRow = (int)(Math.random() * EventHunterAndJonathan.AIboard1.length);
 			int attkCol = (int)(Math.random() * EventHunterAndJonathan.AIboard1[0].length);
 			for(int i = 0; i < EventHunterAndJonathan.AIboard1.length; i++){
 				for(int j = 0; j < EventHunterAndJonathan.AIboard1[0].length; j++){
 					if(EventHunterAndJonathan.AIboard1[i][j].equals("O")){
-						if(EventHunterAndJonathan.AIboard1[i][j-1].equals(" ")){
-							if(EventHunterAndJonathan.board2[i][j-1].equals(" O ")){
-								EventHunterAndJonathan.AIboard1[i][j-1] = "O";
-								attacking = false;
-							}else{
-								EventHunterAndJonathan.AIboard1[i][j-1] = "X";
-								attacking = false;
+						if(j-1 >= 0){
+							if(EventHunterAndJonathan.AIboard1[i][j-1].equals(" ")){
+								if(EventHunterAndJonathan.board2[i][j-1].equals(" O ")){
+									EventHunterAndJonathan.AIboard1[i][j-1] = "O";
+									EventHunterAndJonathan.board2[i][j-1] = " X ";
+									attacking = false;
+								}else{
+									EventHunterAndJonathan.AIboard1[i][j-1] = "X";
+									EventHunterAndJonathan.board2[i][j-1] = " X ";
+									attacking = false;
+								}
 							}
 						}
-						if(EventHunterAndJonathan.AIboard1[i+1][j].equals(" ")){
-							if(EventHunterAndJonathan.board2[i+1][j].equals(" O ")){
-								EventHunterAndJonathan.AIboard1[i+1][j] = "O";
-								attacking = false;
-							}else{
-								EventHunterAndJonathan.AIboard1[i+1][j] = "X";
-								attacking = false;
+						if(i+1 <= EventHunterAndJonathan.AIboard1.length){
+							if(EventHunterAndJonathan.AIboard1[i+1][j].equals(" ")){
+								if(EventHunterAndJonathan.board2[i+1][j].equals(" O ")){
+									EventHunterAndJonathan.AIboard1[i+1][j] = "O";
+									EventHunterAndJonathan.board2[i+1][j] = " X ";
+									attacking = false;
+								}else{
+									EventHunterAndJonathan.AIboard1[i+1][j] = "X";
+									EventHunterAndJonathan.board2[i+1][j] = " X ";
+									attacking = false;
+								}
 							}
 						}
-						if(EventHunterAndJonathan.AIboard1[i][j+1].equals(" ")){
-							if(EventHunterAndJonathan.board2[i][j+1].equals(" O ")){
-								EventHunterAndJonathan.AIboard1[i][j+1] = "O";
-								attacking = false;
-							}else{
-								EventHunterAndJonathan.AIboard1[i][j+1] = "X";
-								attacking = false;
+						if(j+1 <= EventHunterAndJonathan.AIboard1[i].length){
+							if(EventHunterAndJonathan.AIboard1[i][j+1].equals(" ")){
+								if(EventHunterAndJonathan.board2[i][j+1].equals(" O ")){
+									EventHunterAndJonathan.AIboard1[i][j+1] = "O";
+									EventHunterAndJonathan.board2[i][j+1] = " X ";
+									attacking = false;
+								}else{
+									EventHunterAndJonathan.AIboard1[i][j+1] = "X";
+									EventHunterAndJonathan.board2[i][j+1] = " X ";
+									attacking = false;
+								}
 							}
 						}
-						if(EventHunterAndJonathan.AIboard1[i-1][j].equals(" ")){
-							if(EventHunterAndJonathan.board2[i-1][j].equals(" O ")){
-								EventHunterAndJonathan.AIboard1[i-1][j] = "O";
-								attacking = false;
-							}else{
-								EventHunterAndJonathan.AIboard1[i-1][j] = "X";
-								attacking = false;
+						if(i-1 >= 0){
+							if(EventHunterAndJonathan.AIboard1[i-1][j].equals(" ")){
+								if(EventHunterAndJonathan.board2[i-1][j].equals(" O ")){
+									EventHunterAndJonathan.AIboard1[i-1][j] = "O";
+									EventHunterAndJonathan.board2[i-1][j] = " X ";
+									attacking = false;
+								}else{
+									EventHunterAndJonathan.AIboard1[i-1][j] = "X";
+									EventHunterAndJonathan.board2[i-1][j] = " X ";
+									attacking = false;
+								}
 							}
 						}
 					}
@@ -66,13 +84,31 @@ public class HunterAI {
 			if(EventHunterAndJonathan.AIboard1[attkRow][attkCol].equals(" ")){
 				if(EventHunterAndJonathan.board2[attkRow][attkCol].equals(" O ")){
 					EventHunterAndJonathan.AIboard1[attkRow][attkCol] = "O";
+					EventHunterAndJonathan.board2[attkRow][attkCol] = " X ";
 					attacking = false;
 				}else{
 					EventHunterAndJonathan.AIboard1[attkRow][attkCol] = "X";
+					EventHunterAndJonathan.board2[attkRow][attkCol] = " X ";
 					attacking = false;
 				}
 			}
 		}
+		if(aiWin()){
+			CaveExplorer.alive = false;
+		}else{
+			JonathanBattleShip.attack();
+		}
+	}
+
+	private static boolean aiWin(){
+		for(int i = 0; i < EventHunterAndJonathan.board2.length; i++){
+			for(int j = 0; j < EventHunterAndJonathan.board2[0].length; j++){
+				if(EventHunterAndJonathan.board2[i][j].equals(" O ")){
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	public static void generateShips(){
@@ -80,16 +116,35 @@ public class HunterAI {
 		while (ships > 1){
 			int shipRow = (int)(Math.random() * EventHunterAndJonathan.AIboard2.length);
 			int shipCol = (int)(Math.random() * EventHunterAndJonathan.AIboard2[0].length);
-			if(valid(shipRow, shipCol,ships)){
+			if(validhor(shipRow, shipCol,ships)){
 				for(int i = 0; i < ships;i++){
 					EventHunterAndJonathan.AIboard2[shipRow][shipCol + i] = "O";
 				}
 				ships --;
 			}
 		}
+		int shipRow = (int)(Math.random() * EventHunterAndJonathan.AIboard2.length);
+		int shipCol = (int)(Math.random() * EventHunterAndJonathan.AIboard2[0].length);
+		if(validver(shipRow, shipCol)){
+			for(int i = 0; i < 5;i++){
+				EventHunterAndJonathan.AIboard2[shipRow + i][shipCol] = "O";
+			}
+		}
 	}
 
-	public static boolean valid(int row, int col, int ship){
+	private static boolean validver(int shipRow, int shipCol) {
+		if(shipRow + 5 > EventHunterAndJonathan.AIboard2.length){
+			return false;
+		}
+		for(int i = 0; i < 4;i++){
+			if (EventHunterAndJonathan.AIboard2[shipRow][shipCol + i].equals("O")){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static boolean validhor(int row, int col, int ship){
 		if(col + ship > EventHunterAndJonathan.AIboard2[0].length){
 			return false;
 		}

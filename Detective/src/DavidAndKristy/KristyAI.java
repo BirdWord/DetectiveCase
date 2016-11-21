@@ -10,8 +10,18 @@ public class KristyAI {
 	public static boolean moreBoxes;
 	public static Scanner in = new Scanner(System.in);
 	public static String[][] grid = EventDavidAndKristy.DavidDotsBoxesgrid; // save reference from the main DavidDotsBoxesgrid.
-	
+
 	public static void main(String[] args){ //wont make a box if it need a vertical line in the last column 
+
+//		grid[0][0] = "o--";	
+//		grid[1][1] = "|  ";
+//		grid[2][0] = "o--";
+//		grid[4][2] = "o--";
+//		grid[3][3] = "|  ";
+//		grid[3][2] = "|  ";
+//		grid[4][1] = "o--";
+//		grid[5][1] = "|  ";
+//		grid[5][2] = "|  ";
 		setGrid(3,3);
 //		DavidDotsBoxesgrid[0][0] = "o--";
 //		DavidDotsBoxesgrid[1][1] = "|  ";
@@ -22,14 +32,20 @@ public class KristyAI {
 //		DavidDotsBoxesgrid[4][1] = "o--";
 //		DavidDotsBoxesgrid[5][1] = "|  ";
 //		DavidDotsBoxesgrid[5][2] = "|  ";
-		
+
+//		grid[1][0] = "|  ";
+//		grid[0][0] = "o--";
+//		grid[1][1] = "|  ";
+//		grid[3][0] = "|  ";
+//		grid[3][1] = "|  ";
+//		grid[4][0] = "o--";
 		grid[1][0] = "|  ";
 	//	DavidDotsBoxesgrid[0][0] = "o--";
 		grid[1][1] = "|  ";
 		grid[3][0] = "|  ";
 		grid[3][1] = "|  ";
 		grid[4][0] = "o--";
-		
+
 		
 		printGrid();
 		computerTurn();
@@ -82,6 +98,8 @@ public class KristyAI {
 		while(moreBoxes){
 			for(int row = 0; row < grid.length -1; row++){ // it wont check the last row of the DavidDotsBoxesgrid because there is no more rows under it
 				for(int col = 0; col < grid[0].length; col++){
+			for(int row = 0; row < DavidDotsBoxes.grid.length -1; row++){ // it wont check the last row of the grid because there is no more rows under it
+				for(int col = 0; col < DavidDotsBoxes.grid[0].length; col++){
 					DavidDotsBoxes.addScore(DavidDotsBoxes.whoseTurn()); // computer's score is updated.
 					if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 1][col + 1].equals(" ")){
 						grid[row + 1][col + 1] = "|  ";
@@ -161,7 +179,10 @@ public class KristyAI {
 //		for(int row = 0; row < DavidDotsBoxesgrid.length - 1; row++){
 //			for(int col = 0; col < DavidDotsBoxesgrid[0].length; col++){
 //				
-//					
+//		for(int row = 0; row < grid.length - 1; row++){
+//			for(int col = 0; col < grid[0].length; col++){
+//
+//
 //				}
 //			}
 //	}

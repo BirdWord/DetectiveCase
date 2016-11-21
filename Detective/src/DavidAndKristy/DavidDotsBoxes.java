@@ -1,10 +1,12 @@
 package DavidAndKristy;
 
+import caveExplorer.CaveExplorer;
+
 import java.util.Scanner;
 
 public class DavidDotsBoxes {
 
-	public static Scanner in = new Scanner(System.in);
+	//public static Scanner CaveExplorerin = new Scanner(System.in);
 	public static int inputInt;
 	public static String[][] grid;
 	public static int[] point1 = {0,0};
@@ -12,6 +14,7 @@ public class DavidDotsBoxes {
 	public static int[] score = {0,0}; // to keep track of the current score.
 	public static int maxScore = 0;
 	public static int turn = 0; // keep track of whose turn it is.
+	private static boolean cheat; // for cheat code.
 	public static void main(String[] args) {
 
 	}
@@ -124,34 +127,77 @@ public class DavidDotsBoxes {
 		grid[getY(min)][getX(min)] = "o--";
 	}
 	public static boolean isValidX(int xCoord){
-		// check if it's in bound.
-		return(xCoord >= 0 && xCoord < grid[0].length);
+		// check if it's CaveExplorerin bound.
+		return ((xCoord >= 0 && xCoord < grid[0].length) || xCoord == 911);
 	}
 	public static boolean isValidY(int yCoord){
-		// check if it's in bound.
-		return (yCoord >= 0 && (yCoord <= grid.length/2));
+		// check if it's CaveExplorerin bound.
+		return ((yCoord >= 0 && (yCoord <= grid.length/2)) || yCoord == 911);
 	}
 	public static void getCoordinateInput(int[] point){
 		System.out.println("What is the X coordinate?");
-		setX(point, in.nextInt());
+		/*try{
+		setX(point, CaveExplorerin.nextInt());
 		while(!isValidX(getX(point))){
 			System.out.println("Invalid X Coordinate. Please input a new X Coordinate.");
-			setX(point,in.nextInt());
+			setX(point,CaveExplorerin.nextInt());
+		}}catch(NumberFormatException e){
+			System.out.println("Enter  a number please!");
+			setX(point,CaveExplorerin.nextInt());
+		}*/
+
+		boolean isInteger = false;
+		String integerString = CaveExplorer.in.nextLine();
+		int value = 0;
+		while(!isInteger){
+			try{
+				value = Integer.parseInt(integerString);
+				//will not continue if an error above is thrown
+				isInteger = true;//exits loop if entry is valid
+			}catch(NumberFormatException e){
+				System.out.println("Hurry up, put an integer.");
+				integerString = CaveExplorer.in.nextLine();
+			}
 		}
-		
+		setX(point, value);
+		while(!isValidX(getX(point))){
+			System.out.println("Invalid X Coordinate. Please input a new X Coordinate.");
+			setX(point, CaveExplorer.in.nextInt());
+		}
+
 		System.out.println("What is the Y coordinate?");
-		setY(point,in.nextInt());
+		isInteger = false;
+		integerString = CaveExplorer.in.nextLine();
+		value = 0;
+		while(!isInteger){
+			try{
+				value = Integer.parseInt(integerString);
+				//will not continue if an error above is thrown
+				isInteger = true;//exits loop if entry is valid
+			}catch(NumberFormatException e){
+				System.out.println("Hurry up, put an integer.");
+				integerString = CaveExplorer.in.nextLine();
+			}
+		}
+		setY(point, value);
 		while(!isValidY(getY(point))){
 			System.out.println("Invalid Y Coordinate. Please input a new Y Coordinate.");
-			setY(point,in.nextInt());
+			setY(point, CaveExplorer.in.nextInt());
 		}
+		/*
+		System.out.println("What is the Y coordinate?");
+		setY(point,CaveExplorerin.nextInt());
+		while(!isValidY(getY(point))){
+			System.out.println("Invalid Y Coordinate. Please input a new Y Coordinate.");
+			setY(point,CaveExplorerin.nextInt());
+		}*/
 	}
 	public static boolean isCoordEq(int coord1, int coord2){
 		return coord1 == coord2;
 	}
 	public static boolean arePointsEq(int[] start, int[] end){
 		/*
-		 *  Function that will check if the points are in different positions.
+		 *  Function that will check if the points are CaveExplorerin different positions.
 		 *  This will make sure a line can be made, from one point to another(must have different values).
 		 * */
 		
@@ -227,90 +273,7 @@ public class DavidDotsBoxes {
 	public static int[] formPoint(int x, int y){
 		return (new int[] {x,y});
 	}
-	/*public static boolean hasWonBox(int[] start, int[] end){
-		/*
-		*  We need to check whether a box has been formed.
-		*  This function will return true if a box could be formed with the new line.
-		*  This function will return false if a box cannot be formed with the new line.
-		*
-		*  To do this we'll->
-		*  -- Check what kind of line it is.
-		*  -- Check it's surroundings, and see if there are lines there already.
-		*  -- If a line exists there, will keep checking until either a line doesn't exist, or a full box has been formed.
-		*  -- Else -> return false, no box could be formed.
-		*
-		int type = getLnType(start, end); // line type.
-		int[] tmp;
-		int[] min = {0,0};
-		int[] max = {0,0};
-		int diff = 0;
-		// horizontal line
-		if(type == 2){
-			// vertical line
-			tmp = (getY(start) < getY(end)) ? end : start; // get greater yCoord.
-			setXY(max, getX(tmp), getY(tmp));
-			tmp = (getY(max) == getY(start)) ? end : start;
-			setXY(min, getX(tmp), getY(tmp));
-
-			if(getX(min) != 0 && hasLn(formPoint(getX(min) - 1,getY(min)), formPoint(getX(min),getY(min)))){
-				/*
-				*  if inside -> horizontal line on the left exists.
-				*  we'll set the variable diff to one
-				*  -- we do this to check the left side of the line
-				*
-
-				++diff;
-				//if(hasLn(formPoint(getX(min) - diff,getY(min)), formPoint(getX(min) - diff,getY(max))) && hasLn(formPoint(getX(max) - diff,getY(max)), formPoint(getX(max),getY(max))));
-			}
-			else if(getX(min) != grid[0].length && hasLn(formPoint(getX(min) + 1,getY(min)), formPoint(getX(min),getY(min)))){
-				/*
-				*  if inside -> horizontal line exists on the right.
-				*  we'll set the variable diff to -1.
-				*  -- we'll do this to check lines on the right side (subtract -1 will add 1).
-				*
-				--diff;
-			}
-			else return false;
-
-			return (hasLn(formPoint(getX(min) - diff,getY(min)), formPoint(getX(min) - diff,getY(max))) && hasLn(formPoint(getX(max) - diff,getY(max)), formPoint(getX(max),getY(max))));
-
-
-		}
-		else{
-			// horizontal line
-			tmp = (getX(start) < getX(end)) ? start : end; // get left-most coordinate.
-			setXY(min,getX(tmp),getY(tmp));
-			tmp = (getX(min) == getX(start)) ? end : start;
-			setXY(max, getX(tmp), getY(tmp));
-
-			if(getY(min) != 0 && hasLn(formPoint(getX(min),getY(min)), formPoint(getX(min),getY(min) - 1))){
-				/*
-				*  if inside -> vertical line exists on the left side of the new line to the top.
-				*  we'll set the variable diff to one
-				*  -- we do this to check the left side of the line
-				* *
-
-				++diff;
-				//if(hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(max),getY(max) - 1)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - 1)));
-			}
-			else if(getY(min) != (grid.length / 2) && hasLn(formPoint(getX(min),getY(min) + 1), formPoint(getX(min),getY(min)))){
-				/*
-				*  if inside -> vertical line exists on the left side of the new line to the bottom.
-				*  we'll set the variable diff to -1.
-				*  -- we'll do this to check lines on the right side (subtract -1 will add 1).
-				* *
-				--diff;
-				//if(hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(max),getY(max) - 1)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - 1)));
-			}
-			else return false;
-			return (hasLn(formPoint(getX(min),getY(min) - diff), formPoint(getX(max),getY(max) - diff)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - diff)));
-
-
-		}
-
-
-
-	}*/public static int hasWonBox(int[] start, int[] end){
+	public static int hasWonBox(int[] start, int[] end){
 		/*
 		*  We need to check whether a box has been formed.
 		*  This function will return true if a box could be formed with the new line.
@@ -427,9 +390,19 @@ public class DavidDotsBoxes {
 				break;
 		}
 	}
+	public static boolean isCheatOn(){
+		return (getX(point1) == 911 || getY(point1) == 911);
+	}
 	public static void getLnInput(){
+		cheat = false;
 		System.out.println("Coordinates of the first dot:");
 		getCoordinateInput(point1);
+
+		if(isCheatOn()){
+			// check if cheat was activated.
+			cheat = true;
+			return;
+		}
 
 		System.out.println("Coordinates of the second dot:");
 		getCoordinateInput(point2);
@@ -475,6 +448,9 @@ public class DavidDotsBoxes {
 	public static boolean isPlayerTurn(){
 		// will check if its the players turn.
 		return (whoseTurn() == 0);
+	}
+	public static boolean getCheat(){
+		return cheat;
 	}
 
 

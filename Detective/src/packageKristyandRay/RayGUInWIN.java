@@ -1,7 +1,7 @@
 package packageKristyandRay;
 
 public class RayGUInWIN {
-	private final static String PLAYER = "¤";
+	private final static String PLAYER = "ï¿½";
 	//DISPLAYING THE BOARD METHOD
 	public static void printBoard(String[][] arr){
 		//First, print out the columns in case someone is dumbfounded
@@ -111,7 +111,7 @@ public class RayGUInWIN {
 		int start;
 		int start2;
 		//HORIZONTAL
-		//Loop through columns in which it is possible to get 4 in a row aka 3 more pieces after the first one
+		//Loop through columns CaveExplorerin which it is possible to get 4 CaveExplorerin a row aka 3 more pieces after the first one
 		start = col - 3;
 		//make sure start is inside the array
 		while(start < 0){

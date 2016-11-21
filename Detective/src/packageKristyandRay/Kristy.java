@@ -6,7 +6,7 @@ import caveExplorer.CaveExplorer;
 public class Kristy {
 
 	public static void connect4(String[][] arr){
-//		in = new Scanner(System.in);
+//		CaveExplorerin = new Scanner(System.CaveExplorerin);
 		for(int i = 0; i<arr.length; i++){
 			for(int j = 0; j<arr[0].length; j++){
 				arr[i][j] = " ";
@@ -17,7 +17,7 @@ public class Kristy {
 			RayGUInWIN.printBoard(arr);
 			CaveExplorer.print("Hurry pick a column, you will lose anyways!");
 			CaveExplorer.print("you read it somewhere that if you type 888 then you win automatically.");
-//			int ing = Integer.parseInt(in.nextLine());
+//			int ing = Integer.parseInt(CaveExplorerin.nextLine());
 			int input = getIntegerInput();
 //			int inp =getIntegerInput();
 //			int input = inp;
@@ -79,7 +79,7 @@ public class Kristy {
 		 //will not continue if an error above is thrown
 		 isInteger = true;//exits loop if entry is valid
 		 }catch(NumberFormatException e){
-		 System.out.println("Hurry up, put an integer or your sins will measure in hell.");
+		 System.out.println("Hurry up, put an integer or your sins will measure CaveExplorerin hell.");
 		 integerString = CaveExplorer.in.nextLine();
 		 }
 		 }

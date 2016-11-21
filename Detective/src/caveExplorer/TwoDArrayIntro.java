@@ -32,7 +32,7 @@ public class TwoDArrayIntro {
 		while(true){
 			pic[i][j] = "X";
 			printMap(pic.length,pic[0].length);
-			System.out.println("You are in room "+arr2D[i][j]+".");
+			System.out.println("You are CaveExplorerin room "+arr2D[i][j]+".");
 			System.out.println("What do you wanna do?");
 			String input = in.nextLine();
 			while(!isValid(input)){
@@ -50,9 +50,9 @@ public class TwoDArrayIntro {
 		b System.out.println("|   |   |");
 		c System.out.println("|   |   |");
 		d System.out.println("|___|___|");
-		step a: for a 1x2 there is 1 space in beginning then 4 underscores (column * 4)-1 underscores
+		step a: for a 1x2 there is 1 space CaveExplorerin beginning then 4 underscores (column * 4)-1 underscores
 		then, for each map row, u want to print step b then c then print a row of step d
-		step b: print a line in beginning then for each column print a pattern of 3 space then line
+		step b: print a line CaveExplorerin beginning then for each column print a pattern of 3 space then line
 		step c: print a line, space, middle tile, space, then line
 		step d: print line and for each column, print 3 underscores and a line
 		*/

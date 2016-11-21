@@ -9,7 +9,7 @@ public class FoundKitchenKey implements Event {
 											"Maybe it's the missing key to unlock the door!"
 											};
 	private static final String[] story2 = {"As you pick up the key, you get a sudden memory flash.",
-											"Why did I just have a vision about Christmas in Times Square?"};
+											"Why did I just have a vision about Christmas CaveExplorerin Times Square?"};
 	@Override
 	public void play() {
 		GameStartEvent.readSequence(story1);

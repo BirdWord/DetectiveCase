@@ -40,7 +40,7 @@ public class Inventory {
 	public String getDescription(){
 		if(hasMap)
 			return map;
-		return "There is nothing in your inventory.";
+		return "There is nothing CaveExplorerin your inventory.";
 	}
 	public void updateMap(){
 		map = " ";
@@ -56,7 +56,7 @@ public class Inventory {
 						text += " ";
 					}
 					else if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isLocked()){
-						text += "¥";
+						text += "ï¿½";
 					}
 					else{
 						text+="|";
@@ -72,7 +72,7 @@ public class Inventory {
 							text+="   ";
 						}
 						else if(cr.getDoor(CaveRoom.SOUTH) != null && cr.getDoor(CaveRoom.SOUTH).isLocked()){
-							text += "¥¥¥";
+							text += "ï¿½ï¿½ï¿½";
 						}
 						else{
 							text+="___";

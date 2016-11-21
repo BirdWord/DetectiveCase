@@ -10,7 +10,7 @@ public class GameStartEvent implements Event {
 										};
 	public static final String[] story2 = {"Okay, thank you for your help.",
 										"We have some information that may help you for this case.",
-										"First of all, the murderer was last seen inside this very mansion;\nso please be careful while you are in there.",
+										"First of all, the murderer was last seen inside this very mansion;\nso please be careful while you are CaveExplorerin there.",
 										"Secondly, this mansion belongs to a rather puzzling, exquisite gentleman.",
 										"Therefore, there may be some 'surprises' while you are inside.",
 										"Otherwise, you may start your investigation now."

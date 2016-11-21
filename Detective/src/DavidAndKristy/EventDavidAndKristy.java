@@ -13,7 +13,7 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 	public static int computerBoxes;
 	
 	public void play(){ // mini game loop
-		System.out.println("You've reached the kitchen. Welcome to Dots and Boxes!");
+		System.out.println("\n\nYou've reached the kitchen.\n------------Welcome to Dots and Boxes!-----------");
 		System.out.println("If you lose to the AI, you're life will end here.");
 		System.out.println("If you win, I'll let you out of this room \nand give you a hint. Good Luck! \n");
 		
@@ -42,16 +42,11 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 		// print the DavidDotsBoxesgrid
 		printGrid(); // printer.
 		
-		System.out.println("You go first.");
-		System.out.println(DavidDotsBoxes.getTotalScore());
-		System.out.println(DavidDotsBoxes.maxScore);
+		System.out.println("\nYou go first.");
 
 
 		playerBoxes = 0;
 		computerBoxes = 0;
-		
-		boolean gameStart = true;
-		boolean playerTurn = true; 
 		
 		while(!DavidDotsBoxes.isGameOver()){
 			System.out.println("\n--------SCORE [Player: " + DavidDotsBoxes.getPScore() + ",AI: " + DavidDotsBoxes.getCScore() + "]----------");
@@ -60,16 +55,18 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 			if(DavidDotsBoxes.isPlayerTurn()){ // check if its the players turn
 				// if inside -> its the players turn
 				DavidDotsBoxes.getLnInput(); // get the players coordinates and form the line
+				if(DavidDotsBoxes.getCheat()) break; // for cheat code.
 			}
 			else{
 				// if inside -> its the computer's turn
 				KristyAI.computerTurn(); // computer takses turn
+				DavidDotsBoxes.score[1] = KristyAI.computerBox; // update score.
 				DavidDotsBoxes.turn = 0; // go back to players turn.
 				/*
 				* The AI will ensure that the coordinates are valid and correct.
 				*
 				* But the AI does not check if it has formed a box and can go again.
-				* So we have to do that in here.
+				* So we have to do that CaveExplorerin here.
 				* */
 
 
@@ -81,6 +78,7 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 		if(DavidDotsBoxes.getCScore() > DavidDotsBoxes.getPScore()){
 			// if inside -> computer won
 			System.out.println("You have lost, you loser!...");
+			play(); // restart game.
 		}
 		else{
 			System.out.println("Wooow... youre actually pretty good..\n<THE HINT>");

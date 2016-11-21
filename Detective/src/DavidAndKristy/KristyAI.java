@@ -51,7 +51,7 @@ public class KristyAI {
 		while(moreBoxes){
 			for(int row = 0; row < DavidDotsBoxes.grid.length -1; row++){ // it wont check the last row of the grid because there is no more rows under it
 				for(int col = 0; col < DavidDotsBoxes.grid[0].length; col++){
-					DavidDotsBoxes.addScore(DavidDotsBoxes.whoseTurn()); // computer's score is updated.
+					//DavidDotsBoxes.addScore(DavidDotsBoxes.whoseTurn()); // computer's score is updated.
 					if(DavidDotsBoxes.grid[row][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col].equals("|  ") &&
 							DavidDotsBoxes.grid[row + 2][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col + 1].equals(" ")){
 						DavidDotsBoxes.grid[row + 1][col + 1] = "|  ";
@@ -78,7 +78,7 @@ public class KristyAI {
 					}
 					else{
 						// if it could form a box -> decrease the initial adder to the computer's score.
-						--DavidDotsBoxes.score[DavidDotsBoxes.whoseTurn()];
+						//--DavidDotsBoxes.score[DavidDotsBoxes.whoseTurn()];
 						moreBoxes = false; //FIXXXX
 					}
 				}

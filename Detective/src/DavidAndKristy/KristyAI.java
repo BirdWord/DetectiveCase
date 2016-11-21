@@ -119,7 +119,8 @@ public class KristyAI {
 		boolean crossOnce = false;
 		for(int row = 0; row < DavidDotsBoxes.grid.length - 1; row++){
 			for(int col = 0; col < DavidDotsBoxes.grid[0].length; col++){
-				if(!crossOnce && row < DavidDotsBoxes.grid.length - 4 && DavidDotsBoxes.grid[row][col].equals("o  ") && 
+				if(!crossOnce && row < DavidDotsBoxes.grid.length - 4 && col < DavidDotsBoxes.grid[0].length - 1 && 
+						DavidDotsBoxes.grid[row][col].equals("o  ") && 
 						DavidDotsBoxes.grid[row + 1][col].equals("|  ") && DavidDotsBoxes.grid[row + 1][col + 1].equals("|  ") && 
 						DavidDotsBoxes.grid[row + 3][col].equals("|  ") && DavidDotsBoxes.grid[row + 3][col + 1].equals("|  ") && 
 						DavidDotsBoxes.grid[row + 4][col].equals("o--") && DavidDotsBoxes.grid[row + 2][col].equals("o  ")){
@@ -127,7 +128,8 @@ public class KristyAI {
 					doubleCrossed = true;
 					crossOnce = true;
 				}
-				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 4 && DavidDotsBoxes.grid[row][col].equals("o--") && 
+				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 4 && col < DavidDotsBoxes.grid[0].length - 1 
+						&& DavidDotsBoxes.grid[row][col].equals("o--") && 
 						DavidDotsBoxes.grid[row + 1][col].equals("|  ") && DavidDotsBoxes.grid[row + 1][col + 1].equals("|  ") && 
 						DavidDotsBoxes.grid[row + 3][col].equals("|  ") && DavidDotsBoxes.grid[row + 3][col + 1].equals("|  ") && 
 						DavidDotsBoxes.grid[row + 4][col].equals("o  ") && DavidDotsBoxes.grid[row + 2][col].equals("o  ")){
@@ -135,15 +137,17 @@ public class KristyAI {
 					doubleCrossed = true;
 					crossOnce = true; 
 				}
-				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 2 && DavidDotsBoxes.grid[row][col].equals("o--") && 
+				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 2 && col < DavidDotsBoxes.grid[0].length - 2 && 
+						DavidDotsBoxes.grid[row][col].equals("o--") && 
 						DavidDotsBoxes.grid[row][col + 1].equals("o--") && DavidDotsBoxes.grid[row + 1][col + 1].equals("   ") && 
 						DavidDotsBoxes.grid[row + 1][col + 2].equals("|  ") && DavidDotsBoxes.grid[row + 2][col].equals("o--") && 
 						DavidDotsBoxes.grid[row + 2][col + 1].equals("o--") && DavidDotsBoxes.grid[row + 1][col].equals("   ")){
-					DavidDotsBoxes.grid[row + 1][col] = "|   ";
+					DavidDotsBoxes.grid[row + 1][col] = "|  ";
 					doubleCrossed = true;
 					crossOnce = true;
 				}
-				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 2 && DavidDotsBoxes.grid[row][col].equals("o--") && 
+				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 2 && col < DavidDotsBoxes.grid[0].length - 2 
+						&& DavidDotsBoxes.grid[row][col].equals("o--") && 
 						DavidDotsBoxes.grid[row][col + 1].equals("o--") && DavidDotsBoxes.grid[row + 1][col + 1].equals("   ") && 
 						DavidDotsBoxes.grid[row + 1][col + 2].equals("   ") && DavidDotsBoxes.grid[row + 2][col].equals("o--") && 
 						DavidDotsBoxes.grid[row + 2][col + 1].equals("o--") && DavidDotsBoxes.grid[row + 1][col].equals("|  ")){

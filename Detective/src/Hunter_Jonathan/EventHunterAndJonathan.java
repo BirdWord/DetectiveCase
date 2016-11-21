@@ -45,6 +45,7 @@ public class EventHunterAndJonathan {
 				}
 				if(JonathanBattleShip.AIwin() == true){
 					System.out.println("You have lost the game. You are unable to solve the mystery and the murderer has gotten away.");
+					break;
 				
 				}
 			}
@@ -58,15 +59,15 @@ public class EventHunterAndJonathan {
 		 System.out.println("Where would you like to place your first ship?");
 			int x = input.nextInt();
 			int y = input.nextInt();
-			//board1[x][y] = " O ";
+			board1[x][y] = " O ";
 			System.out.println("Where would you like to place your second ship?");
 			int x1 = input.nextInt();
 			int y1 = input.nextInt();
-			//board1[x1][y1] = " O ";
+			board1[x1][y1] = " O ";
 			System.out.println("Where would you like to place your third ship?");
 			int x2 = input.nextInt();
 			int y2 = input.nextInt();
-			//board1[x2][y2] = " O ";
+			board1[x2][y2] = " O ";
 	}
 
 	 public static void print(int roomsX, int roomsY) {

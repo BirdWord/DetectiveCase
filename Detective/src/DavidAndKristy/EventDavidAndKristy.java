@@ -65,15 +65,7 @@ public class EventDavidAndKristy {
 				* But the AI does not check if it has formed a box and can go again.
 				* So we have to do that in here.
 				* */
-				if(DavidDotsBoxes.hasWonBox()){
-					// if inside -> computer has won a box
-					// we need to update the score and player turn.
 
-					// update score
-					DavidDotsBoxes.addScore(DavidDotsBoxes.whoseTurn());
-					// we dont have to change the turn -> since a box was created.
-				}
-				else --DavidDotsBoxes.turn; // if box was not created -> its the players turn.
 
 			}
 		}

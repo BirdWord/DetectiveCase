@@ -20,5 +20,5 @@ public class FoundLivingRoomKey implements Event {
 		CaveExplorer.inventory.setLivingRoomKey(true);
 		GameStartEvent.readSequence(story2);
 	}
-
+ 
 }

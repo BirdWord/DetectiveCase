@@ -39,10 +39,10 @@ public class KristyAI {
 		while(inLoop){
 			doubleCross();
 			if(doubleCrossed){
-				x = (int) (Math.random() * 7);  //change it to user input for number of rows and
-				y = (int) (Math.random() * 4);  //change it to user input for number of columns
+				x = (int) (Math.random() * (2*EventDavidAndKristy.row + 1));  //change it to user input for number of rows and
+				y = (int) (Math.random() * (EventDavidAndKristy.col + 1));  //change it to user input for number of columns
 
-				if(x % 2 == 0 && !DavidDotsBoxes.grid[x][y].equals("o--") && y != 3){ //change the 3 to user input
+				if(x % 2 == 0 && !DavidDotsBoxes.grid[x][y].equals("o--") && y != EventDavidAndKristy.col){ //change the 3 to user input
 					DavidDotsBoxes.grid[x][y] = "o--";
 					DavidDotsBoxes.printGrid();
 					inLoop = false;
@@ -56,11 +56,10 @@ public class KristyAI {
 			else{
 				checkBoxes();
 				if(!moreBoxes){
-					x = (int) (Math.random() * 7);  //change it to user input for number of rows and
-					y = (int) (Math.random() * 4);  //change it to user input for number of columns
-					System.out.println("x = " + x);
-					System.out.println("y = " + y);
-					if(x % 2 == 0 && !DavidDotsBoxes.grid[x][y].equals("o--") && y != 3){ //change the 3 to user input
+					x = (int) (Math.random() * (2*EventDavidAndKristy.row + 1));
+					y = (int) (Math.random() * (EventDavidAndKristy.col + 1));
+				
+					if(x % 2 == 0 && !DavidDotsBoxes.grid[x][y].equals("o--") && y != EventDavidAndKristy.col){ //change the 3 to user input
 						DavidDotsBoxes.grid[x][y] = "o--";
 						DavidDotsBoxes.printGrid();
 						inLoop = false;
@@ -85,28 +84,24 @@ public class KristyAI {
 							DavidDotsBoxes.grid[row + 2][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col + 1].equals(" ")){
 						DavidDotsBoxes.grid[row + 1][col + 1] = "|  ";
 						computerBox++;
-						//					System.out.println("a");
 						moreBoxes = true;
 					}
 					else if(DavidDotsBoxes.grid[row][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col].equals("|  ") &&
 							DavidDotsBoxes.grid[row + 1][col + 1].equals("|  ") && DavidDotsBoxes.grid[row + 2][col].equals("o  ")){
 						DavidDotsBoxes.grid[row + 2][col] = "o--";
 						computerBox++;
-						//					System.out.println("b");
 						moreBoxes = true;
 					}
 					else if(DavidDotsBoxes.grid[row][col].equals("|  ") && DavidDotsBoxes.grid[row + 1][col].equals("o--") &&
 							DavidDotsBoxes.grid[row][col + 1].equals("|  ") && DavidDotsBoxes.grid[row-1][col].equals("o  ")){
 						DavidDotsBoxes.grid[row - 1][col] = "o--";
 						computerBox++;
-						//					System.out.println("c");
 						moreBoxes = true;
 					}
 					else if(DavidDotsBoxes.grid[row][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col + 1].equals("|  ") &&
 							DavidDotsBoxes.grid[row + 2][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col].equals("   ")){
 						DavidDotsBoxes.grid[row + 1][col] = "|  ";
 						computerBox++;
-						//					System.out.println("d");
 						moreBoxes = true;
 					}
 					else{
@@ -114,7 +109,6 @@ public class KristyAI {
 						--DavidDotsBoxes.score[DavidDotsBoxes.whoseTurn()];
 						moreBoxes = false;
 					}
-					//				System.out.println(computerBox);
 				}
 
 			}
@@ -162,14 +156,5 @@ public class KristyAI {
 			}
 		}
 	}
-
-//	public static void sideChain(){ //breaks the side chain; if player makes vertical, computer make horizontal and vice versa
-//		for(int row = 0; row < grid.length - 1; row++){
-//			for(int col = 0; col < grid[0].length; col++){
-//
-//
-//				}
-//			}
-//	}
 
 }

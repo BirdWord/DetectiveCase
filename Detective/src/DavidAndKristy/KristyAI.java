@@ -8,7 +8,7 @@ public class KristyAI {
 	public static int computerBox;
 	public static boolean doubleCrossed;
 	public static boolean moreBoxes;
-
+ 
 	public static void main(String[] args){ 
 		//fix the counter; one turn can make up to 2 boxes
 	}

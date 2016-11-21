@@ -8,52 +8,45 @@ public class KristyAI {
 	public static int computerBox;
 	public static boolean doubleCrossed;
 	public static boolean moreBoxes;
+	public static boolean inLoop;
  
 	public static void main(String[] args){ 
-		//fix the counter; one turn can make up to 2 boxes
+		//fix the counter; and computer turn
 	}
  
 	public static void computerTurn(){
-		boolean inLoop = true;
-
+	//	boolean inLoop = true;
+		inLoop = true;
 		while(inLoop){
 			doubleCross();
 			if(doubleCrossed){
-				x = (int) (Math.random() * (2*EventDavidAndKristy.row + 1));  
-				y = (int) (Math.random() * (EventDavidAndKristy.col + 1));  
-
-				if(x % 2 == 0 && !DavidDotsBoxes.grid[x][y].equals("o--") && y != EventDavidAndKristy.col){ //change the 3 to user input
-					DavidDotsBoxes.grid[x][y] = "o--";
-					DavidDotsBoxes.printGrid();
-					inLoop = false;
-				}
-				else if(x % 2 == 1 && !DavidDotsBoxes.grid[x][y].equals("|  ")){
-					DavidDotsBoxes.grid[x][y] = "|  ";
-					DavidDotsBoxes.printGrid();
-					inLoop = false; 
-				}  
+				basicMove();
 			}
 			else{
 				checkBoxes();
 				if(!moreBoxes){
-					x = (int) (Math.random() * (2*EventDavidAndKristy.row + 1));
-					y = (int) (Math.random() * (EventDavidAndKristy.col + 1));
-				
-					if(x % 2 == 0 && !DavidDotsBoxes.grid[x][y].equals("o--") && y != EventDavidAndKristy.col){ //change the 3 to user input
-						DavidDotsBoxes.grid[x][y] = "o--";
-						DavidDotsBoxes.printGrid();
-						inLoop = false;
-					}
-					else if(x % 2 == 1 && !DavidDotsBoxes.grid[x][y].equals("|  ")){
-						DavidDotsBoxes.grid[x][y] = "|  ";
-						DavidDotsBoxes.printGrid();
-						inLoop = false;
-					}
+					basicMove();
 				}
 			}
 		}
 	}
-
+	
+	public static void basicMove(){
+		x = (int) (Math.random() * (2*EventDavidAndKristy.row + 1));
+		y = (int) (Math.random() * (EventDavidAndKristy.col + 1));
+	
+		if(x % 2 == 0 && !DavidDotsBoxes.grid[x][y].equals("o--") && y != EventDavidAndKristy.col){ //change the 3 to user input
+			DavidDotsBoxes.grid[x][y] = "o--";
+			DavidDotsBoxes.printGrid();
+			inLoop = false;
+		}
+		else if(x % 2 == 1 && !DavidDotsBoxes.grid[x][y].equals("|  ")){
+			DavidDotsBoxes.grid[x][y] = "|  ";
+			DavidDotsBoxes.printGrid();
+			inLoop = false;
+		}
+	}
+	
 	public static void checkBoxes(){
 		moreBoxes = true;
 		while(moreBoxes){

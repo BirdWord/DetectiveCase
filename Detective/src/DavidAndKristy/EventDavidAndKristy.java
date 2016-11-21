@@ -11,16 +11,37 @@ public class EventDavidAndKristy {
 	public static int computerBoxes;
 	
 	public static void main(String args[]){
-		System.out.println("You've reached the library. Welcome to Dots and Boxes!");
+		int row,col;
+		System.out.println("You've reached the kitchen. Welcome to Dots and Boxes!");
 		System.out.println("If you lose to the AI, you're life will end here.");
 		System.out.println("If you win, I'll let you out of this room \nand give you a hint. Good Luck! \n");
 		
 		System.out.println("How big do you want the grid to be?");
-		int input = in.nextInt();
-		setGrid(input, input);
-		printGrid();
+
+		// get row number and do error checking.
+		System.out.println("How many rows? (between 3 and 9)");
+		row = in.nextInt();
+		while(row < 3 || row > 9){
+			System.out.println("The row needs to be between 3 and 9.\nPick a new row number.");
+			row = in.nextInt();
+		}
+
+		// get column number and do error checking.
+		System.out.println("How many columns? (between 3 and 9)");
+		col = in.nextInt();
+		while(col < 3 || col > 9){
+			System.out.println("The row needs to be between 3 and 9.\nPick a new row number.");
+			col = in.nextInt();
+		}
+
+		// set the max score the players can get( row * col).
+		DavidDotsBoxes.setMaxScore(row,col);
+		// create the grid, by setting the rows and cols their correct values.
+		setGrid(row,col); // setter.
+		// print the grid
+		printGrid(); // printer.
 		
-		System.out.println("Player gets to go first.");
+		System.out.println("You go first.");
 		
 		playerBoxes = 0;
 		computerBoxes = 0;
@@ -28,8 +49,21 @@ public class EventDavidAndKristy {
 		boolean gameStart = true;
 		boolean playerTurn = true; 
 		
-		while(gameStart){
+		while(DavidDotsBoxes.isGameOver()){
+			// while game is not over, keep taking turns!
 
+			if(DavidDotsBoxes.isPlayerTurn()){ // check if its the players turn
+				// if inside -> its the players turn
+				DavidDotsBoxes.getLnInput(); // get the players coordinates and form the line
+			}
+			else{
+				// if inside -> its the computer's turn
+				KristyAI.computerTurn(); // computer takses turn
+				/*
+				*  Since computer turn doesn't check
+				*
+				* */
+			}
 		}
 		//need to system.print out at the end of player and computer turn the scores
 		

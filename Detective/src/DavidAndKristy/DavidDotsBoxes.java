@@ -371,6 +371,10 @@ public class DavidDotsBoxes {
 
 		printGrid(); // print the grid.
 	}
+	public static boolean isPlayerTurn(){
+		// will check if its the players turn.
+		return (whoseTurn() == 0);
+	}
 
 
 

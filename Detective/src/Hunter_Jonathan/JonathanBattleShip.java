@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class JonathanBattleShip {
 	
 	public static boolean win(){
-		int tries = 0;
 		int shotsHit = 0;
 		if(shotsHit == 3){
 			return true;
@@ -15,6 +14,7 @@ public class JonathanBattleShip {
 
 	public static void attack(int x2, int y2){
 		//EventHunterAndJonathan.AIboard1[x2][y2] = " X ";
+		//continue building
 	}
 	
 	public static boolean hit() {

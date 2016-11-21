@@ -17,12 +17,14 @@ public class EventHunterAndJonathan {
 		int[][] ships = new int[3][2];
 		int[] shot = new int[2];
 		int shotsHit = 0;
+		int tries = 0;
 		
 		System.out.println("Welcome to the game of Battleship.");
 		printBoard(board1);
 		placeShip();
 		while(!JonathanBattleShip.win()){
 			printBoard(board1);
+			tries++;
 			if(input.equals("ship")){
 				System.out.println("You have won the game.");
 			}
@@ -35,6 +37,8 @@ public class EventHunterAndJonathan {
 				shotsHit++;
 			}
 		}
+		System.out.println("You have won the game. It has taken you" + tries + "to beat the game.");
+		System.out.println("Here is your last clue.");
 	}
 
 	 private void placeShip() {

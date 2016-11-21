@@ -38,6 +38,11 @@ public class Kristy {
 					{
 						RayGUInWIN.printBoard(arr);
 						RayGUInWIN.determineWinner(arr,row,input);
+						if (RayGUInWIN.determineWinner(arr,i,roll).equals("x"))
+						{
+							CaveExplorer.print("You die!");
+							Caveexplorer.alive=false;
+						}
 						break;
 					}
 					
@@ -81,7 +86,12 @@ public class Kristy {
 						if (RayGUInWIN.determineIfWinner(arr, i, roll))
 						{
 							RayGUInWIN.printBoard(arr);
-							RayGUInWIN.determineWinner(arr,i,roll);
+							System.out.println(RayGUInWIN.determineWinner(arr,i,roll)+"won");
+							if (RayGUInWIN.determineWinner(arr,i,roll).equals("x"))
+							{
+								CaveExplorer.print("You die!");
+								Caveexplorer.alive=false;
+							}
 							break;
 						}
 						i =-1;
@@ -95,7 +105,6 @@ public class Kristy {
 //		}
 			//ji
 	}
-	
 	
 
 }

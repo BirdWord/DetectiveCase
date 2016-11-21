@@ -11,7 +11,7 @@ public class FoundLivingRoomKey implements Event {
 	private static final String[] story2 = {"As you reach down to grab the key, you hear hint footsteps.",
 											"You're tired and want to get this investigation over with, so you ignore them and trudge on"};
 	@Override
-	public void play() {
+	public void play() { 
 		GameStartEvent.readSequence(story1);
 		CaveExplorer.print("Do you care to pick up the key?");
 		while(CaveExplorer.in.nextLine().indexOf("yes") < 0){

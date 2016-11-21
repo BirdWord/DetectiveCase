@@ -95,7 +95,8 @@ public class KristyAI {
 		}
 	}
 
-	public static void doubleCross(){ //simplified version of double crossed strategy
+	//simplified version of double crossed strategy since this does not take into account the number and length of the chains
+	public static void doubleCross(){ 
 		boolean crossOnce = false;
 		for(int row = 0; row < DavidDotsBoxes.grid.length - 1; row++){
 			for(int col = 0; col < DavidDotsBoxes.grid[0].length; col++){

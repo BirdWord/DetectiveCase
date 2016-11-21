@@ -16,5 +16,4 @@ public class FoundBathRoomKey implements Event {
 		CaveExplorer.inventory.setBathroomKey(true);
 		GameStartEvent.readSequence(story2);
 	}
-
 }

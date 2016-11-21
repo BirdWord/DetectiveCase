@@ -3,6 +3,7 @@ package Hunter_Jonathan;
 import java.util.Scanner;
 
 public class JonathanBattleShip {
+	static int numberOfPlayerShips = 3;
 	
 	public static boolean win(){
 		int shotsHit = 0;

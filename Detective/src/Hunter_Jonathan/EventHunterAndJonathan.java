@@ -6,39 +6,43 @@ public class EventHunterAndJonathan {
 
 	//radars are odd
 	//ships are even
-	public static int[][] board1;
-	public static int[][] AIboard1;
-	private String map;
+	public static String[][] board1;
+	public static String[][] AIboard1;
 	
 	public EventHunterAndJonathan() {
 		Scanner input = new Scanner(System.in);
-		board1 = new int[6][6];
-		AIboard1 = new int[6][6];
-		int[][] ships = new int[3][2];
-		int[] shot = new int[2];
+		board1 = new String[6][6];
+		AIboard1 = new String[6][6];
 		int shotsHit = 0;
 		int tries = 0;
 		
 		System.out.println("Welcome to the game of Battleship.");
-		printBoard(board1);
+		//fix to make it print both boards
+		print(board1.length, board1[0].length);
 		placeShip();
-		while(!JonathanBattleShip.win()){
-			printBoard(board1);
-			tries++;
-			if(input.equals("ship")){
-				System.out.println("You have won the game.");
+		if(JonathanBattleShip.win() == false){
+			while(!JonathanBattleShip.win()){
+				print(board1.length, board1[0].length);
+				tries++;
+				if(input.equals("ship")){
+					System.out.println("You have won the game.");
+				}
+				System.out.println("Which row would you like to hit?");
+				int x = input.nextInt();
+				System.out.println("Which column would you like to hit?");
+				int y = input.nextInt();
+				JonathanBattleShip.attack(x,y);
+				if(JonathanBattleShip.hit() == true){
+					shotsHit++;
+				}
+				if(JonathanBattleShip.AIwin() == true){
+					System.out.println("You have lost the game. You are unable to solve the mystery and the murderer has gotten away.");
+				
+				}
 			}
-			System.out.println("Which row would you like to hit?");
-			int x = input.nextInt();
-			System.out.println("Which column would you like to hit?");
-			int y = input.nextInt();
-			JonathanBattleShip.attack(x,y);
-			if(JonathanBattleShip.hit() == true){
-				shotsHit++;
-			}
+			System.out.println("You have won the game. It has taken you" + tries + "to beat the game.");
+			System.out.println("Here is your last clue.");
 		}
-		System.out.println("You have won the game. It has taken you" + tries + "to beat the game.");
-		System.out.println("Here is your last clue.");
 	}
 
 	 private void placeShip() {
@@ -57,24 +61,27 @@ public class EventHunterAndJonathan {
 			//board1[x2][y2] = " O ";
 	}
 
-	public static void printBoard(int[][] board){
-	        System.out.println("\t1 \t2 \t3 \t4 \t5");
-	        System.out.println();
-	        
-	        for(int row=0 ; row < 5 ; row++ ){
-	            System.out.print((row+1)+"");
-	            for(int column=0 ; column < 5 ; column++ ){
-	                if(board[row][column]==-1){
-	                    System.out.print("\t"+"~");
-	                }else if(board[row][column]==0){
-	                    System.out.print("\t"+"*");
-	                }else if(board[row][column]==1){
-	                    System.out.print("\t"+"X");
-	                }
-	                
-	            }
-	            System.out.println();
-	        }
-
-	    }
+	 public static void print(int roomsX, int roomsY) {
+			for (int j = 0; j != roomsX; j++) {
+				System.out.print("____");
+			}
+			System.out.println();
+			
+			for (int i = 0; i != roomsY; i++) {
+				for (int j = 3; j > 0; j--) {
+					for (int k = 0; k != roomsX; k++) {
+						if (j == 1) {
+							System.out.print("|___");
+						} else {
+							if (j == 2) {
+								System.out.print("|   ");
+							} else {
+								System.out.print("|   ");
+							}
+						}
+					}
+					System.out.println("|");
+				}
+			}
+		}
 }

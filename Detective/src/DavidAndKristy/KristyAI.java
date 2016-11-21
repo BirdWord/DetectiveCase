@@ -41,7 +41,7 @@ public class KristyAI {
 		
 		while(inLoop){
 			doubleCross();
-			if(doubleCrossed){ //dont checkBoxes 
+			if(doubleCrossed){ 
 				x = (int) (Math.random() * 7);  //change it to user input for number of rows and 
 				y = (int) (Math.random() * 4);  //change it to user input for number of columns
 				
@@ -121,7 +121,7 @@ public class KristyAI {
 		}
 	}
 	
-	public static void doubleCross(){ //also implment if make 2 boxes just make 1 instead
+	public static void doubleCross(){ //simplified version of double crossed
 		boolean crossOnce = false;
 		for(int row = 0; row < grid.length - 1; row++){
 			for(int col = 0; col < grid[0].length; col++){

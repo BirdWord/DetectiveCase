@@ -92,7 +92,7 @@ public class KristyAI {
 							DavidDotsBoxes.grid[row + 1][col + 1].equals("|  ") && DavidDotsBoxes.grid[row + 2][col].equals("o  ")){
 						DavidDotsBoxes.grid[row + 2][col] = "o--";
 						computerBox++;
-	//					System.out.println("b");
+	//					System.out.println("b"); 
 						moreBoxes = true;
 					}
 					else if(DavidDotsBoxes.grid[row][col].equals("|  ") && DavidDotsBoxes.grid[row + 1][col].equals("o--") && 

@@ -6,20 +6,34 @@ public class DavidDotsBoxes {
 
 	public static Scanner in = new Scanner(System.in);
 	public static int inputInt;
-	public static String[][] grid;
+	public static String[][] grid = EventDavidAndKristy.grid; // save the reference from the main grid.
 	public static int[] point1 = {0,0};
 	public static int[] point2 = {0,0};
+	public static int[] score = {0,0}; // to keep track of the current score.
+	public static int maxScore = 0;
+	public static int turn = 0; // keep track of whose turn it is.
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Enter number of rows between 3 and 9.");
 		int row = in.nextInt();
 		System.out.println("Enter number of columns between 3 and 9.");
 		int col = in.nextInt();
+		setMaxScore(row,col);
 		setGrid(row,col); // setter.
 		printGrid(); // printer.
 		for(int i = 0; i < 4; ++i){
 			getLnInput();
 		}
+		System.out.println(hasWonBox(point1,point2));
+	}
+	public static void setMaxScore(int row, int col){
+		maxScore = row * col;
+	}
+	public static int getTotalScore(){
+		return (getCScore() * getPScore());
+	}
+	public static boolean isGameOver(){
+		return (getTotalScore() == maxScore); // check if all boxes have been formed.
 	}
 	public static void setGrid(int row, int col){
 		// to connect two points, we'll use 'o--' instead of 'o', IF horizontal.
@@ -56,6 +70,18 @@ public class DavidDotsBoxes {
 			}
 			System.out.println(""); // every row needs a new line.
 		}
+	}
+	public static int whoseTurn(){
+		return turn;
+	}
+	public static int getPScore(){
+		return score[0];
+	}
+	public static int getCScore(){
+		return score[1];
+	}
+	public static void addScore(int player){
+		++score[player];
 	}
 	public static int getY(int[] coord){
 		// getter for Y Coordinate.
@@ -158,7 +184,7 @@ public class DavidDotsBoxes {
 		* */
 
 		// allocate memory for variables.
-		System.out.println(end[1]);
+		//System.out.println(end[1]);
 		int[] copy;
 		int diff = 0;
 		String token;
@@ -209,6 +235,90 @@ public class DavidDotsBoxes {
 		return 0; // default case -> line cannot be formed.
 		
 	}
+	public static int[] formPoint(int x, int y){
+		return (new int[] {x,y});
+	}
+	public static boolean hasWonBox(int[] start, int[] end){
+		/*
+		*  We need to check whether a box has been formed.
+		*  This function will return true if a box could be formed with the new line.
+		*  This function will return false if a box cannot be formed with the new line.
+		*
+		*  To do this we'll->
+		*  -- Check what kind of line it is.
+		*  -- Check it's surroundings, and see if there are lines there already.
+		*  -- If a line exists there, will keep checking until either a line doesn't exist, or a full box has been formed.
+		*  -- Else -> return false, no box could be formed.
+		* */
+		int type = getLnType(start, end); // line type.
+		int[] tmp;
+		int[] min = {0,0};
+		int[] max = {0,0};
+		int diff = 0;
+		// horizontal line
+		if(type == 2){
+			// vertical line
+			tmp = (getY(start) < getY(end)) ? end : start; // get greater yCoord.
+			setXY(max, getX(tmp), getY(tmp));
+			tmp = (getY(max) == getY(start)) ? end : start;
+			setXY(min, getX(tmp), getY(tmp));
+
+			if(getX(min) != 0 && hasLn(formPoint(getX(min) - 1,getY(min)), formPoint(getX(min),getY(min)))){
+				/*
+				*  if inside -> horizontal line on the left exists.
+				*  we'll set the variable diff to one
+				*  -- we do this to check the left side of the line
+				* */
+
+				++diff;
+				//if(hasLn(formPoint(getX(min) - diff,getY(min)), formPoint(getX(min) - diff,getY(max))) && hasLn(formPoint(getX(max) - diff,getY(max)), formPoint(getX(max),getY(max))));
+			}
+			else if(getX(min) != grid[0].length && hasLn(formPoint(getX(min) + 1,getY(min)), formPoint(getX(min),getY(min)))){
+				/*
+				*  if inside -> horizontal line exists on the right.
+				*  we'll set the variable diff to -1.
+				*  -- we'll do this to check lines on the right side (subtract -1 will add 1).
+				* */
+				--diff;
+			}
+			return (hasLn(formPoint(getX(min) - diff,getY(min)), formPoint(getX(min) - diff,getY(max))) && hasLn(formPoint(getX(max) - diff,getY(max)), formPoint(getX(max),getY(max))));
+
+
+		}
+		else{
+			// horizontal line
+			tmp = (getX(start) < getX(end)) ? start : end; // get left-most coordinate.
+			setXY(min,getX(tmp),getY(tmp));
+			tmp = (getX(min) == getX(start)) ? end : start;
+			setXY(max, getX(tmp), getY(tmp));
+
+			if(getY(min) != 0 && hasLn(formPoint(getX(min),getY(min)), formPoint(getX(min),getY(min) - 1))){
+				/*
+				*  if inside -> vertical line exists on the left side of the new line to the top.
+				*  we'll set the variable diff to one
+				*  -- we do this to check the left side of the line
+				* */
+
+				++diff;
+				//if(hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(max),getY(max) - 1)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - 1)));
+			}
+			else if(getY(min) != (grid.length / 2) && hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(min),getY(min)))){
+				/*
+				*  if inside -> vertical line exists on the left side of the new line to the bottom.
+				*  we'll set the variable diff to -1.
+				*  -- we'll do this to check lines on the right side (subtract -1 will add 1).
+				* */
+				--diff;
+				//if(hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(max),getY(max) - 1)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - 1)));
+			}
+			return (hasLn(formPoint(getX(min),getY(min) - diff), formPoint(getX(max),getY(max) - diff)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - diff)));
+
+
+		}
+
+
+
+	}
 	public static void setLn(int type, int[] p1, int[] p2){
 		switch(type){
 			case 0: System.out.println("------A line could not be formed---------\nThe dots are not next to each other!");
@@ -241,8 +351,31 @@ public class DavidDotsBoxes {
 		if(arePointsEq(point1,point2)) System.out.println("--------A line could not be formed---------\nThe coordinates of the dots MUST be different!");
 		// if test passed -> find out the type of line and set the grid to its new values.
 		else if(hasLn(point1,point2)) System.out.println("--------A line could not be formed---------\nA line already exists there!");
-		else setLn(getLnType(point1,point2),point1, point2);
+		else{
+			// if inside -> all coordinates should  be correct and valid.
+			// so set the line
+			setLn(getLnType(point1,point2),point1, point2);
+
+			// after setting the line, check if a box can be formed.
+			if(hasWonBox(point1,point2)){
+				// if inside -> a box has been formed.
+				// update the score of whoever's turn it is
+				addScore(whoseTurn());
+
+				// check if game is over.
+				if(isGameOver()){
+					System.out.println("Game has won\nThe winner is player " + whoseTurn());
+				}
+				// since the player won, we dont need to change the turn counter.
+			}
+			else ++turn; // if box wasnt formed, its the computers turn.
+		}
+
 		printGrid(); // print the grid.
+	}
+	public static boolean isPlayerTurn(){
+		// will check if its the players turn.
+		return (whoseTurn() == 0);
 	}
 
 

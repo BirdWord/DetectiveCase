@@ -15,10 +15,6 @@ public class GameStartEvent implements Event {
 										"Therefore, there may be some 'surprises' while you are inside.",
 										"Otherwise, you may start your investigation now."
 										};
-	public GameStartEvent() {
-		
-	}
-
 	@Override
 	public void play() {
 		readSequence(story1);

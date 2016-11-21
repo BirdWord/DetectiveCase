@@ -118,10 +118,10 @@ public class KristyAI {
 				}
 				
 			}
-		}
+		} 
 	}
 	
-	public static void doubleCross(){ //simplified version of double crossed
+	public static void doubleCross(){ //simplified version of double crossed strategy
 		boolean crossOnce = false;
 		for(int row = 0; row < DavidDotsBoxes.grid.length - 1; row++){
 			for(int col = 0; col < DavidDotsBoxes.grid[0].length; col++){

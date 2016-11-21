@@ -136,8 +136,6 @@ public class DavidDotsBoxes {
 	}
 	public static boolean isValidX(int xCoord){
 		// check if it's in bound.
-		System.out.println("error " + xCoord);
-		System.out.println("error" + grid[0]);
 		return(xCoord >= 0 && xCoord < grid[0].length);
 	}
 	public static boolean isValidY(int yCoord){
@@ -283,6 +281,8 @@ public class DavidDotsBoxes {
 				* */
 				--diff;
 			}
+			else return false;
+
 			return (hasLn(formPoint(getX(min) - diff,getY(min)), formPoint(getX(min) - diff,getY(max))) && hasLn(formPoint(getX(max) - diff,getY(max)), formPoint(getX(max),getY(max))));
 
 
@@ -313,6 +313,7 @@ public class DavidDotsBoxes {
 				--diff;
 				//if(hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(max),getY(max) - 1)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - 1)));
 			}
+			else return false;
 			return (hasLn(formPoint(getX(min),getY(min) - diff), formPoint(getX(max),getY(max) - diff)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - diff)));
 
 
@@ -360,6 +361,7 @@ public class DavidDotsBoxes {
 
 			// after setting the line, check if a box can be formed.
 			if(hasWonBox(point1,point2)){
+				System.out.println("box was created.....");
 				// if inside -> a box has been formed.
 				// update the score of whoever's turn it is
 				addScore(whoseTurn());
@@ -371,6 +373,7 @@ public class DavidDotsBoxes {
 				// since the player won, we dont need to change the turn counter.
 			}
 			else ++turn; // if box wasnt formed, its the computers turn.
+			System.out.println("turn after : "+ turn);
 		}
 
 		printGrid(); // print the DavidDotsBoxesgrid.

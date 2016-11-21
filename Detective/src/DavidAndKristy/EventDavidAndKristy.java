@@ -63,6 +63,7 @@ public class EventDavidAndKristy {
 			else{
 				// if inside -> its the computer's turn
 				KristyAI.computerTurn(); // computer takses turn
+				--DavidDotsBoxes.turn; // go back to players turn.
 				/*
 				* The AI will ensure that the coordinates are valid and correct.
 				*

@@ -60,10 +60,21 @@ public class EventDavidAndKristy {
 				// if inside -> its the computer's turn
 				KristyAI.computerTurn(); // computer takses turn
 				/*
-
-				*  Since computer turn doesn't check
+				* The AI will ensure that the coordinates are valid and correct.
 				*
+				* But the AI does not check if it has formed a box and can go again.
+				* So we have to do that in here.
 				* */
+				if(DavidDotsBoxes.hasWonBox()){
+					// if inside -> computer has won a box
+					// we need to update the score and player turn.
+
+					// update score
+					DavidDotsBoxes.addScore(DavidDotsBoxes.whoseTurn());
+					// we dont have to change the turn -> since a box was created.
+				}
+				else --DavidDotsBoxes.turn; // if box was not created -> its the players turn.
+
 			}
 		}
 		//need to system.print out at the end of player and computer turn the scores

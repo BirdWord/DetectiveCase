@@ -13,16 +13,21 @@ public class Kristy {
 			}
 		}
 		while(true){
+			while(CaveExplorer.alive){
 			RayGUInWIN.printBoard(arr);
-			System.out.println("Which column?");
+			System.out.println("Which column and if you type 888 then you win automatically?");
 //			int ing = Integer.parseInt(in.nextLine());
 			int input = getIntegerInput();
 //			int inp =getIntegerInput();
 //			int input = inp;
 			
 			
-			
-			
+			if (input == 888)
+			{
+				CaveExplorer.print("you win!");
+				break;
+			}
+			else
 			if(input <= arr[0].length-1 && input > -1){
 				int row = arr.length-1;
 				while(arr[row][input].equals("o")||arr[row][input].equals("x")){

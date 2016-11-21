@@ -6,7 +6,7 @@ public class DavidDotsBoxes {
 
 	public static Scanner in = new Scanner(System.in);
 	public static int inputInt;
-	public static String[][] grid;
+	public static String[][] grid = EventDavidAndKristy.grid; // save the reference from the main grid.
 	public static int[] point1 = {0,0};
 	public static int[] point2 = {0,0};
 	public static int[] score = {0,0}; // to keep track of the current score.

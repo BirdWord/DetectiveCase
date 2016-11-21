@@ -10,7 +10,7 @@ public class KristyAI {
 	public static boolean sideChain;
 	public static boolean moreBoxes;
 	public static Scanner in = new Scanner(System.in);
-	public static String[][] grid;
+	public static String[][] grid = EventDavidAndKristy.grid; // save reference from the main grid.
 	
 	public static void main(String[] args){ //wont make a box if it need a vertical line in the last column 
 		setGrid(3,3);

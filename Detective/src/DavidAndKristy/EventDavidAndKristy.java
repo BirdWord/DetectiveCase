@@ -60,6 +60,7 @@ public class EventDavidAndKristy {
 				// if inside -> its the computer's turn
 				KristyAI.computerTurn(); // computer takses turn
 				/*
+
 				*  Since computer turn doesn't check
 				*
 				* */

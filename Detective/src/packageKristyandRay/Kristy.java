@@ -50,6 +50,7 @@ public class Kristy {
 						i =-1;
 					
 					}
+				}
 				
 	}
 

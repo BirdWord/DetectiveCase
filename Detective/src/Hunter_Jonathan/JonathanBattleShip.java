@@ -36,4 +36,12 @@ public class JonathanBattleShip {
 		}
 		return false;
 	}
+
+	public static boolean AIwin() {
+		//make it so that it tells how many ships player has left
+		if(numberOfPlayerShips != 0){
+			return true;
+		}
+		return false;
+	}
 }

@@ -25,7 +25,7 @@ public class KristyAI {
 //		grid[5][2] = "|  ";
 		
 		grid[1][0] = "|  ";
-		grid[0][0] = "o--";
+	//	grid[0][0] = "o--";
 		grid[1][1] = "|  ";
 		grid[3][0] = "|  ";
 		grid[3][1] = "|  ";
@@ -44,8 +44,7 @@ public class KristyAI {
 			if(doubleCrossed){ //dont checkBoxes 
 				x = (int) (Math.random() * 7);  //change it to user input for number of rows and 
 				y = (int) (Math.random() * 4);  //change it to user input for number of columns
-				System.out.println("x = " + x);
-				System.out.println("y = " + y);
+				
 				if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
 					grid[x][y] = "o--";
 					printGrid();
@@ -122,20 +121,37 @@ public class KristyAI {
 		}
 	}
 	
-	public static void doubleCross(){
+	public static void doubleCross(){ //also implment if make 2 boxes just make 1 instead
 		boolean crossOnce = false;
 		for(int row = 0; row < grid.length - 1; row++){
 			for(int col = 0; col < grid[0].length; col++){
-				if(!crossOnce && grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 1][col + 1].equals("|  ") &&
+				if(!crossOnce && grid[row][col].equals("o  ") && grid[row + 1][col].equals("|  ") && grid[row + 1][col + 1].equals("|  ") &&
 						grid[row + 3][col].equals("|  ") && grid[row + 3][col + 1].equals("|  ") && grid[row + 4][col].equals("o--") &&
 						grid[row + 2][col].equals("o  ")){
+					grid[row][col] = "o--";
 					doubleCrossed = true;
 					crossOnce = true;
 						
 				}
-				else if(!crossOnce && grid[row][col].equals("o--") && grid[row][col + 1].equals("o--") && grid[row + 1][col + 1].equals("|  ") &&
-						grid[row + 1][col + 3].equals("|  ") && grid[row + 2][col].equals("0--") && grid[row + 2][col + 1].equals("o--") &&
-						grid[row + 1][col + 1].equals("   ")){
+				else if(!crossOnce && grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 1][col + 1].equals("|  ") &&
+						grid[row + 3][col].equals("|  ") && grid[row + 3][col + 1].equals("|  ") && grid[row + 4][col].equals("o  ") &&
+						grid[row + 2][col].equals("o  ")){
+					grid[row + 4][col] = "o--";
+					doubleCrossed = true;
+					crossOnce = true;
+						
+				}
+				else if(!crossOnce && grid[row][col].equals("o--") && grid[row][col + 1].equals("o--") && grid[row + 1][col + 1].equals("   ") &&
+						grid[row + 1][col + 2].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 2][col + 1].equals("o--") &&
+						grid[row + 1][col].equals("   ")){
+					grid[row + 1][col] = "|   ";
+					doubleCrossed = true;
+					crossOnce = true;
+				}
+				else if(!crossOnce && grid[row][col].equals("o--") && grid[row][col + 1].equals("o--") && grid[row + 1][col + 1].equals("   ") &&
+						grid[row + 1][col + 2].equals("   ") && grid[row + 2][col].equals("o--") && grid[row + 2][col + 1].equals("o--") &&
+						grid[row + 1][col].equals("|  ")){
+					grid[row + 1][col + 2] = "|  ";
 					doubleCrossed = true;
 					crossOnce = true;
 				}

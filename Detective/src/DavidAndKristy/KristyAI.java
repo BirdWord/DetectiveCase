@@ -28,7 +28,7 @@ public class KristyAI {
 				if(!moreBoxes){
 					basicMove();
 				}
-			}
+			} 
 		}
 	}
 	

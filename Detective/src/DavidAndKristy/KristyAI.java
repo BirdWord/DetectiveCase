@@ -31,7 +31,7 @@ public class KristyAI {
 					DavidDotsBoxes.grid[x][y] = "|  ";
 					DavidDotsBoxes.printGrid();
 					inLoop = false;
-				}
+				}  
 			}
 			else{
 				checkBoxes();

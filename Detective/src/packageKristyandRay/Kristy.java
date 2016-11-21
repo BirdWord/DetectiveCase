@@ -1,7 +1,5 @@
 package packageKristyandRay;
 
-import java.lang.reflect.Array;
-
 import caveExplorer.CaveExplorer;
 //import java.util.Scanner;
 
@@ -18,12 +16,16 @@ public class Kristy {
 			RayGUInWIN.printBoard(arr);
 			System.out.println("Which column?");
 //			int ing = Integer.parseInt(in.nextLine());
-//			String ing = CaveExplorer.in.nextLine();
-			int input =getIntegerInput();
+			int input = getIntegerInput();
+//			int inp =getIntegerInput();
+//			int input = inp;
+			
+			
+			
 			
 			if(input <= arr[0].length-1 && input > -1){
 				int row = arr.length-1;
-				while(arr[row][input].equals("o")){
+				while(arr[row][input].equals("o")||arr[row][input].equals("x")){
 					row--;
 					if(row < 0){
 						System.out.println("This column is full.");
@@ -32,11 +34,13 @@ public class Kristy {
 				}
 				if(row > -1){
 					arr[row][input] = "o";
-					if(RayGUInWIN.determineIfWinner(arr,row,input))
+					if (RayGUInWIN.determineIfWinner(arr, row, input))
 					{
+						RayGUInWIN.printBoard(arr);
 						RayGUInWIN.determineWinner(arr,row,input);
 						break;
 					}
+					
 					aiTurn(arr);//hi
 					
 					
@@ -74,12 +78,13 @@ public class Kristy {
 					if (arr[i][roll].equals(" "))
 					{
 						arr[i][roll]="x";
-						i =-1;
-						if(RayGUInWIN.determineIfWinner(arr,i,roll))
+						if (RayGUInWIN.determineIfWinner(arr, i, roll))
 						{
+							RayGUInWIN.printBoard(arr);
 							RayGUInWIN.determineWinner(arr,i,roll);
 							break;
 						}
+						i =-1;
 					
 					}
 				

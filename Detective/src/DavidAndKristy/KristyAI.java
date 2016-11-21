@@ -10,27 +10,7 @@ public class KristyAI {
 	public static boolean moreBoxes;
 
 	public static void main(String[] args){ 
-
-//		grid[0][0] = "o--";
-//		grid[1][1] = "|  ";
-//		grid[2][0] = "o--";
-//		grid[4][2] = "o--";
-//		grid[3][3] = "|  ";
-//		grid[3][2] = "|  ";
-//		grid[4][1] = "o--";
-//		grid[5][1] = "|  ";
-//		grid[5][2] = "|  ";
-
-//		grid[1][0] = "|  ";
-//		grid[0][0] = "o--";
-//		grid[1][1] = "|  ";
-//		grid[3][0] = "|  ";
-//		grid[3][1] = "|  ";
-//		grid[4][0] = "o--";
-
-
-//		DavidDotsBoxes.printGrid();
-//		computerTurn();
+		//fix the counter; one turn can make up to 2 boxes
 	}
 
 	public static void computerTurn(){

@@ -304,7 +304,7 @@ public class DavidDotsBoxes {
 				++diff;
 				//if(hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(max),getY(max) - 1)) && hasLn(formPoint(getX(max),getY(max)), formPoint(getX(max),getY(max) - 1)));
 			}
-			else if(getY(min) != (grid.length / 2) && hasLn(formPoint(getX(min),getY(min) - 1), formPoint(getX(min),getY(min)))){
+			else if(getY(min) != (grid.length / 2) && hasLn(formPoint(getX(min),getY(min) + 1), formPoint(getX(min),getY(min)))){
 				/*
 				*  if inside -> vertical line exists on the left side of the new line to the bottom.
 				*  we'll set the variable diff to -1.
@@ -373,7 +373,6 @@ public class DavidDotsBoxes {
 				// since the player won, we dont need to change the turn counter.
 			}
 			else ++turn; // if box wasnt formed, its the computers turn.
-			System.out.println("turn after : "+ turn);
 		}
 
 		printGrid(); // print the DavidDotsBoxesgrid.

@@ -9,22 +9,22 @@ public class KristyAI {
 	public static boolean doubleCrossed;
 	public static boolean moreBoxes;
 	public static Scanner in = new Scanner(System.in);
-	public static String[][] grid = EventDavidAndKristy.grid; // save reference from the main grid.
+	public static String[][] grid = EventDavidAndKristy.DavidDotsBoxesgrid; // save reference from the main DavidDotsBoxesgrid.
 	
 	public static void main(String[] args){ //wont make a box if it need a vertical line in the last column 
 		setGrid(3,3);
-//		grid[0][0] = "o--";	
-//		grid[1][1] = "|  ";
-//		grid[2][0] = "o--";
-//		grid[4][2] = "o--";
-//		grid[3][3] = "|  ";
-//		grid[3][2] = "|  ";
-//		grid[4][1] = "o--";
-//		grid[5][1] = "|  ";
-//		grid[5][2] = "|  ";
+//		DavidDotsBoxesgrid[0][0] = "o--";
+//		DavidDotsBoxesgrid[1][1] = "|  ";
+//		DavidDotsBoxesgrid[2][0] = "o--";
+//		DavidDotsBoxesgrid[4][2] = "o--";
+//		DavidDotsBoxesgrid[3][3] = "|  ";
+//		DavidDotsBoxesgrid[3][2] = "|  ";
+//		DavidDotsBoxesgrid[4][1] = "o--";
+//		DavidDotsBoxesgrid[5][1] = "|  ";
+//		DavidDotsBoxesgrid[5][2] = "|  ";
 		
 		grid[1][0] = "|  ";
-	//	grid[0][0] = "o--";
+	//	DavidDotsBoxesgrid[0][0] = "o--";
 		grid[1][1] = "|  ";
 		grid[3][0] = "|  ";
 		grid[3][1] = "|  ";
@@ -80,7 +80,7 @@ public class KristyAI {
 	public static void checkBoxes(){
 		moreBoxes = true;
 		while(moreBoxes){
-			for(int row = 0; row < grid.length -1; row++){ // it wont check the last row of the grid because there is no more rows under it
+			for(int row = 0; row < grid.length -1; row++){ // it wont check the last row of the DavidDotsBoxesgrid because there is no more rows under it
 				for(int col = 0; col < grid[0].length; col++){
 					DavidDotsBoxes.addScore(DavidDotsBoxes.whoseTurn()); // computer's score is updated.
 					if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 1][col + 1].equals(" ")){
@@ -158,8 +158,8 @@ public class KristyAI {
 	}
 	
 //	public static void sideChain(){ //breaks the side chain; if player makes vertical, computer make horizontal and vice versa
-//		for(int row = 0; row < grid.length - 1; row++){
-//			for(int col = 0; col < grid[0].length; col++){
+//		for(int row = 0; row < DavidDotsBoxesgrid.length - 1; row++){
+//			for(int col = 0; col < DavidDotsBoxesgrid[0].length; col++){
 //				
 //					
 //				}
@@ -193,7 +193,7 @@ public class KristyAI {
 		}
 	}
 	public static void printGrid(){
-		// procedure to print the grid array.
+		// procedure to print the DavidDotsBoxesgrid array.
 		for(int y = 0; y < grid.length; ++y){
 			for(int x = 0; x < grid[y].length; ++x){
 				System.out.print(grid[y][x]);

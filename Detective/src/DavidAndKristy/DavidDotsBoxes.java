@@ -6,7 +6,7 @@ public class DavidDotsBoxes {
 
 	public static Scanner in = new Scanner(System.in);
 	public static int inputInt;
-	public static String[][] grid = EventDavidAndKristy.grid; // save the reference from the main grid.
+	public static String[][] grid;
 	public static int[] point1 = {0,0};
 	public static int[] point2 = {0,0};
 	public static int[] score = {0,0}; // to keep track of the current score.
@@ -14,7 +14,7 @@ public class DavidDotsBoxes {
 	public static int turn = 0; // keep track of whose turn it is.
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Enter number of rows between 3 and 9.");
+		/*System.out.println("Enter number of rows between 3 and 9.");
 		int row = in.nextInt();
 		System.out.println("Enter number of columns between 3 and 9.");
 		int col = in.nextInt();
@@ -24,13 +24,13 @@ public class DavidDotsBoxes {
 		for(int i = 0; i < 4; ++i){
 			getLnInput();
 		}
-		System.out.println(hasWonBox(point1,point2));
+		System.out.println(hasWonBox(point1,point2));*/
 	}
 	public static void setMaxScore(int row, int col){
 		maxScore = row * col;
 	}
 	public static int getTotalScore(){
-		return (getCScore() * getPScore());
+		return (getCScore() + getPScore());
 	}
 	public static boolean isGameOver(){
 		return (getTotalScore() == maxScore); // check if all boxes have been formed.
@@ -61,7 +61,7 @@ public class DavidDotsBoxes {
 		}
 	}
 	public static void printGrid(){
-		// procedure to print the grid array.
+		// procedure to print the DavidDotsBoxesgrid array.
 		// first make some space.
 		System.out.println("\n\n\n");
 		for(int y = 0; y < grid.length; ++y){
@@ -136,6 +136,8 @@ public class DavidDotsBoxes {
 	}
 	public static boolean isValidX(int xCoord){
 		// check if it's in bound.
+		System.out.println("error " + xCoord);
+		System.out.println("error" + grid[0]);
 		return(xCoord >= 0 && xCoord < grid[0].length);
 	}
 	public static boolean isValidY(int yCoord){
@@ -179,7 +181,7 @@ public class DavidDotsBoxes {
 		*  -- get the coordinate that we need to convert
 		*  -- set the line ('---' or '|  ') so we can later compare.
 		*  -- convert the coordinate to its correct values.
-		*  -- check if a line is there -> compare the two strings(token and grid[xCoord][yCoord])
+		*  -- check if a line is there -> compare the two strings(token and DavidDotsBoxesgrid[xCoord][yCoord])
 		*  -- return the value.
 		* */
 
@@ -349,7 +351,7 @@ public class DavidDotsBoxes {
 
 		// are coordinates the same?
 		if(arePointsEq(point1,point2)) System.out.println("--------A line could not be formed---------\nThe coordinates of the dots MUST be different!");
-		// if test passed -> find out the type of line and set the grid to its new values.
+		// if test passed -> find out the type of line and set the DavidDotsBoxesgrid to its new values.
 		else if(hasLn(point1,point2)) System.out.println("--------A line could not be formed---------\nA line already exists there!");
 		else{
 			// if inside -> all coordinates should  be correct and valid.
@@ -371,7 +373,7 @@ public class DavidDotsBoxes {
 			else ++turn; // if box wasnt formed, its the computers turn.
 		}
 
-		printGrid(); // print the grid.
+		printGrid(); // print the DavidDotsBoxesgrid.
 	}
 	public static boolean isPlayerTurn(){
 		// will check if its the players turn.

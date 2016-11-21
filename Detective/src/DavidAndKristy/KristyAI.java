@@ -30,7 +30,7 @@ public class KristyAI {
 				else if(x % 2 == 1 && !DavidDotsBoxes.grid[x][y].equals("|  ")){
 					DavidDotsBoxes.grid[x][y] = "|  ";
 					DavidDotsBoxes.printGrid();
-					inLoop = false;
+					inLoop = false; 
 				}  
 			}
 			else{

@@ -3,17 +3,41 @@ package caveExplorer;
 public class Inventory {
 	private boolean hasMap;
 	private String map;
+	private boolean hasLivingRoomKey;
+	private boolean hasKitchenKey;
+	private boolean hasBathroomKey;
 	public Inventory(){
 		hasMap = false;
-		updateMap();
+		hasLivingRoomKey = false;
+		hasKitchenKey = false;
+		hasBathroomKey = false;
+	}
+	public void setLivingRoomKey(boolean b){
+		hasLivingRoomKey=true;
+	}
+	public void setKitchenKey(boolean b){
+		hasKitchenKey=true;
+	}
+	public void setBathroomKey(boolean b){
+		hasBathroomKey=true;
+	}
+	public boolean hasLivingRoomKey(){
+		return hasLivingRoomKey;
+	}
+	public boolean hasKitchenKey(){
+		return hasKitchenKey;
+	}
+	public boolean hasBathroomKey(){
+		return hasBathroomKey;
 	}
 	public boolean isHasMap() {
 		return hasMap;
 	}
 	public void setHasMap(boolean hasMap) {
 		this.hasMap = hasMap;
+		updateMap();
 	}
-	public String getDescription() {
+	public String getDescription(){
 		if(hasMap)
 			return map;
 		return "There is nothing in your inventory.";
@@ -31,6 +55,9 @@ public class Inventory {
 					if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isOpen()){
 						text += " ";
 					}
+					else if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isLocked()){
+						text += "е";
+					}
 					else{
 						text+="|";
 					}
@@ -43,6 +70,9 @@ public class Inventory {
 					else if(i == 2){
 						if(cr.getDoor(CaveRoom.SOUTH) != null && cr.getDoor(CaveRoom.SOUTH).isOpen()){
 							text+="   ";
+						}
+						else if(cr.getDoor(CaveRoom.SOUTH) != null && cr.getDoor(CaveRoom.SOUTH).isLocked()){
+							text += "еее";
 						}
 						else{
 							text+="___";

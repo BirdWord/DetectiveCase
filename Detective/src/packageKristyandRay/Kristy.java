@@ -12,17 +12,22 @@ public class Kristy {
 				arr[i][j] = " ";
 			}
 		}
-		while(true){
+		CaveExplorer.alive=true;
+		while(CaveExplorer.alive){
 			RayGUInWIN.printBoard(arr);
-			System.out.println("Which column?");
+			System.out.println("Which column and if you type 888 then you win automatically?");
 //			int ing = Integer.parseInt(in.nextLine());
 			int input = getIntegerInput();
 //			int inp =getIntegerInput();
 //			int input = inp;
 			
 			
-			
-			
+			if (input == 888)
+			{
+				CaveExplorer.print("you win!");
+				break;
+			}
+			else
 			if(input <= arr[0].length-1 && input > -1){
 				int row = arr.length-1;
 				while(arr[row][input].equals("o")||arr[row][input].equals("x")){
@@ -38,11 +43,14 @@ public class Kristy {
 					{
 						RayGUInWIN.printBoard(arr);
 						RayGUInWIN.determineWinner(arr,row,input);
-						if (RayGUInWIN.determineWinner(arr,i,roll).equals("x"))
+						if (RayGUInWIN.determineWinner(arr,row,input).equals("x"))
 						{
+							CaveExplorer.print("computer wins");
 							CaveExplorer.print("You die!");
-							Caveexplorer.alive=false;
+							CaveExplorer.alive=false;
 						}
+						else
+							CaveExplorer.print("you win");
 						break;
 					}
 					
@@ -86,12 +94,14 @@ public class Kristy {
 						if (RayGUInWIN.determineIfWinner(arr, i, roll))
 						{
 							RayGUInWIN.printBoard(arr);
-							System.out.println(RayGUInWIN.determineWinner(arr,i,roll)+"won");
 							if (RayGUInWIN.determineWinner(arr,i,roll).equals("x"))
 							{
-								CaveExplorer.print("You die!");
-								Caveexplorer.alive=false;
+								CaveExplorer.print("computer wins");
+								CaveExplorer.print("You die! ");
+								CaveExplorer.alive=false;
 							}
+							else
+								CaveExplorer.print("you wins");
 							break;
 						}
 						i =-1;

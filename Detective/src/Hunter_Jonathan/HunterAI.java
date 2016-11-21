@@ -16,6 +16,65 @@ public class HunterAI {
 		generateShips();
 	}
 
+	public static void aiTurn(){
+		boolean attacking = true;
+		while(attacking ){
+			int attkRow = (int)(Math.random() * EventHunterAndJonathan.AIboard1.length);
+			int attkCol = (int)(Math.random() * EventHunterAndJonathan.AIboard1[0].length);
+			for(int i = 0; i < EventHunterAndJonathan.AIboard1.length; i++){
+				for(int j = 0; j < EventHunterAndJonathan.AIboard1[0].length; j++){
+					if(EventHunterAndJonathan.AIboard1[i][j].equals("O")){
+						if(EventHunterAndJonathan.AIboard1[i][j-1].equals(" ")){
+							if(EventHunterAndJonathan.board2[i][j-1].equals(" O ")){
+								EventHunterAndJonathan.AIboard1[i][j-1] = "O";
+								attacking = false;
+							}else{
+								EventHunterAndJonathan.AIboard1[i][j-1] = "X";
+								attacking = false;
+							}
+						}
+						if(EventHunterAndJonathan.AIboard1[i+1][j].equals(" ")){
+							if(EventHunterAndJonathan.board2[i+1][j].equals(" O ")){
+								EventHunterAndJonathan.AIboard1[i+1][j] = "O";
+								attacking = false;
+							}else{
+								EventHunterAndJonathan.AIboard1[i+1][j] = "X";
+								attacking = false;
+							}
+						}
+						if(EventHunterAndJonathan.AIboard1[i][j+1].equals(" ")){
+							if(EventHunterAndJonathan.board2[i][j+1].equals(" O ")){
+								EventHunterAndJonathan.AIboard1[i][j+1] = "O";
+								attacking = false;
+							}else{
+								EventHunterAndJonathan.AIboard1[i][j+1] = "X";
+								attacking = false;
+							}
+						}
+						if(EventHunterAndJonathan.AIboard1[i-1][j].equals(" ")){
+							if(EventHunterAndJonathan.board2[i-1][j].equals(" O ")){
+								EventHunterAndJonathan.AIboard1[i-1][j] = "O";
+								attacking = false;
+							}else{
+								EventHunterAndJonathan.AIboard1[i-1][j] = "X";
+								attacking = false;
+							}
+						}
+					}
+				}
+			}
+			if(EventHunterAndJonathan.AIboard1[attkRow][attkCol].equals(" ")){
+				if(EventHunterAndJonathan.board2[attkRow][attkCol].equals(" O ")){
+					EventHunterAndJonathan.AIboard1[attkRow][attkCol] = "O";
+					attacking = false;
+				}else{
+					EventHunterAndJonathan.AIboard1[attkRow][attkCol] = "X";
+					attacking = false;
+				}
+			}
+		}
+	}
+
 	public static void generateShips() {
 		int ships = 4;
 		while (ships > 1){

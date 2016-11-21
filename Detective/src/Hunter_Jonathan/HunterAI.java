@@ -75,7 +75,7 @@ public class HunterAI {
 		}
 	}
 
-	public static void generateShips() {
+	public static void generateShips(){
 		int ships = 4;
 		while (ships > 1){
 			int shipRow = (int)(Math.random() * EventHunterAndJonathan.AIboard2.length);

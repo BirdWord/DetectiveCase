@@ -28,6 +28,7 @@ public class Kristy {
 				}
 				if(row > -1){
 					arr[row][input] = "o";
+					RayGUInWIN.determineWinner(arr,row,input);
 					aiTurn(arr);
 				}
 			}
@@ -39,20 +40,17 @@ public class Kristy {
 	{
 			double rand = Math.random();
 			int roll = (int)(arr[0].length*rand);
-			for (int i = arr.length-1; i<-1;i--)
-			{
-				if (arr[i][roll] == null)
+				System.out.println(roll);
+				for (int i = arr.length-1; i>-1;i--)
 				{
-					arr[i][roll]="x";
-					break;
-				}
+					
+					if (arr[i][roll].equals(" "))
+					{
+						arr[i][roll]="x";
+						i =-1;
+					
+					}
 				
-			}
-//		while(!arr[0][roll].equals(null)){
-//			
-//			arr[row][roll] = "x";
-//		}
-			//ji
 	}
 
 }

@@ -16,7 +16,7 @@ public class CaveExplorer {
 			}
 		}
 		inventory = new Inventory();
-		//caves[2][0] = new EventRoom("There is a nice police officer outside of a vast, abandonned mansion.", new GameStartEvent());
+		caves[2][0] = new EventRoom("There is a nice police officer outside of a vast, abandonned mansion.", new GameStartEvent());
 		int rand1 = generateNumber(1,4);
 		switch(rand1){
 		case 1: caves[0][1] = new EventRoom("   You picked up the red key from the ground.", new packageKristyandRay.FoundLivingRoomKey());break;

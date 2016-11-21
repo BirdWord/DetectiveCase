@@ -1,7 +1,7 @@
 package packageKristyandRay;
 
 public class RayGUInWIN {
-	private final static String PLAYER = "o";
+	private final static String PLAYER = "¤";
 	//DISPLAYING THE BOARD METHOD
 	public static void printBoard(String[][] arr){
 		//First, print out the columns in case someone is dumbfounded
@@ -35,9 +35,7 @@ public class RayGUInWIN {
 			System.out.print("|\n");
 		}
 	}
-	//CHECKING WINNER; THIS FUNCTION WILL check if there is a winner
-	//IF THERE IS NO WINNER, THIS WILL RETURN FALSE
-	//This method will take as parameter of the board array
+	//CHECKING WINNER; THIS FUNCTION WILL return the string of the winner
 	public static String determineWinner(String[][] arr, int row, int col){
 		if(determineIfWinner(arr, row, col)){
 			return arr[row][col];

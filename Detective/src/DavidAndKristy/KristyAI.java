@@ -7,7 +7,6 @@ public class KristyAI {
 	static int y;
 	public static int computerBox;
 	public static boolean doubleCrossed;
-	public static boolean sideChain;
 	public static boolean moreBoxes;
 	public static Scanner in = new Scanner(System.in);
 	public static String[][] grid = EventDavidAndKristy.grid; // save reference from the main grid.
@@ -41,20 +40,18 @@ public class KristyAI {
 		
 		while(inLoop){
 			doubleCross();
-			if(doubleCrossed){ //dont checkBoxes 
+			if(doubleCrossed){ 
 				x = (int) (Math.random() * 7);  //change it to user input for number of rows and 
 				y = (int) (Math.random() * 4);  //change it to user input for number of columns
 				
-				if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
+				if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){ //change the 3 to user input 
 					grid[x][y] = "o--";
-					printGrid(); 
-					//printGrid(); 
+					printGrid();  
 					inLoop = false;
 				}
 				else if(x % 2 == 1 && !grid[x][y].equals("|  ")){
 					grid[x][y] = "|  ";
 					printGrid();
-					//printGrid();
 					inLoop = false;
 				}
 			}
@@ -65,16 +62,14 @@ public class KristyAI {
 					y = (int) (Math.random() * 4);  //change it to user input for number of columns
 					System.out.println("x = " + x);
 					System.out.println("y = " + y);
-					if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
+					if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){ //change the 3 to user input
 						grid[x][y] = "o--";
 						printGrid();
-						//printGrid();
 						inLoop = false;
 					}
 					else if(x % 2 == 1 && !grid[x][y].equals("|  ")){
 						grid[x][y] = "|  ";
 						printGrid();
-						//printGrid();
 						inLoop = false;
 					}
 				}
@@ -87,6 +82,7 @@ public class KristyAI {
 		while(moreBoxes){
 			for(int row = 0; row < grid.length -1; row++){ // it wont check the last row of the grid because there is no more rows under it
 				for(int col = 0; col < grid[0].length; col++){
+					DavidDotsBoxes.addScore(DavidDotsBoxes.whoseTurn()); // computer's score is updated.
 					if(grid[row][col].equals("o--") && grid[row + 1][col].equals("|  ") && grid[row + 2][col].equals("o--") && grid[row + 1][col + 1].equals(" ")){
 						grid[row + 1][col + 1] = "|  ";
 						computerBox++;
@@ -112,6 +108,8 @@ public class KristyAI {
 						moreBoxes = true;
 					}
 					else{
+						// if it could form a box -> decrease the initial adder to the computer's score.
+						--DavidDotsBoxes.score[DavidDotsBoxes.whoseTurn()];
 						moreBoxes = false;
 					}
 	//				System.out.println(computerBox);
@@ -121,7 +119,7 @@ public class KristyAI {
 		}
 	}
 	
-	public static void doubleCross(){ //also implment if make 2 boxes just make 1 instead
+	public static void doubleCross(){ //simplified version of double crossed
 		boolean crossOnce = false;
 		for(int row = 0; row < grid.length - 1; row++){
 			for(int col = 0; col < grid[0].length; col++){

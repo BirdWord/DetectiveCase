@@ -53,7 +53,7 @@ public class EventDavidAndKristy {
 		boolean playerTurn = true; 
 		
 		while(!DavidDotsBoxes.isGameOver()){
-			System.out.println("in loop");
+			System.out.println("\n--------SCORE [Player: " + DavidDotsBoxes.getPScore() + ",AI: " + DavidDotsBoxes.getCScore() + "]----------");
 			// while game is not over, keep taking turns!
 
 			if(DavidDotsBoxes.isPlayerTurn()){ // check if its the players turn
@@ -63,7 +63,7 @@ public class EventDavidAndKristy {
 			else{
 				// if inside -> its the computer's turn
 				KristyAI.computerTurn(); // computer takses turn
-				--DavidDotsBoxes.turn; // go back to players turn.
+				DavidDotsBoxes.turn = 0; // go back to players turn.
 				/*
 				* The AI will ensure that the coordinates are valid and correct.
 				*

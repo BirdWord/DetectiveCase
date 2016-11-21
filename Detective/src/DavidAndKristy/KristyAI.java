@@ -133,7 +133,7 @@ public class KristyAI {
 						DavidDotsBoxes.grid[row + 4][col].equals("o  ") && DavidDotsBoxes.grid[row + 2][col].equals("o  ")){
 					DavidDotsBoxes.grid[row + 4][col] = "o--";
 					doubleCrossed = true;
-					crossOnce = true;
+					crossOnce = true; 
 				}
 				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 2 && DavidDotsBoxes.grid[row][col].equals("o--") && 
 						DavidDotsBoxes.grid[row][col + 1].equals("o--") && DavidDotsBoxes.grid[row + 1][col + 1].equals("   ") && 

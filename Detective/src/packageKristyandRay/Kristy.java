@@ -40,7 +40,7 @@ public class Kristy {
 				}
 				if(row > -1){
 					arr[row][input] = "D";
-					String[] lang= {"you never get here alive, MWAHAHAHAHA","you never win","you never find the murderer"};
+					String[] lang= {"you never get here alive, MWAHAHAHAHA","you will never win","you never find the murderer"};
 					double rand = Math.random();
 					int roll = (int)(lang.length*rand);
 					CaveExplorer.print(lang[roll]);
@@ -88,9 +88,10 @@ public class Kristy {
 	public static void aiTurn(String[][] arr, int row, int col)
 	{
 			int[] roli = {col-1,col,col+1};
-			double rand = Math.random();
-			int roll = (int)(roli.length*rand);
-			while(true)
+			int rand = (int)(Math.random()*3);
+			int roll = roli[rand];
+			boolean hi = true;
+			while(hi)
 			{
 				for (int i = arr.length-1; i>-1;i--)
 				{
@@ -112,6 +113,9 @@ public class Kristy {
 							break;
 						}
 						i =-1;
+						hi=false;
+						
+						
 					
 					}
 				

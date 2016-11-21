@@ -7,7 +7,6 @@ public class KristyAI {
 	static int y;
 	public static int computerBox;
 	public static boolean doubleCrossed;
-	public static boolean sideChain;
 	public static boolean moreBoxes;
 	public static Scanner in = new Scanner(System.in);
 	public static String[][] grid = EventDavidAndKristy.grid; // save reference from the main grid.
@@ -45,16 +44,14 @@ public class KristyAI {
 				x = (int) (Math.random() * 7);  //change it to user input for number of rows and 
 				y = (int) (Math.random() * 4);  //change it to user input for number of columns
 				
-				if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
+				if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){ //change the 3 to user input 
 					grid[x][y] = "o--";
-					printGrid(); 
-					//printGrid(); 
+					printGrid();  
 					inLoop = false;
 				}
 				else if(x % 2 == 1 && !grid[x][y].equals("|  ")){
 					grid[x][y] = "|  ";
 					printGrid();
-					//printGrid();
 					inLoop = false;
 				}
 			}
@@ -65,16 +62,14 @@ public class KristyAI {
 					y = (int) (Math.random() * 4);  //change it to user input for number of columns
 					System.out.println("x = " + x);
 					System.out.println("y = " + y);
-					if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
+					if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){ //change the 3 to user input
 						grid[x][y] = "o--";
 						printGrid();
-						//printGrid();
 						inLoop = false;
 					}
 					else if(x % 2 == 1 && !grid[x][y].equals("|  ")){
 						grid[x][y] = "|  ";
 						printGrid();
-						//printGrid();
 						inLoop = false;
 					}
 				}

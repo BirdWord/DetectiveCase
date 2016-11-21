@@ -9,7 +9,7 @@ public class FoundLivingRoomKey implements Event {
 											"I don't know; maybe there's a locked door somewhere where you can use the key?"
 											};
 	private static final String[] story2 = {"As you reach down to grab the key, you hear hint footsteps.",
-											"You're tired and want to get this investigation over with, so you ignore them and trudge on"};
+											"You're tired and want to get this investigation over with, so you ignore them and trudge on."};
 	@Override
 	public void play() { 
 		GameStartEvent.readSequence(story1);

@@ -7,6 +7,7 @@ public class CaveExplorer {
 	public static Scanner in = new Scanner(System.in);
 	public static CaveRoom currentRoom;
 	public static Inventory inventory;
+	public static Door[] lockedDoors = {new Door(true, false, "locked door", ""), new Door(true, false, "locked door", ""), new Door(true, false, "locked door", "")};
 	public static boolean alive;
 	public static void main(String args[]){
 		caves = new CaveRoom[5][10];
@@ -16,7 +17,7 @@ public class CaveExplorer {
 			}
 		}
 		inventory = new Inventory();
-		caves[2][0] = new EventRoom("There is a nice police officer outside of a vast, abandonned mansion.", new GameStartEvent());
+		//caves[2][0] = new EventRoom("There is a nice police officer outside of a vast, abandoned mansion.", new GameStartEvent());
 		int rand1 = generateNumber(1,4);
 		switch(rand1){
 		case 1: caves[0][1] = new EventRoom("   You picked up the red key from the ground.", new packageKristyandRay.FoundLivingRoomKey());break;
@@ -24,7 +25,13 @@ public class CaveExplorer {
 		case 3: caves[0][3] = new EventRoom("   You picked up the red key from the ground.", new packageKristyandRay.FoundLivingRoomKey());break;
 		case 4: caves[2][3] = new EventRoom("   You picked up the red key from the ground.", new packageKristyandRay.FoundLivingRoomKey());break;
 		}
-		
+		caves[1][5] = new EventRoom("   You picked up the blue key from the ground.", new DavidAndKristy.FoundKitchenKey());
+		int rand3 = generateNumber(1,2);
+		switch(rand3){
+		//insert events here when they're done
+		//case 1: caves[1][7] = new EventRoom("   You picked up the white key from the ground.",);break;
+		}
+		//when stuff is done hide more keys
 		implementConnections();
 		currentRoom = caves[2][0];
 		currentRoom.enter();
@@ -36,7 +43,8 @@ public class CaveExplorer {
 		while(alive){
 			if(inventory.hasLivingRoomKey()){
 				caves[4][3] = new EventRoom("   You stuck the red key into the keyhole and opened the door.", new packageKristyandRay.Connect4());
-				implementConnections();
+				caves[4][3].setConnection(CaveRoom.WEST, caves[4][2], new Door());
+				caves[4][3].setConnection(CaveRoom.EAST, caves[4][4], lockedDoors[0]);
 			}
 			print(currentRoom.getDescription());
 			print(inventory.getDescription());
@@ -49,7 +57,8 @@ public class CaveExplorer {
 		System.out.println(string);
 	}
 	public static void implementConnections(){
-		caves[0][0].setConnection(CaveRoom.SOUTH, caves[0][1], new Door());
+		Door lockedDoor = new Door(true, false, "locked door", "");
+		caves[0][0].setConnection(CaveRoom.SOUTH, caves[1][0], new Door());
 		caves[3][0].setConnection(CaveRoom.SOUTH, caves[3][1], new Door());
 		caves[2][0].setConnection(CaveRoom.EAST, caves[2][1], new Door());
 		caves[2][2].setConnection(CaveRoom.NORTH, caves[1][2], new Door());
@@ -63,7 +72,7 @@ public class CaveExplorer {
 			caves[1][i].setConnection(CaveRoom.EAST, caves[1][i+1], new Door());
 			caves[4][i].setConnection(CaveRoom.EAST, caves[4][i+1], new Door());
 		}
-		caves[4][3].setConnection(CaveRoom.EAST, caves[4][4], new Door(true, false, "locked door", ""));
+		caves[4][3].setConnection(CaveRoom.EAST, caves[4][4], lockedDoor);
 		caves[4][4].setConnection(CaveRoom.NORTH, caves[3][4], new Door());
 		caves[3][4].setConnection(CaveRoom.NORTH, caves[2][4], new Door());
 		caves[2][4].setConnection(CaveRoom.NORTH, caves[1][4], new Door());
@@ -78,7 +87,7 @@ public class CaveExplorer {
 		caves[4][5].setConnection(CaveRoom.NORTH, caves[3][5], new Door());
 		caves[3][5].setConnection(CaveRoom.NORTH, caves[2][5], new Door());
 		caves[2][5].setConnection(CaveRoom.NORTH, caves[1][5], new Door());
-		caves[0][6].setConnection(CaveRoom.EAST, caves[0][7], new Door(true, false, "locked door", ""));
+		caves[0][6].setConnection(CaveRoom.EAST, caves[0][7], lockedDoor);
 		caves[0][7].setConnection(CaveRoom.EAST, caves[0][8], new Door());
 		caves[0][8].setConnection(CaveRoom.EAST, caves[0][9], new Door());
 		caves[0][9].setConnection(CaveRoom.SOUTH, caves[1][9], new Door());
@@ -92,7 +101,9 @@ public class CaveExplorer {
 		caves[3][7].setConnection(CaveRoom.SOUTH, caves[4][7], new Door());
 		caves[4][7].setConnection(CaveRoom.EAST, caves[4][8], new Door());
 		caves[4][8].setConnection(CaveRoom.EAST, caves[4][9], new Door());
-		caves[4][9].setConnection(CaveRoom.NORTH, caves[3][9], new Door(true, false, "locked door", ""));
+		caves[4][9].setConnection(CaveRoom.NORTH, caves[3][9], lockedDoor);
+		caves[3][9] = new EventRoom("This is the final encounter...", new FinalRoom());
+		caves[3][9].setConnection(CaveRoom.SOUTH, caves[4][9], lockedDoor);
 	}
 	private static int generateNumber(int low, int high){
 		return (int)(Math.random()*(high-low+1))+low;

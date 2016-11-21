@@ -22,10 +22,10 @@ public class Connect4 implements caveExplorer.Event{
 		String[][] arr = new String[6][7];
 		Kristy.connect4(arr);
 		GameStartEvent.readSequence(storyPart2);
-		CaveExplorer.print("As you pick up the photo, you feel the door slam fiercely behind you.");
-		CaveExplorer.currentRoom.setConnection(CaveRoom.EAST, CaveExplorer.caves[4][4], new Door());
-		CaveExplorer.currentRoom.setConnection(CaveRoom.WEST, CaveExplorer.caves[4][2], new Door(true, false, "locked door", ""));
-		CaveExplorer.print("As you walk through the door, it slams shut behind you!");
+		CaveExplorer.print("As you insert the red key into the hole, it melds into the door and both silently vanish.");
+		CaveExplorer.lockedDoors[0].setLocked(false);
+		CaveExplorer.lockedDoors[0].setOpen(true);
+		CaveExplorer.inventory.setLivingRoomKey(false);
 	}
 		
 }

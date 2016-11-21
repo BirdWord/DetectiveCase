@@ -39,7 +39,6 @@ public class Door {
 		open = b;
 	}
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		return description;
 	}
 	public String getDetails() {

@@ -27,16 +27,26 @@ public class EventHunterAndJonathan {
 		System.out.println("Welcome to the game of Battleship.");
 		printBoard(board1);
 		System.out.println("Where would you like to place your first ship?");
-		int placement = input.nextInt();
+		int x = input.nextInt();
+		int y = input.nextInt();
+		placeShip(x,y);
 		System.out.println("Where would you like to place your second ship?");
-		getInput();
+		int x1 = input.nextInt();
+		int y1 = input.nextInt();
+		placeShip(x1,y1);
 		System.out.println("Where would you like to place your third ship?");
-		getInput();
+		int x2 = input.nextInt();
+		int y2 = input.nextInt();
+		placeShip(x2,y2);
 		
 		
 	}
 
-	 public static void printBoard(int[][] board){
+	 private void placeShip(int x, int y) {
+		
+	}
+
+	public static void printBoard(int[][] board){
 	        System.out.println("\t1 \t2 \t3 \t4 \t5");
 	        System.out.println();
 	        
@@ -56,12 +66,4 @@ public class EventHunterAndJonathan {
 	        }
 
 	    }
-	
-	public static void getInput(){
-		Scanner input = new Scanner(System.in);
-		String x = input.nextLine();
-		int input1 = Integer.parseInt(x);
-		String y = input.nextLine();
-		int input2 = Integer.parseInt(y);
-	}
 }

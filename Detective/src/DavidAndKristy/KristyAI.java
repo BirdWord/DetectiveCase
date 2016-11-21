@@ -12,6 +12,7 @@ public class KristyAI {
   
 	public static void main(String[] args){ 
 		//fix the counter; and computer turn
+		//give hint if win; cheat code; end game; lose game
 	}
  
 	public static void computerTurn(){

@@ -7,11 +7,11 @@ public class EventDavidAndKristy {
 	public static String[][] DavidDotsBoxesgrid;
 	public static int[] point1 = {0,0};
 	public static int[] point2 = {0,0};
+	public static int row,col;
 	public static int playerBoxes;
 	public static int computerBoxes;
 	
 	public static void main(String args[]){
-		int row,col;
 		System.out.println("You've reached the kitchen. Welcome to Dots and Boxes!");
 		System.out.println("If you lose to the AI, you're life will end here.");
 		System.out.println("If you win, I'll let you out of this room \nand give you a hint. Good Luck! \n");

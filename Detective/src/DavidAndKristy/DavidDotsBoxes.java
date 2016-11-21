@@ -464,10 +464,7 @@ public class DavidDotsBoxes {
 				// update the score of whoever's turn it is
 				addScore(whoseTurn());
 
-				// check if game is over.
-				if(isGameOver()){
-					System.out.println("Game has won\nThe winner is player " + whoseTurn());
-				}
+
 				// since the player won, we dont need to change the turn counter.
 			}
 			else ++turn; // if box wasnt formed, its the computers turn.

@@ -74,7 +74,16 @@ public class EventDavidAndKristy {
 
 			}
 		}
-		//need to system.print out at the end of player and computer turn the scores
+		System.out.println("----------Final score: [Player: " + DavidDotsBoxes.getPScore() + ",AI: " + DavidDotsBoxes.getCScore() + "]-----------");
+		// after loop -> game has ended.
+		// check who won.
+		if(DavidDotsBoxes.getCScore() > DavidDotsBoxes.getPScore()){
+			// if inside -> computer won
+			System.out.println("You have lost, you loser!...");
+		}
+		else{
+			System.out.println("Wooow... youre actually pretty good..\n<THE HINT>");
+		}
 		
 	}
 	

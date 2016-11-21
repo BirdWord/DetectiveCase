@@ -48,7 +48,7 @@ public class KristyAI {
 				if(x % 2 == 0 && !grid[x][y].equals("o--") && y != 3){
 					grid[x][y] = "o--";
 					printGrid(); 
-					//printGrid();
+					//printGrid(); 
 					inLoop = false;
 				}
 				else if(x % 2 == 1 && !grid[x][y].equals("|  ")){

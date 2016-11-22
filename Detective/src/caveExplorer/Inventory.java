@@ -56,7 +56,7 @@ public class Inventory {
 						text += " ";
 					}
 					else if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isLocked()){
-						text += "�";
+						text += "x";
 					}
 					else{
 						text+="|";
@@ -72,7 +72,7 @@ public class Inventory {
 							text+="   ";
 						}
 						else if(cr.getDoor(CaveRoom.SOUTH) != null && cr.getDoor(CaveRoom.SOUTH).isLocked()){
-							text += "���";
+							text += "xxx";
 						}
 						else{
 							text+="___";

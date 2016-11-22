@@ -6,11 +6,7 @@ import caveExplorer.CaveExplorer;
 
 public class EventDavidAndKristy implements caveExplorer.Event{
 	public static String[][] DavidDotsBoxesgrid;
-	public static int[] point1 = {0,0};
-	public static int[] point2 = {0,0};
 	public static int row,col;
-	public static int playerBoxes;
-	public static int computerBoxes;
 	
 	public void play(){ // mini game loop
 		System.out.println("\n\nYou've reached the kitchen.\n------------Welcome to Dots and Boxes!-----------");
@@ -21,7 +17,7 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 
 		// get row number and do error checking.
 		System.out.println("How many rows? (between 3 and 9)");
-		row = CaveExplorer.in.nextInt();
+		row = DavidDotsBoxes.getIntegerInput();
 		while(row < 3 || row > 9){
 			System.out.println("The row needs to be between 3 and 9.\nPick a new row number.");
 			row = CaveExplorer.in.nextInt();
@@ -29,7 +25,7 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 
 		// get column number and do error checking.
 		System.out.println("How many columns? (between 3 and 9)");
-		col = CaveExplorer.in.nextInt();
+		col = DavidDotsBoxes.getIntegerInput();
 		while(col < 3 || col > 9){
 			System.out.println("The row needs to be between 3 and 9.\nPick a new row number.");
 			col = CaveExplorer.in.nextInt();
@@ -43,10 +39,6 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 		printGrid(); // printer.
 		
 		System.out.println("\nYou go first.");
-
-
-		playerBoxes = 0;
-		computerBoxes = 0;
 		
 		while(!DavidDotsBoxes.isGameOver()){
 			System.out.println("\n--------SCORE [Player: " + DavidDotsBoxes.getPScore() + ",AI: " + DavidDotsBoxes.getCScore() + "]----------");
@@ -55,18 +47,18 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 			if(DavidDotsBoxes.isPlayerTurn()){ // check if its the players turn
 				// if inside -> its the players turn
 				DavidDotsBoxes.getLnInput(); // get the players coordinates and form the line
-				if(DavidDotsBoxes.getCheat()) break; // for cheat code.
+				if(DavidDotsBoxes.getCheat()){
+					DavidDotsBoxes.score[0] = DavidDotsBoxes.maxScore; // automatic winner.
+					break; // for cheat code.
+				}
 			}
 			else{
 				// if inside -> its the computer's turn
-				KristyAI.computerTurn(); // computer takses turn
+				KristyAI.computerTurn(); // computer takes turn
 				DavidDotsBoxes.score[1] = KristyAI.computerBox; // update score.
 				DavidDotsBoxes.turn = 0; // go back to players turn.
 				/*
 				* The AI will ensure that the coordinates are valid and correct.
-				*
-				* But the AI does not check if it has formed a box and can go again.
-				* So we have to do that CaveExplorerin here.
 				* */
 
 
@@ -78,7 +70,7 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 		if(DavidDotsBoxes.getCScore() > DavidDotsBoxes.getPScore()){
 			// if inside -> computer won
 			System.out.println("You have lost, you loser!...");
-			play(); // restart game.
+			CaveExplorer.alive = false;
 		}
 		else{
 			System.out.println("Wooow... youre actually pretty good..\n<THE HINT>");

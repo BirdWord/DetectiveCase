@@ -134,6 +134,23 @@ public class DavidDotsBoxes {
 		// check if it's CaveExplorerin bound.
 		return ((yCoord >= 0 && (yCoord <= grid.length/2)) || yCoord == 911);
 	}
+	public static int getIntegerInput() {
+		 //System.out.println("Input your column.");
+		 boolean isInteger = false;
+		 String integerString = CaveExplorer.in.nextLine();
+		 int value = 0;
+		 while(!isInteger){
+		 try{
+		 value = Integer.parseInt(integerString);
+		 //will not continue if an error above is thrown
+		 isInteger = true;//exits loop if entry is valid
+		 }catch(NumberFormatException e){
+		 System.out.println("Hurry up, put an integer or your sins will measure in hell.");
+		 integerString = CaveExplorer.in.nextLine();
+		 }
+		 }
+		 return value;
+	}
 	public static void getCoordinateInput(int[] point){
 		System.out.println("What is the X coordinate?");
 		/*try{
@@ -146,7 +163,7 @@ public class DavidDotsBoxes {
 			setX(point,CaveExplorerin.nextInt());
 		}*/
 
-		boolean isInteger = false;
+		/*boolean isInteger = false;
 		String integerString = CaveExplorer.in.nextLine();
 		int value = 0;
 		while(!isInteger){
@@ -158,15 +175,15 @@ public class DavidDotsBoxes {
 				System.out.println("Hurry up, put an integer.");
 				integerString = CaveExplorer.in.nextLine();
 			}
-		}
-		setX(point, value);
+		}*/
+		setX(point, getIntegerInput());
 		while(!isValidX(getX(point))){
 			System.out.println("Invalid X Coordinate. Please input a new X Coordinate.");
-			setX(point, CaveExplorer.in.nextInt());
+			setX(point, getIntegerInput());
 		}
 
 		System.out.println("What is the Y coordinate?");
-		isInteger = false;
+		/*isInteger = false;
 		integerString = CaveExplorer.in.nextLine();
 		value = 0;
 		while(!isInteger){
@@ -178,11 +195,11 @@ public class DavidDotsBoxes {
 				System.out.println("Hurry up, put an integer.");
 				integerString = CaveExplorer.in.nextLine();
 			}
-		}
-		setY(point, value);
+		}*/
+		setY(point, getIntegerInput());
 		while(!isValidY(getY(point))){
 			System.out.println("Invalid Y Coordinate. Please input a new Y Coordinate.");
-			setY(point, CaveExplorer.in.nextInt());
+			setY(point, getIntegerInput());
 		}
 		/*
 		System.out.println("What is the Y coordinate?");

@@ -84,7 +84,7 @@ public class Kristy {
 		 }
 		 }
 		 return value;
-		 }
+	}
 	public static void aiTurn(String[][] arr, int row, int col)
 	{
 		int[] roli = {col-1,col,col+1};

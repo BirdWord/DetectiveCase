@@ -22,7 +22,7 @@ public class KristyAI {
 		while(inLoop){
 			doubleCross();
 			if(!doubleCrossed){
-				checkBoxes(); // look here.
+				checkBoxes(); // LOOOK HERE.
 				if(!moreBoxes){
 					basicMove();
 				}

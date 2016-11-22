@@ -6,7 +6,7 @@ import caveExplorer.CaveExplorer;
 public class Kristy {
 
 	public static void connect4(String[][] arr){
-//		CaveExplorerin = new Scanner(System.CaveExplorerin);
+//		in = new Scanner(System.in);
 		for(int i = 0; i<arr.length; i++){
 			for(int j = 0; j<arr[0].length; j++){
 				arr[i][j] = " ";
@@ -17,7 +17,7 @@ public class Kristy {
 			RayGUInWIN.printBoard(arr);
 			CaveExplorer.print("Hurry pick a column, you will lose anyways!");
 			CaveExplorer.print("you read it somewhere that if you type 888 then you win automatically.");
-//			int ing = Integer.parseInt(CaveExplorerin.nextLine());
+//			int ing = Integer.parseInt(in.nextLine());
 			int input = getIntegerInput();
 //			int inp =getIntegerInput();
 //			int input = inp;
@@ -79,7 +79,7 @@ public class Kristy {
 		 //will not continue if an error above is thrown
 		 isInteger = true;//exits loop if entry is valid
 		 }catch(NumberFormatException e){
-		 System.out.println("Hurry up, put an integer or your sins will measure CaveExplorerin hell.");
+		 System.out.println("Hurry up, put an integer or your sins will measure in hell.");
 		 integerString = CaveExplorer.in.nextLine();
 		 }
 		 }
@@ -87,43 +87,43 @@ public class Kristy {
 		 }
 	public static void aiTurn(String[][] arr, int row, int col)
 	{
+			
 			int[] roli = {col-1,col,col+1};
 			int rand = (int)(Math.random()*3);
 			int roll = roli[rand];
-			boolean hi = true;
-			while(hi)
-			{
-				for (int i = arr.length-1; i>-1;i--)
+				boolean hi = true;
+				while(hi)
 				{
-					
-					if (arr[i][roll].equals(" "))
+					if (!(roll <0) || !(roll> arr[0].length-1))
 					{
-						arr[i][roll]="N";
-						if (RayGUInWIN.determineIfWinner(arr, i, roll))
+						for (int i = arr.length-1; i>-1;i--)
 						{
-							RayGUInWIN.printBoard(arr);
-							if (RayGUInWIN.determineWinner(arr,i,roll).equals("N"))
+							if (arr[i][roll].equals(" "))
 							{
-								CaveExplorer.print("The evil entity has defeated you!");
-								CaveExplorer.print("You got ripped and sheaded into pieces and thrown out of the window!");
-								CaveExplorer.alive=false;
+								arr[i][roll]="N";
+								if (RayGUInWIN.determineIfWinner(arr, i, roll))
+								{
+									RayGUInWIN.printBoard(arr);
+									if (RayGUInWIN.determineWinner(arr,i,roll).equals("N"))
+									{
+										CaveExplorer.print("The evil entity has defeated you!");
+										CaveExplorer.print("You got ripped and sheaded into pieces and thrown out of the window!");
+										CaveExplorer.alive=false;
+									}
+								}
+								else
+								{
+									CaveExplorer.print("you have vanquished the evil entity!");
+									break;
+								}
+								i =-1;
+								hi=false;	
 							}
-							else
-								CaveExplorer.print("you have vanquished the evil entity!");
-							break;
-						}
-						i =-1;
-						hi=false;
-						
-						
-					
-					}
 				
-				}
-				double rand2 = Math.random();
-				roll = (int)(arr[0].length*rand2);
+						}
+						double rand2 = Math.random();
+						roll = (int)(arr[0].length*rand2);
+					}
 			}
 	}
-	
-
-}
+}	

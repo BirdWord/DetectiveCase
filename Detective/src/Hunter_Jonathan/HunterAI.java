@@ -103,7 +103,7 @@ public class HunterAI {
 				}
 			}
 		}
-		if(aiWin()){
+		if(aiWin()) {
 			CaveExplorer.alive = false;
 		}else{
 			JonathanBattleShip.attack();

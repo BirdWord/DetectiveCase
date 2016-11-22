@@ -101,6 +101,7 @@ public class KristyAI {
 					DavidDotsBoxes.grid[row][col] = "o--";
 					doubleCrossed = true;
 					crossOnce = true;
+					inLoop = false;
 				}
 				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 4 && col < DavidDotsBoxes.grid[0].length - 1 
 						&& DavidDotsBoxes.grid[row][col].equals("o--") && 
@@ -110,6 +111,7 @@ public class KristyAI {
 					DavidDotsBoxes.grid[row + 4][col] = "o--";
 					doubleCrossed = true;
 					crossOnce = true; 
+					inLoop = false;
 				}
 				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 2 && col < DavidDotsBoxes.grid[0].length - 2 && 
 						DavidDotsBoxes.grid[row][col].equals("o--") && 
@@ -119,6 +121,7 @@ public class KristyAI {
 					DavidDotsBoxes.grid[row + 1][col] = "|  ";
 					doubleCrossed = true;
 					crossOnce = true;
+					inLoop = false;
 				}
 				else if(!crossOnce && row < DavidDotsBoxes.grid.length - 2 && col < DavidDotsBoxes.grid[0].length - 2 
 						&& DavidDotsBoxes.grid[row][col].equals("o--") && 
@@ -128,6 +131,7 @@ public class KristyAI {
 					DavidDotsBoxes.grid[row + 1][col + 2] = "|  ";
 					doubleCrossed = true;
 					crossOnce = true;
+					inLoop = false;
 				}
 			}
 		}

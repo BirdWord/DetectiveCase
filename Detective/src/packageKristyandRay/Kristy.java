@@ -87,9 +87,16 @@ public class Kristy {
 		 }
 	public static void aiTurn(String[][] arr, int row, int col)
 	{
-			int[] roli = {col-1,col,col+1};
-			int rand = (int)(Math.random()*3);
-			int roll = roli[rand];
+		int[] roli = {col-1,col,col+1};
+		int rand = (int)(Math.random()*3);
+		int roll = roli[rand];
+		while ((roll<0)|| (roll>arr[0].length-1))
+		{
+			rand = (int)(Math.random()*3);
+			roll = roli[rand];
+			
+		}
+			
 		
 				boolean hi = true;
 				while(hi)
@@ -121,6 +128,7 @@ public class Kristy {
 							}
 				
 						}
+						
 						double rand2 = Math.random();
 						roll = (int)(arr[0].length*rand2);
 					}

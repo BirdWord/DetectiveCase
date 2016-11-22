@@ -93,37 +93,72 @@ public class JonathanBattleShip {
 		return false;
 	}
 
+	
+	//fix this whole method. NO SLEEPING
 	private static void placeShip() {
 		Scanner input = new Scanner(System.in);
 		while(numberOfPlayerShips < 3){
-			System.out.println("Where would you like to place your first ship(4 spaces)?");
+			System.out.println("Which row would you like to place your first ship(4 spaces)?");
 			int x = input.nextInt();
+			System.out.println("Which column would you like to place your first ship(4 spaces)?");
 			int y = input.nextInt();
+			checkValid(x,y);
+			System.out.println("Would you like to place it horizontal or vertical?");
+			String z = input.nextLine();
+			if(z.equals("horizontal")){
+				validhor(x,y,4);
+			}else if(z.equals("vertical")){
+				validver(x,y,4);
+			}else{
+				System.out.println("This is not a valid input. Please say vertical or horizontal");
+			}
 			EventHunterAndJonathan.board2[x][y] = " O ";
 			numberOfPlayerShips++;
-			System.out.println("Where would you like to place your second ship(3 spaces)?");
+			System.out.println("Which row would you like to place your second ship(3 spaces)?");
 			int x1 = input.nextInt();
+			System.out.println("Which column would you like to place your first ship(4 spaces)?");
 			int y1 = input.nextInt();
+			checkValid(x1,y1);
+			if(checkValid(x1,y1) == true){
 			//place in a while loop to make it easier and so that the response can be repeated.
-			if(x1 == x && y1 == y){
-				System.out.println("You have already placed these coordinates. Please choose another place to "
-						+ "put your ship.");
-			}else{
-				EventHunterAndJonathan.board2[x1][y1] = " O ";
-				numberOfPlayerShips++;
-				System.out.println("Where would you like to place your third ship(2 spaces)?");
-				int x2 = input.nextInt();
-				int y2 = input.nextInt();
-				if(x2 == x && x2 == x1 && y2 == y && y2 == y1){
+				if(x1 == x && y1 == y){
 					System.out.println("You have already placed these coordinates. Please choose another place to "
 							+ "put your ship.");
 				}else{
-					EventHunterAndJonathan.board2[x2][y2] = " O ";
+					EventHunterAndJonathan.board2[x1][y1] = " O ";
 					numberOfPlayerShips++;
+					placeThirdShip();
+					checkValid(x2,y2);
+					if(checkValid(x2,y2) == true){
+						if(x2 == x && x2 == x1 && y2 == y && y2 == y1){
+							System.out.println("You have already placed these coordinates. Please choose another place to "
+									+ "put your ship.");
+						}else{
+							EventHunterAndJonathan.board2[x2][y2] = " O ";
+							numberOfPlayerShips++;
+						}
+					}
 				}
 			}
 		}
 	}
+
+	public static void placeSecondShip(){
+		
+	}
+	
+	public static int placeThirdShip(){
+		Scanner input = new Scanner(System.in);
+		System.out.println("Which row would you like to place your third ship(2 spaces)?");
+		int x2 = input.nextInt();
+		System.out.println("Which column would you like to place your first ship(4 spaces)?");
+		int y2 = input.nextInt();
+		System.out.println("Would you like to place it horizontal or vertical?");
+		String z2 = input.nextLine();
+		z = 
+		return x2;
+		return y2;
+		return z2;
 
 	//make a print board method that prints both boards. like do in class or basically just screw yourself over.
 	//there are no pity points, Jonathan. So work your ass off or pay the price in spades.
@@ -143,4 +178,27 @@ public class JonathanBattleShip {
 			}
 	}
 	
+	private static boolean validver(int shipRow, int shipCol, int shipSize) {
+		if(shipRow + shipSize > EventHunterAndJonathan.board2.length){
+			return false;
+		}
+		for(int i = 0; i < 4;i++){
+			if (EventHunterAndJonathan.board2[shipRow+i][shipCol].equals("O")){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static boolean validhor(int row, int col, int shipSize){
+		if(col + shipSize > EventHunterAndJonathan.board2[0].length){
+			return false;
+		}
+		for(int i = 0; i < shipSize-1;i++){
+			if (EventHunterAndJonathan.board2[row][col+i].equals("O")){
+				return false;
+			}
+		}
+		return true;
+	}
 }

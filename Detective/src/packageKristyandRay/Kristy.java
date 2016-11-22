@@ -87,14 +87,14 @@ public class Kristy {
 		 }
 	public static void aiTurn(String[][] arr, int row, int col)
 	{
-			
 			int[] roli = {col-1,col,col+1};
 			int rand = (int)(Math.random()*3);
 			int roll = roli[rand];
+		
 				boolean hi = true;
 				while(hi)
 				{
-					if (!(roll <0) || !(roll> arr[0].length-1))
+					if (roll >= 0 || roll< arr[0].length-1)
 					{
 						for (int i = arr.length-1; i>-1;i--)
 						{
@@ -110,11 +110,11 @@ public class Kristy {
 										CaveExplorer.print("You got ripped and sheaded into pieces and thrown out of the window!");
 										CaveExplorer.alive=false;
 									}
-								}
-								else
-								{
-									CaveExplorer.print("you have vanquished the evil entity!");
-									break;
+									else
+									{
+										CaveExplorer.print("you have vanquished the evil entity!");
+										break;
+									}
 								}
 								i =-1;
 								hi=false;	

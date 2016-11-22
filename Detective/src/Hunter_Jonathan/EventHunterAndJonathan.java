@@ -15,6 +15,7 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 	public static String[][] AIboard1;
 	public static String[][] board2;
 	public static String[][] AIboard2;
+	public static String map;
 	
 	public static final String[] BathRoomStory1= {};
 	public static final String[] BathRoomStory2 = {};
@@ -30,7 +31,6 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 	@Override
 	public void play() {
 		GameStartEvent.readSequence(BathRoomStory1);
-		String[][] arr = new String[6][7];
 		JonathanBattleShip.startGame();
 		GameStartEvent.readSequence(BathRoomStory2);
 		CaveExplorer.print("As you insert the white key into the hole, it melds into the door and both silently vanish.");

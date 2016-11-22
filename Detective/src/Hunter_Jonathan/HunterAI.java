@@ -4,7 +4,7 @@ import caveExplorer.CaveExplorer;
 
 public class HunterAI {
 
-	public HunterAI() {
+	public HunterAI(){
 		for(int i = 0; i < EventHunterAndJonathan.AIboard1.length; i++){
 			for(int j = 0; j < EventHunterAndJonathan.AIboard1[0].length; j++){
 				EventHunterAndJonathan.AIboard1[i][j] = " ";
@@ -31,7 +31,7 @@ public class HunterAI {
 								if(EventHunterAndJonathan.board2[i][j-1].equals(" O ")){
 									EventHunterAndJonathan.AIboard1[i][j-1] = "O";
 									EventHunterAndJonathan.board2[i][j-1] = " X ";
-									attacking = false;
+									attacking = true;
 								}else{
 									EventHunterAndJonathan.AIboard1[i][j-1] = "X";
 									EventHunterAndJonathan.board2[i][j-1] = " X ";
@@ -44,7 +44,7 @@ public class HunterAI {
 								if(EventHunterAndJonathan.board2[i+1][j].equals(" O ")){
 									EventHunterAndJonathan.AIboard1[i+1][j] = "O";
 									EventHunterAndJonathan.board2[i+1][j] = " X ";
-									attacking = false;
+									attacking = true;
 								}else{
 									EventHunterAndJonathan.AIboard1[i+1][j] = "X";
 									EventHunterAndJonathan.board2[i+1][j] = " X ";
@@ -57,7 +57,7 @@ public class HunterAI {
 								if(EventHunterAndJonathan.board2[i][j+1].equals(" O ")){
 									EventHunterAndJonathan.AIboard1[i][j+1] = "O";
 									EventHunterAndJonathan.board2[i][j+1] = " X ";
-									attacking = false;
+									attacking = true;
 								}else{
 									EventHunterAndJonathan.AIboard1[i][j+1] = "X";
 									EventHunterAndJonathan.board2[i][j+1] = " X ";
@@ -70,7 +70,7 @@ public class HunterAI {
 								if(EventHunterAndJonathan.board2[i-1][j].equals(" O ")){
 									EventHunterAndJonathan.AIboard1[i-1][j] = "O";
 									EventHunterAndJonathan.board2[i-1][j] = " X ";
-									attacking = false;
+									attacking = true;
 								}else{
 									EventHunterAndJonathan.AIboard1[i-1][j] = "X";
 									EventHunterAndJonathan.board2[i-1][j] = " X ";
@@ -85,7 +85,7 @@ public class HunterAI {
 				if(EventHunterAndJonathan.board2[attkRow][attkCol].equals(" O ")){
 					EventHunterAndJonathan.AIboard1[attkRow][attkCol] = "O";
 					EventHunterAndJonathan.board2[attkRow][attkCol] = " X ";
-					attacking = false;
+					attacking = true;
 				}else{
 					EventHunterAndJonathan.AIboard1[attkRow][attkCol] = "X";
 					EventHunterAndJonathan.board2[attkRow][attkCol] = " X ";
@@ -100,7 +100,7 @@ public class HunterAI {
 		}
 	}
 
-	private static boolean aiWin(){
+	public static boolean aiWin(){
 		for(int i = 0; i < EventHunterAndJonathan.board2.length; i++){
 			for(int j = 0; j < EventHunterAndJonathan.board2[0].length; j++){
 				if(EventHunterAndJonathan.board2[i][j].equals(" O ")){

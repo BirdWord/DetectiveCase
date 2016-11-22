@@ -36,6 +36,7 @@ public class HunterAI {
 									EventHunterAndJonathan.AIboard1[i][j-1] = "X";
 									EventHunterAndJonathan.board2[i][j-1] = " X ";
 									attacking = false;
+									break;
 								}
 							}
 						}
@@ -49,6 +50,7 @@ public class HunterAI {
 									EventHunterAndJonathan.AIboard1[i+1][j] = "X";
 									EventHunterAndJonathan.board2[i+1][j] = " X ";
 									attacking = false;
+									break;
 								}
 							}
 						}
@@ -62,6 +64,7 @@ public class HunterAI {
 									EventHunterAndJonathan.AIboard1[i][j+1] = "X";
 									EventHunterAndJonathan.board2[i][j+1] = " X ";
 									attacking = false;
+									break;
 								}
 							}
 						}
@@ -75,11 +78,18 @@ public class HunterAI {
 									EventHunterAndJonathan.AIboard1[i-1][j] = "X";
 									EventHunterAndJonathan.board2[i-1][j] = " X ";
 									attacking = false;
+									break;
 								}
 							}
 						}
 					}
 				}
+				if(attacking == false){
+					break;
+				}
+			}
+			if(attacking == false){
+				break;
 			}
 			if(EventHunterAndJonathan.AIboard1[attkRow][attkCol].equals(" ")){
 				if(EventHunterAndJonathan.board2[attkRow][attkCol].equals(" O ")){

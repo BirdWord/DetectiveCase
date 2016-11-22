@@ -16,7 +16,6 @@ public class Kristy {
 		while(CaveExplorer.alive){
 			RayGUInWIN.printBoard(arr);
 			CaveExplorer.print("Hurry pick a column, you will lose anyways!");
-			CaveExplorer.print("you read it somewhere that if you type 888 then you win automatically.");
 //			int ing = Integer.parseInt(in.nextLine());
 			int input = getIntegerInput();
 //			int inp =getIntegerInput();

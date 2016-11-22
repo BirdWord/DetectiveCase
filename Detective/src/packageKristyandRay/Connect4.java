@@ -16,16 +16,25 @@ public class Connect4 implements caveExplorer.Event{
 												"The man looks familar although you can't quite place your finger on who it is.",
 												"You bend your back and reach for the photo, but it vanishes as you touch it."
 												};
+	private static final String[] storyPart3 = {"Well, you just lost.",
+												"How does that feel, being the worst detective in the world?",
+												"THE END"
+												};
 	@Override
 	public void play() {
 		GameStartEvent.readSequence(storyPart1);
 		String[][] arr = new String[6][7];
 		Kristy.connect4(arr);
-		GameStartEvent.readSequence(storyPart2);
-		CaveExplorer.print("As you insert the red key into the hole, it melds into the door and both silently vanish.");
-		CaveExplorer.lockedDoors[0].setLocked(false);
-		CaveExplorer.lockedDoors[0].setOpen(true);
-		CaveExplorer.inventory.setLivingRoomKey(false);
+		if(CaveExplorer.alive){
+			GameStartEvent.readSequence(storyPart2);
+			CaveExplorer.print("As you insert the red key into the hole, it melds into the door and both silently vanish.");
+			CaveExplorer.lockedDoors[0].setLocked(false);
+			CaveExplorer.lockedDoors[0].setOpen(true);
+			CaveExplorer.inventory.setLivingRoomKey(false);
+		}
+		else{
+			GameStartEvent.readSequence(storyPart3);
+		}
 	}
 		
 }

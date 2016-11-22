@@ -112,7 +112,7 @@ public class HunterAI {
 	}
 
 	public static void generateShips(){
-		int ships = 4;
+		int ships = 3;
 		while (ships > 1){
 			int shipRow = (int)(Math.random() * EventHunterAndJonathan.AIboard2.length);
 			int shipCol = (int)(Math.random() * EventHunterAndJonathan.AIboard2[0].length);
@@ -123,21 +123,25 @@ public class HunterAI {
 				ships --;
 			}
 		}
-		int shipRow = (int)(Math.random() * EventHunterAndJonathan.AIboard2.length);
-		int shipCol = (int)(Math.random() * EventHunterAndJonathan.AIboard2[0].length);
-		if(validver(shipRow, shipCol)){
-			for(int i = 0; i < 5;i++){
-				EventHunterAndJonathan.AIboard2[shipRow + i][shipCol] = "O";
+		boolean carrier = true;
+		while(carrier){
+			int shipRow = (int)(Math.random() * EventHunterAndJonathan.AIboard2.length);
+			int shipCol = (int)(Math.random() * EventHunterAndJonathan.AIboard2[0].length);
+			if(validver(shipRow, shipCol)){
+				for(int i = 0; i < 4;i++){
+					EventHunterAndJonathan.AIboard2[shipRow + i][shipCol] = "O";
+					carrier = false;
+				}
 			}
 		}
 	}
 
 	private static boolean validver(int shipRow, int shipCol) {
-		if(shipRow + 5 > EventHunterAndJonathan.AIboard2.length){
+		if(shipRow + 4 > EventHunterAndJonathan.AIboard2.length){
 			return false;
 		}
 		for(int i = 0; i < 4;i++){
-			if (EventHunterAndJonathan.AIboard2[shipRow][shipCol + i].equals("O")){
+			if (EventHunterAndJonathan.AIboard2[shipRow+i][shipCol].equals("O")){
 				return false;
 			}
 		}

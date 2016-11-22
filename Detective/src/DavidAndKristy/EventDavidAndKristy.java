@@ -82,6 +82,9 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 		}
 		else{
 			System.out.println("Wooow... youre actually pretty good..\n<THE HINT>");
+			CaveExplorer.lockedDoors[1].setLocked(false);
+			CaveExplorer.lockedDoors[1].setOpen(true);
+			CaveExplorer.inventory.setKitchenKey(false);
 		}
 		
 	}

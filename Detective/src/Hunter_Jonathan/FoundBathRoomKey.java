@@ -5,8 +5,9 @@ import caveExplorer.Event;
 import caveExplorer.GameStartEvent;
 
 public class FoundBathRoomKey implements Event {
-	private static final String[] story1 = {"Stuff"};
-	private static final String[] story2 = {"Stuff"};
+	private static final String[] story1 = {"Hmmm, you stumbled upon a porcelain white key.",
+											"I guess this is the final key?"
+	};
 	public void play() { 
 		GameStartEvent.readSequence(story1);
 		CaveExplorer.print("Do you care to pick up the key?");
@@ -14,6 +15,5 @@ public class FoundBathRoomKey implements Event {
 			CaveExplorer.print("Just take the key; you probably need it -_-");
 		}
 		CaveExplorer.inventory.setBathroomKey(true);
-		GameStartEvent.readSequence(story2);
 	}
 }

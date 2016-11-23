@@ -33,7 +33,7 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 			GameStartEvent.readSequence(story2);
 			CaveExplorer.lockedDoors[0].setLocked(false);
 			CaveExplorer.lockedDoors[0].setOpen(true);
-			CaveExplorer.inventory.setLivingRoomKey(false);
+			CaveExplorer.inventory.setBathroomKey(false);
 		}
 		else{
 			CaveExplorer.print("Rest in peace, you terrible detective.");

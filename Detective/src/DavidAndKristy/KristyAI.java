@@ -62,7 +62,7 @@ public class KristyAI {
 			for(int col = 0; col < DavidDotsBoxes.grid[0].length; col++){
 				if(DavidDotsBoxes.grid[row][col].equals("   ") || DavidDotsBoxes.grid[row][col].equals("o  ")){
 					notDone = true;
-					break;
+					break; 
 				}
 			}
 		}

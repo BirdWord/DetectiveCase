@@ -298,7 +298,7 @@ public class JonathanBattleShip {
 		}
 	}
 
-	private static boolean validver(int shipRow, int shipCol, int shipSize) {
+	private static boolean validver(int shipRow, int shipCol, int shipSize){
 		if(shipRow + shipSize > EventHunterAndJonathan.board2.length){
 			return false;
 		}

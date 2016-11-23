@@ -5,10 +5,10 @@ import java.util.Scanner;
 import caveExplorer.CaveExplorer;
 
 public class JonathanBattleShip {
-	static int numberOfPlayerShips = 3;
-	private static int[] ship1;
-	private static int[] ship2;
-	private static int[] ship3;
+	static int numberOfPlayerShips = 0;
+	private static int[] ship1 = new int[2];
+	private static int[] ship2 = new int[3];
+	private static int[] ship3 = new int[3];
 	private static Scanner input = new Scanner(System.in);
 	private static int shotsHit;
 	
@@ -18,9 +18,20 @@ public class JonathanBattleShip {
 		
 		System.out.println("Welcome to the game of Battleship.");
 		
+		for(int i = 0; i < EventHunterAndJonathan.board1.length; i++){
+			for(int j = 0; j < EventHunterAndJonathan.board1[0].length; j++){
+				EventHunterAndJonathan.board1[i][j] = " ";
+			}
+		}
+		for(int i = 0; i < EventHunterAndJonathan.board2.length; i++){
+			for(int j = 0; j < EventHunterAndJonathan.board2[0].length; j++){
+				EventHunterAndJonathan.board2[i][j] = " ";
+			}
+		}
 		//fix to make it print both boards
 		printBoard(EventHunterAndJonathan.board2);
 		printBoard(EventHunterAndJonathan.AIboard1);
+		System.out.println(shotsHit);
 		while(shotsHit != 3){
 			placeShip();
 			tries++;
@@ -107,18 +118,18 @@ public class JonathanBattleShip {
 	
 	//fix this whole method. NO SLEEPING
 	private static void placeShip() {
-		int[] ship1 = new int[2];
 		while(numberOfPlayerShips != 3){
 			System.out.println("Which row would you like to place your first ship(4 spaces)?");
-			int x = input.nextInt();
+			int x = Integer.parseInt(input.nextLine());
 			ship1[0] = x;
 			System.out.println("Which column would you like to place your first ship(4 spaces)?");
-			int y = input.nextInt();
+			int y = Integer.parseInt(input.nextLine());
 			ship1[1] = y;
 			checkValid(x,y);
 			if(checkValid(x,y) == true){
 				System.out.println("Would you like to place it horizontal or vertical?");
 				String z = input.nextLine();
+				System.out.println(z);
 				if(z.equals("horizontal")){
 					if(validhor(x,y,4)){
 						for(int i = 0; i < numberOfPlayerShips; i++){
@@ -146,7 +157,6 @@ public class JonathanBattleShip {
 	}
 
 	public static void placeSecondShip(){
-		int[] ship2 = new int[3];
 		System.out.println("Which row would you like to place your second ship(3 spaces)?");
 		int x1 = input.nextInt();
 		ship2[0] = x1;
@@ -187,7 +197,6 @@ public class JonathanBattleShip {
 	}
 	
 	public static void placeThirdShip(){
-		int[] ship3 = new int[3];
 		System.out.println("Which row would you like to place your third ship(2 spaces)?");
 		int x2 = input.nextInt();
 		ship3[0] = x2;
@@ -270,8 +279,9 @@ public class JonathanBattleShip {
 			}
 			System.out.print("   |\n");
 			//PIECE 3
+			System.out.print("   ");
 			for(int k = 0; k<arr[row].length; k++){
-				System.out.print("   |__________");
+				System.out.print("|__________");
 			}
 			System.out.print("|\n");
 		}

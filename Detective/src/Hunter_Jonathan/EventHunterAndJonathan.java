@@ -19,21 +19,14 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 											};
 	//radars are odd
 	//ships are even
-	public static String[][] board1;
-	public static String[][] AIboard1;
-	public static String[][] board2;
-	public static String[][] AIboard2;
+	public static String[][] board1= new String[6][6];
+	public static String[][] AIboard1= new String[6][6];
+	public static String[][] board2= new String[6][6];
+	public static String[][] AIboard2= new String[6][6];
 	public static String map;
 	
-	public EventHunterAndJonathan() {
-		board1 = new String[6][6];
-		AIboard1 = new String[6][6];
-		board2 = new String[6][6];
-		AIboard2 = new String[6][6];
-	}
 
-	@Override
-	public void play() {
+	public static void main(String[] args) {
 		GameStartEvent.readSequence(story1);
 		JonathanBattleShip.startGame();
 		if(CaveExplorer.alive){
@@ -46,5 +39,12 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 			CaveExplorer.print("Rest in peace, you terrible detective.");
 			CaveExplorer.print("THE END");
 		}
+	}
+
+
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		
 	}
 }

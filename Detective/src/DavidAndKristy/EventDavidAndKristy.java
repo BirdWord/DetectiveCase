@@ -68,7 +68,7 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 		// after loop -> game has ended.
 		// check who won.
 		if(DavidDotsBoxes.getCScore() > DavidDotsBoxes.getPScore()){
-			// if inside -> computer won
+			// if inside -> computer won 
 			System.out.println("You have lost, you loser!...\n The murderer found you and killed you.");
 			CaveExplorer.alive = false;
 		}

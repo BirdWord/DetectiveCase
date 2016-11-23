@@ -16,7 +16,7 @@ public class KristyAI {
 		//give hint if win; cheat code; end game; lose game
 		//make it so that computer makes count +2 if makes 2 boxes
 	}
- 
+  
 	public static void computerTurn(){
 	//	boolean inLoop = true;
 		inLoop = true;

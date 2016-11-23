@@ -9,7 +9,7 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	public static Door[] lockedDoors = {new Door(true, false, "locked door", ""), new Door(true, false, "locked door", ""), new Door(true, false, "locked door", "")};
 	public static boolean alive;
-	public static void main(String args[]){
+	public static void main(String args[]){ 
 		System.out.println("You are a detective who got assigned to a murder case but\n got locked in the haunted mansion \nwhere Kristy Lo was killed.\nGo through the house and solve the puzzles to solve the case. \nPlease figure out who the murderer is.");
 		caves = new CaveRoom[5][10];
 		for(int i = 0; i<caves.length; i++){

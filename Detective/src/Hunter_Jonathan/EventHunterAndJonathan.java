@@ -26,14 +26,14 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 	public static String map;
 	
 	@Override
-	public void play() {
+	public void play(){
 		GameStartEvent.readSequence(story1);
 		JonathanBattleShip.startGame();
 		if(CaveExplorer.alive){
 			GameStartEvent.readSequence(story2);
 			CaveExplorer.lockedDoors[0].setLocked(false);
 			CaveExplorer.lockedDoors[0].setOpen(true);
-			CaveExplorer.inventory.setLivingRoomKey(false);
+			CaveExplorer.inventory.setBathroomKey(false);
 		}
 		else{
 			CaveExplorer.print("Rest in peace, you terrible detective.");

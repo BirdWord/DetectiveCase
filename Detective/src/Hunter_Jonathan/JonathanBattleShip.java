@@ -8,6 +8,7 @@ public class JonathanBattleShip {
 	private static int[] ship2;
 	private static int[] ship3;
 	private static Scanner input = new Scanner(System.in);
+	private static int shotsHit;
 	
 	public static void startGame(){
 		int shotsHit = 0;
@@ -20,11 +21,9 @@ public class JonathanBattleShip {
 		printBoard(EventHunterAndJonathan.AIboard1);
 		while(shotsHit != 3){
 			placeShip();
-			//print(EventHunterAndJonathan.board1.length, EventHunterAndJonathan.board1[0].length);
 			tries++;
 			attack();
-			//cheat code
-			if(input.equals("ship")){
+			if(shotsHit == 3){
 				break;
 			}
 			if(hit() == true){
@@ -59,15 +58,21 @@ public class JonathanBattleShip {
 	public static void attack(){
 		Scanner input = new Scanner(System.in);
 		System.out.println("Which row would you like to hit?");
-		int x2 = input.nextInt();
+		String x = input.nextLine();
+		int x2 = Integer.parseInt(x);
 		System.out.println("Which column would you like to hit?");
-		int y2 = input.nextInt();
+		String y = input.nextLine();
+		int y2 = Integer.parseInt(x);
+		if(x2 == 666 || y2 == 666){
+			shotsHit = 3;
+		}
 		checkValid(x2, y2);
 		if(checkValid(x2,y2) == true){
 			if(EventHunterAndJonathan.board1[x2][y2].equals( " X ")){
 				System.out.println("You have already shot this location. Please choose another location.");
 			}else{
 				EventHunterAndJonathan.board1[x2][y2] = " X ";
+				hit();
 			}
 		}
 	}
@@ -84,7 +89,7 @@ public class JonathanBattleShip {
 	public static boolean hit() {
 		for(int row = 0; row < EventHunterAndJonathan.AIboard1.length; row++){
 			for(int col = 0; col < EventHunterAndJonathan.AIboard1[0].length; col++){
-				if(EventHunterAndJonathan.AIboard2[row][col].equals(" O ")){
+				if(EventHunterAndJonathan.AIboard2[row][col].equals("O")){
 					return true;
 				}
 				if(EventHunterAndJonathan.board1[row][col].equals(" O ")){

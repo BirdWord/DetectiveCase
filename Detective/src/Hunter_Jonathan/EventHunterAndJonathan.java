@@ -25,8 +25,8 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 	public static String[][] AIboard2= new String[6][6];
 	public static String map;
 	
-
-	public static void main(String[] args) {
+	@Override
+	public void play() {
 		GameStartEvent.readSequence(story1);
 		JonathanBattleShip.startGame();
 		if(CaveExplorer.alive){
@@ -41,10 +41,4 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 		}
 	}
 
-
-	@Override
-	public void play() {
-		// TODO Auto-generated method stub
-		
-	}
 }

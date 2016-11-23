@@ -33,12 +33,12 @@ public class HunterAI {
 									EventHunterAndJonathan.AIboard1[i][j-1] = "O";
 									EventHunterAndJonathan.board2[i][j-1] = " X ";
 									attacking = true;
-									CaveExplorer.print("Ghost: I have hit your ship.");
+									CaveExplorer.print("Ghost: I have hit your ship at "+i+","+(j-1)+".");
 								}else{
 									EventHunterAndJonathan.AIboard1[i][j-1] = "X";
 									EventHunterAndJonathan.board2[i][j-1] = " X ";
 									attacking = false;
-									CaveExplorer.print("Ghost: I have missed your ship.");
+									CaveExplorer.print("Ghost: I have missed your ship at "+i+","+(j-1)+".");
 									break;
 								}
 							}
@@ -49,12 +49,12 @@ public class HunterAI {
 									EventHunterAndJonathan.AIboard1[i+1][j] = "O";
 									EventHunterAndJonathan.board2[i+1][j] = " X ";
 									attacking = true;
-									CaveExplorer.print("Ghost: I have hit your ship.");
+									CaveExplorer.print("Ghost: I have hit your ship at "+(i+1)+","+j+".");
 								}else{
 									EventHunterAndJonathan.AIboard1[i+1][j] = "X";
 									EventHunterAndJonathan.board2[i+1][j] = " X ";
 									attacking = false;
-									CaveExplorer.print("Ghost: I have missed your ship.");
+									CaveExplorer.print("Ghost: I have missed your ship at "+i+","+(j-1)+".");
 									break;
 								}
 							}
@@ -65,12 +65,12 @@ public class HunterAI {
 									EventHunterAndJonathan.AIboard1[i][j+1] = "O";
 									EventHunterAndJonathan.board2[i][j+1] = " X ";
 									attacking = true;
-									CaveExplorer.print("Ghost: I have hit your ship.");
+									CaveExplorer.print("Ghost: I have hit your ship at "+i+","+(j+1)+".");
 								}else{
 									EventHunterAndJonathan.AIboard1[i][j+1] = "X";
 									EventHunterAndJonathan.board2[i][j+1] = " X ";
 									attacking = false;
-									CaveExplorer.print("Ghost: I have missed your ship.");
+									CaveExplorer.print("Ghost: I have missed your ship at "+i+","+(j-1)+".");
 									break;
 								}
 							}
@@ -81,12 +81,12 @@ public class HunterAI {
 									EventHunterAndJonathan.AIboard1[i-1][j] = "O";
 									EventHunterAndJonathan.board2[i-1][j] = " X ";
 									attacking = true;
-									CaveExplorer.print("Ghost: I have hit your ship.");
+									CaveExplorer.print("Ghost: I have hit your ship at "+(i-1)+","+j+".");
 								}else{
 									EventHunterAndJonathan.AIboard1[i-1][j] = "X";
 									EventHunterAndJonathan.board2[i-1][j] = " X ";
 									attacking = false;
-									CaveExplorer.print("Ghost: I have missed your ship.");
+									CaveExplorer.print("Ghost: I have missed your ship at "+i+","+(j-1)+".");
 									break;
 								}
 							}
@@ -105,12 +105,12 @@ public class HunterAI {
 					EventHunterAndJonathan.AIboard1[attkRow][attkCol] = "O";
 					EventHunterAndJonathan.board2[attkRow][attkCol] = " X ";
 					attacking = true;
-					CaveExplorer.print("Ghost: I have hit your ship.");
+					CaveExplorer.print("Ghost: I have hit your ship at "+attkRow+","+attkCol+".");
 				}else{
 					EventHunterAndJonathan.AIboard1[attkRow][attkCol] = "X";
 					EventHunterAndJonathan.board2[attkRow][attkCol] = " X ";
 					attacking = false;
-					CaveExplorer.print("Ghost: I have missed your ship.");
+					CaveExplorer.print("Ghost: I have missed your ship at "+attkRow+","+attkCol+".");
 				}
 			}
 		}

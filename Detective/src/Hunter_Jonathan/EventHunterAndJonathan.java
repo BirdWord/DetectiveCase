@@ -26,7 +26,7 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 	public static String map;
 	
 	@Override
-	public void play() {
+	public void play(){
 		GameStartEvent.readSequence(story1);
 		JonathanBattleShip.startGame();
 		if(CaveExplorer.alive){

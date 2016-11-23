@@ -31,8 +31,8 @@ public class EventHunterAndJonathan implements caveExplorer.Event{
 		JonathanBattleShip.startGame();
 		if(CaveExplorer.alive){
 			GameStartEvent.readSequence(story2);
-			CaveExplorer.lockedDoors[0].setLocked(false);
-			CaveExplorer.lockedDoors[0].setOpen(true);
+			CaveExplorer.lockedDoors[2].setLocked(false);
+			CaveExplorer.lockedDoors[2].setOpen(true);
 			CaveExplorer.inventory.setBathroomKey(false);
 		}
 		else{

@@ -10,7 +10,6 @@ public class CaveExplorer {
 	public static Door[] lockedDoors = {new Door(true, false, "locked door", ""), new Door(true, false, "locked door", ""), new Door(true, false, "locked door", "")};
 	public static boolean alive;
 	public static void main(String args[]){ 
-		System.out.println("You are a detective who got assigned to a murder case but\n got locked in the haunted mansion \nwhere Kristy Lo was killed.\nGo through the house and solve the puzzles to solve the case. \nPlease figure out who the murderer is.");
 		caves = new CaveRoom[5][10];
 		for(int i = 0; i<caves.length; i++){
 			for(int j = 0; j<caves[0].length; j++){
@@ -18,7 +17,7 @@ public class CaveExplorer {
 			}
 		}
 		inventory = new Inventory();
-		//caves[2][0] = new EventRoom("There is a nice police officer outside of a vast, abandoned mansion.", new GameStartEvent());
+		caves[2][0] = new EventRoom("There is a nice police officer outside of a vast, abandoned mansion.", new GameStartEvent());
 		int rand1 = generateNumber(1,4);
 		switch(rand1){
 		case 1: caves[0][1] = new EventRoom("   You picked up the red key from the ground.", new packageKristyandRay.FoundLivingRoomKey());break;

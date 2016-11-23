@@ -4,7 +4,7 @@ import caveExplorer.CaveExplorer;
 
 public class HunterAI {
 
-	public HunterAI(){
+	public static void HunterAI(){
 		for(int i = 0; i < EventHunterAndJonathan.AIboard1.length; i++){
 			for(int j = 0; j < EventHunterAndJonathan.AIboard1[0].length; j++){
 				EventHunterAndJonathan.AIboard1[i][j] = " ";

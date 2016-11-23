@@ -11,6 +11,7 @@ public class JonathanBattleShip {
 	private static int[] ship3 = new int[3];
 	private static Scanner input = new Scanner(System.in);
 	private static int shotsHit;
+	private static boolean gameEnd = false;
 	
 	public static void startGame(){
 		int shotsHit = 0;
@@ -31,7 +32,10 @@ public class JonathanBattleShip {
 		//fix to make it print both boards
 		printBoard(EventHunterAndJonathan.board2);
 		printBoard(EventHunterAndJonathan.AIboard1);
-		System.out.println(shotsHit);
+		System.out.println("Do you want to skip this?");
+		if(input.nextLine().equals("yes"))
+			gameEnd = true;
+		if(gameEnd){
 		while(shotsHit != 3){
 			placeShip();
 			tries++;
@@ -58,6 +62,7 @@ public class JonathanBattleShip {
 			System.out.println("You have won the game. It has taken you" + tries + "to beat the game.");
 			System.out.println("Here is your last clue.");
 			CaveExplorer.alive = true;
+		}
 	}
 	
 

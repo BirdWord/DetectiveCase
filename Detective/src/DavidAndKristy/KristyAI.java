@@ -9,6 +9,7 @@ public class KristyAI {
 	public static boolean doubleCrossed;
 	public static boolean moreBoxes;
 	public static boolean inLoop;
+	private static boolean notDone;
   
 	public static void main(String[] args){ 
 		//fix the counter; and computer turn
@@ -20,13 +21,22 @@ public class KristyAI {
 	//	boolean inLoop = true;
 		inLoop = true;
 		while(inLoop){
-			doubleCross();
-			if(!doubleCrossed){
-				checkBoxes(); // LOOOK HERE.
-				if(!moreBoxes){
-					basicMove();
+			System.out.println("inLoop");
+		//	doubleCross();
+		//	System.out.println("doubleCross");
+		//	if(doubleCrossed == false){
+				System.out.println("notDouble");
+				twoBoxOneMove();
+				checkCompleted();
+				if(notDone == true){
+					checkBoxes(); // LOOOK HERE.
+					System.out.println("box");
+					checkCompleted();
+					if(notDone == true && !moreBoxes){
+						basicMove();
+					}
 				}
-			} 
+			//} 
 		}
 	}
 	
@@ -44,8 +54,49 @@ public class KristyAI {
 			DavidDotsBoxes.printGrid();
 			inLoop = false;
 		}
+		System.out.println("basic");
 	}
 	
+	public static void checkCompleted(){
+		for(int row = 0; row < DavidDotsBoxes.grid.length; row++){
+			for(int col = 0; col < DavidDotsBoxes.grid[0].length; col++){
+				if(DavidDotsBoxes.grid[row][col].equals("   ") || DavidDotsBoxes.grid[row][col].equals("o  ")){
+					notDone = true;
+					break;
+				}
+			}
+		}
+		System.out.println("checked");
+	}
+	
+	public static void twoBoxOneMove(){
+		System.out.println("2box");
+		for(int row = 0; row < DavidDotsBoxes.grid.length - 1; row++){
+			System.out.println("1st for");
+			for(int col = 0; col < DavidDotsBoxes.grid[0].length; col++){
+				System.out.println("2nd for");
+				if(row < DavidDotsBoxes.grid.length - 2 && col < DavidDotsBoxes.grid[0].length - 2 && 
+						DavidDotsBoxes.grid[row][col].equals("o--") && DavidDotsBoxes.grid[row][col + 1].equals("o--") &&
+						DavidDotsBoxes.grid[row + 1][col].equals("|  ") && DavidDotsBoxes.grid[row + 1][col + 2].equals("|  ") &&
+						DavidDotsBoxes.grid[row + 1][col + 1].equals("   ") && DavidDotsBoxes.grid[row + 2][col].equals("o--") &&
+						DavidDotsBoxes.grid[row + 2][col + 1].equals("o--")){
+					DavidDotsBoxes.grid[row + 1][col + 1] = "|  ";
+					computerBox = computerBox + 2;
+					System.out.println(computerBox);
+				}
+				else if(row < DavidDotsBoxes.grid.length - 4 && col < DavidDotsBoxes.grid[0].length - 2 &&
+						DavidDotsBoxes.grid[row][col].equals("o--") && DavidDotsBoxes.grid[row + 1][col].equals("|  ") && 
+						DavidDotsBoxes.grid[row + 1][col + 2].equals("|  ") && DavidDotsBoxes.grid[row + 2][col].equals("o  ") &&
+						DavidDotsBoxes.grid[row + 3][col].equals("|  ") && DavidDotsBoxes.grid[row + 3][col + 1].equals("|  ") &&
+						DavidDotsBoxes.grid[row + 4][col].equals("o--")){
+					DavidDotsBoxes.grid[row + 2][col] = "o--";
+					computerBox = computerBox + 2;
+					System.out.println(computerBox);
+				}
+			}
+		}
+	}
+		
 	public static void checkBoxes(){
 		moreBoxes = true;
 		while(moreBoxes){
@@ -85,6 +136,7 @@ public class KristyAI {
 
 			}
 		}
+		
 	}
 
 	//simplified version of double crossed strategy since this does not take into account the number and length of the chains

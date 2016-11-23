@@ -158,7 +158,7 @@ public class HunterAI {
 		CaveExplorer.print("Ghost: I have placed my ships.");
 	}
 
-	public static boolean validver(int shipRow, int shipCol) {
+	public static boolean validver(int shipRow, int shipCol){
 		if(shipRow + 4 > EventHunterAndJonathan.AIboard2.length){
 			return false;
 		}

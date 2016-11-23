@@ -2,6 +2,8 @@ package Hunter_Jonathan;
 
 import java.util.Scanner;
 
+import caveExplorer.CaveExplorer;
+
 public class JonathanBattleShip {
 	static int numberOfPlayerShips = 3;
 	private static int[] ship1;
@@ -44,6 +46,7 @@ public class JonathanBattleShip {
 		}
 			System.out.println("You have won the game. It has taken you" + tries + "to beat the game.");
 			System.out.println("Here is your last clue.");
+			CaveExplorer.alive = true;
 	}
 	
 
@@ -56,23 +59,23 @@ public class JonathanBattleShip {
 //	}
 
 	public static void attack(){
-		Scanner input = new Scanner(System.in);
 		System.out.println("Which row would you like to hit?");
 		String x = input.nextLine();
 		int x2 = Integer.parseInt(x);
 		System.out.println("Which column would you like to hit?");
 		String y = input.nextLine();
-		int y2 = Integer.parseInt(x);
+		int y2 = Integer.parseInt(y);
 		if(x2 == 666 || y2 == 666){
 			shotsHit = 3;
-		}
-		checkValid(x2, y2);
-		if(checkValid(x2,y2) == true){
-			if(EventHunterAndJonathan.board1[x2][y2].equals( " X ")){
-				System.out.println("You have already shot this location. Please choose another location.");
-			}else{
-				EventHunterAndJonathan.board1[x2][y2] = " X ";
-				hit();
+		}else{
+			checkValid(x2, y2);
+			if(checkValid(x2,y2) == true){
+				if(EventHunterAndJonathan.board1[x2][y2].equals( " X ")){
+					System.out.println("You have already shot this location. Please choose another location.");
+				}else{
+					EventHunterAndJonathan.board1[x2][y2] = " X ";
+					hit();
+				}
 			}
 		}
 	}
@@ -243,31 +246,32 @@ public class JonathanBattleShip {
 	public static void printBoard(String[][] arr){
 		//First, print out the columns in case someone is dumbfounded
 		for(int num = 0; num < arr[0].length; num++){
-			System.out.print("    ["+num+"]  ");
+			System.out.print("      ["+num+"]    ");
 		}
 		System.out.println();
 		//After that, make the top line of the board
-		System.out.print(" ___________________");
+		System.out.print("    ________________________________");
 		for(int i = 1; i < arr[0].length-1; i++){
 			System.out.print("_______");
 		}
 		System.out.print("______\n");
 		//Next, make each column
 		for(int row = 0; row<arr.length; row++){
+			System.out.print("[" + row + "]");
 			//Each row is split into 3 pieces
 			//PIECE 1
 			for(int i = 0; i < arr[row].length; i++){
-				System.out.print("|        ");
+				System.out.print("|          ");
 			}
 			System.out.print("|\n");
 			//PIECE 2
 			for(int j = 0; j<arr[row].length; j++){
-				System.out.print("|        ");
+				System.out.print("   |       ");
 			}
-			System.out.print("|\n");
+			System.out.print("   |\n");
 			//PIECE 3
 			for(int k = 0; k<arr[row].length; k++){
-				System.out.print("|________");
+				System.out.print("   |__________");
 			}
 			System.out.print("|\n");
 		}

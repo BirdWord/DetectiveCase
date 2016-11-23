@@ -68,12 +68,15 @@ public class EventDavidAndKristy implements caveExplorer.Event{
 		// after loop -> game has ended.
 		// check who won.
 		if(DavidDotsBoxes.getCScore() > DavidDotsBoxes.getPScore()){
-			// if inside -> computer won
-			System.out.println("You have lost, you loser!...");
+			// if inside -> computer won 
+			System.out.println("You have lost, you loser!...\n The murderer found you and killed you.");
 			CaveExplorer.alive = false;
 		}
 		else{
-			System.out.println("Wooow... youre actually pretty good..\n<THE HINT>");
+			System.out.println("Wooow... youre actually pretty good...\nThe murderer tried to shoot you but missed.\n"
+					+ "He said,'You got lucky!' and vanished.\n"
+					+ "\n<THE HINT: You continued walking and stumble upon \n and desk"
+					+ "and saw ticket stubs to Hamilton.>");
 			CaveExplorer.lockedDoors[1].setLocked(false);
 			CaveExplorer.lockedDoors[1].setOpen(true);
 			CaveExplorer.inventory.setKitchenKey(false);

@@ -31,20 +31,22 @@ public class JonathanBattleShip {
 		placeShip();
 		//printBoard(EventHunterAndJonathan.board1);
 		//printBoard(EventHunterAndJonathan.board2);
-		System.out.println(shotsHit);
+		badPrint(EventHunterAndJonathan.board1);
+		System.out.println("----------");
+		badPrint(EventHunterAndJonathan.board2);
 		attack();
-		while(shotsHit != 9){
-			if(shotsHit == 9){
-				break;
-			}
-			if(HunterAI.aiWin() == true){
-				System.out.println("You have lost the game. You are unable to solve the mystery and the murderer has gotten away.");
-				HunterAI.aiWin();
-			}
+		if(HunterAI.aiWin() == true){
+			System.out.println("You have lost the game. You are unable to solve the mystery and the murderer has gotten away.");
+			HunterAI.aiWin();
 		}
-		System.out.println("You have won the game.");
-		System.out.println("Here is your last clue.");
-		CaveExplorer.alive = true;
+	}
+
+	private static void badPrint(String[][] board1) {
+		for(int i=0; i<board1.length; i++) {
+			for(int j=0; j<board1[i].length; j++)
+				System.out.print(board1[i][j] + " ");
+			System.out.println();
+		}
 	}
 
 
@@ -57,30 +59,49 @@ public class JonathanBattleShip {
 	//	}
 
 	public static void attack(){
-		System.out.println("Which row would you like to hit?");
-		String x = input.nextLine();
-		int x2 = Integer.parseInt(x);
-		System.out.println("Which column would you like to hit?");
-		String y = input.nextLine();
-		int y2 = Integer.parseInt(y);
-		if(x2 == 666 || y2 == 666){
-			shotsHit = 9;
-		}else{
-			checkValid(x2, y2);
-			if(checkValid(x2,y2) == true){
-				if(EventHunterAndJonathan.board1[x2][y2].equals(" X ")){
-					System.out.println("You have already shot this location. Please choose another location.");
-				}else if(hit(x2,y2) == true){
-					EventHunterAndJonathan.board1[x2][y2] = " O ";
-					System.out.println("You got a hit at "+x2+","+y2+".");
-					shotsHit++;
-					attack();
+		boolean attacking = true;
+		while(attacking){
+			System.out.println("Which row would you like to hit?");
+			String x = input.nextLine();
+			int x2 = Integer.parseInt(x);
+			System.out.println("Which column would you like to hit?");
+			String y = input.nextLine();
+			int y2 = Integer.parseInt(y);
+			if(x2 == 666 || y2 == 666){
+				shotsHit = 9;
+				break;
+			}else{
+				checkValid(x2, y2);
+				if(checkValid(x2,y2) == true){
+					if(EventHunterAndJonathan.board1[x2][y2].equals("X")){
+						System.out.println("You have already shot this location. Please choose another location.");
+					}else if(hit(x2,y2) == true){
+						attacking = true;
+						EventHunterAndJonathan.board1[x2][y2] = "O";
+						badPrint(EventHunterAndJonathan.board1);
+						System.out.println("----------");
+						badPrint(EventHunterAndJonathan.board2);
+						System.out.println("You got a hit at "+x2+","+y2+".");
+						shotsHit++;
+					}else{
+						attacking = false;
+						EventHunterAndJonathan.board1[x2][y2] = "X";
+						badPrint(EventHunterAndJonathan.board1);
+						System.out.println("----------");
+						badPrint(EventHunterAndJonathan.board2);
+						System.out.println("You missed.");
+					}
 				}else{
-					EventHunterAndJonathan.board1[x2][y2] = " X ";
-					System.out.println("You missed.");
-					HunterAI.aiTurn();
+					System.out.println("Invalid location.");
 				}
 			}
+		}
+		if(shotsHit == 9){
+			System.out.println("You have won the game.");
+			System.out.println("Here is your last clue.");
+			CaveExplorer.alive = true;
+		}else{
+			HunterAI.aiTurn();
 		}
 	}
 
@@ -118,7 +139,7 @@ public class JonathanBattleShip {
 				if(z.equals("horizontal")){
 					if(validhor(x,y,4)){
 						for(int i = 0; i < 4; i++){
-							EventHunterAndJonathan.board2[x][y + i] = " O ";
+							EventHunterAndJonathan.board2[x][y + i] = "O";
 						}
 						numberOfPlayerShips++;
 						placeSecondShip();
@@ -129,7 +150,7 @@ public class JonathanBattleShip {
 				}else if(z.equals("vertical")){
 					if(validver(x,y,4)){
 						for(int i = 0; i < 4; i++){
-							EventHunterAndJonathan.board2[x + i][y] = " O ";
+							EventHunterAndJonathan.board2[x + i][y] = "O";
 						}
 						numberOfPlayerShips++;
 						placeSecondShip();
@@ -163,7 +184,7 @@ public class JonathanBattleShip {
 				if(z1.equals("horizontal")){
 					if(validhor(x1,y1,3)){
 						for(int i = 0; i < 3; i++){
-							EventHunterAndJonathan.board2[x1 + i][y1] = " O ";
+							EventHunterAndJonathan.board2[x1][y1+i] = "O";
 						}
 						numberOfPlayerShips++;
 					}else{
@@ -172,7 +193,7 @@ public class JonathanBattleShip {
 				}else if(z1.equals("vertical")){
 					if(validver(x1,y1,3)){
 						for(int i = 0; i < 3; i++){
-							EventHunterAndJonathan.board2[x1 + i][y1] = " O ";
+							EventHunterAndJonathan.board2[x1 + i][y1] = "O";
 						}
 						numberOfPlayerShips++;
 					}else{
@@ -204,7 +225,7 @@ public class JonathanBattleShip {
 				if(z2.equals("horizontal")){
 					if(validhor(x2,y2,2)){
 						for(int i = 0; i < 2; i++){
-							EventHunterAndJonathan.board2[x2 + i][y2] = " O ";
+							EventHunterAndJonathan.board2[x2][y2+i] = "O";
 						}
 						numberOfPlayerShips++;
 					}else{
@@ -213,7 +234,7 @@ public class JonathanBattleShip {
 				}else if(z2.equals("vertical")){
 					if(validver(x2,y2,2)){
 						for(int i = 0; i < 2; i++){
-							EventHunterAndJonathan.board2[x2 + i][y2] = " O ";
+							EventHunterAndJonathan.board2[x2 + i][y2] = "O";
 						}
 						numberOfPlayerShips++;
 					}else{
